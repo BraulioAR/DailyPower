@@ -1,3 +1,5 @@
+import animations from '@midudev/tailwind-animations'
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -7,11 +9,18 @@ module.exports = {
   ],
   theme: {
     extend: {
+       gridTemplateRows: {
+          '[auto,auto,1fr]': 'auto auto 1fr',
+        },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
     },
   },
-  plugins: [],
+  plugins: [
+
+    require('@tailwindcss/aspect-ratio'),
+    animations,
+  ],
 };
