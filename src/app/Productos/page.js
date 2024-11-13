@@ -80,7 +80,7 @@ export default function Productos() {
                       <div className="h-64 w-44 overflow-hidden rounded-lg">
                         <img
                           alt=""
-                          src="/Bat-10kwh-3.webp"
+                          src="/Bat-15kwh-2.webp"
                           className="size-full object-cover object-center"
                         />
                       </div>

@@ -61,7 +61,7 @@ export default function Footer() {
       <section className="bg-[#292929] lg:h-20">
         <div className=" flex lg:mx-96 justify-between items-center lg:flex-row flex-col-reverse h-full gap-y-4 ">
           <div className="flex items-center gap-x-8 flex-col lg:flex-row">
-            <img src="./logo-daily-power-1.webp" alt="Logo Daily Power"  className="w-[102.5px] h-10" />
+            <img src="../logo-daily-power-1.webp" alt="Logo Daily Power"  className="w-[102.5px] h-10" />
             <h1 className={`${osans.className} text-base font-normal text-center lg:text-start`}>Copyright &copy; 2024 Dailypower, todos los derechos reservados.</h1>
            </div>
           <div className="flex items-center gap-x-5 justify-center ">

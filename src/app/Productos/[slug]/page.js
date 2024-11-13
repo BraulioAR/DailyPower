@@ -18,7 +18,7 @@ export default async function ProductoPage({ params }) {
     descripcion, 
     productImage, 
     specsPdf, 
-    advantages, 
+    ventajas, 
     specsImage, 
     connectionDiagram, 
     category 
@@ -74,63 +74,59 @@ export default async function ProductoPage({ params }) {
 
           {/* Options */}
           <div className="mt-4 lg:row-span-3 lg:mt-0">
-            <h2 className="sr-only">Product information</h2>
+            <h2 className="sr-only">información del</h2>
             <p className="text-3xl tracking-tight text-gray-900">RD$5000</p>
 
-            {/* Reviews */}
-            <div className="mt-6">
-              <h3 className="sr-only">Reviews</h3>
-              <div className="flex items-center">
-                <div className="flex items-center">
-                  {[0, 1, 2, 3, 4].map((rating) => (
-                    <HiStar
-                      key={rating}
-                      aria-hidden="true"
-                      
-                    />
-                  ))}
-                </div>
-                <p className="sr-only">5 out of 5 stars</p>
-                <a className="ml-3 text-sm font-medium text-[#E73516] hover:scale-105">
-                  7 reviews
-                </a>
-              </div>
-            </div>
-
             <form className="mt-10">
-              <button
-                type="submit"
+              <a
+                href={specsPdf.fields.file.url}
+                target='_blank'
                 className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-[#E73516] px-8 py-3 text-base font-medium text-white hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#E73516] focus:ring-offset-2"
               >
-                Add to bag
-              </button>
+                Descargar Brochure
+              </a>
             </form>
           </div>
           <div className="py-10 lg:col-span-2 lg:col-start-1 lg:border-r lg:border-gray-200 lg:pb-16 lg:pr-8 lg:pt-6">
             {/* Description and details */}
             <div>
-              <h3 className="sr-only">Description</h3>
+              <h3 className="sr-only">Descripción</h3>
               <div className="space-y-6">
                 <p className="text-base text-gray-900">{descripcion}</p>
               </div>
             </div>
             <div className="mt-10">
-              <h3 className="text-sm font-medium text-gray-900">Highlights</h3>
+              <h3 className="text-sm font-medium text-gray-900">Disponibilidad</h3>
               <div className="mt-4">
                 <ul role="list" className="list-disc space-y-2 pl-4 text-sm">
                  
-                    <li className="text-gray-400">
-                      <span className="text-gray-600">SKERE</span>
+                    <li className="text-red-400">
+                      <span className="text-red-600">Disponible para entrega inmediata.</span>
                     </li>
                 </ul>
               </div>
             </div>
             <div className="mt-10">
               <h2 className="text-sm font-medium text-gray-900">Ventajas</h2>
-              <div className="mt-4 space-y-6">
-                <p className="text-sm text-gray-600">{advantages}</p>
+              <div className="mt-4 grid grid-cols-2 grid-flow-row gap-4">
+                <li className="text-sm text-gray-600">{ventajas?.[0]}</li>
+                <li className="text-sm text-gray-600">{ventajas?.[1]}</li>
+                <li className="text-sm text-gray-600">{ventajas?.[2]}</li>
+                <li className="text-sm text-gray-600">{ventajas?.[3]}</li>
+                <li className="text-sm text-gray-600">{ventajas?.[4]}</li>
+                <li className="text-sm text-gray-600">{ventajas?.[5]}</li>
               </div>
             </div>
+          </div>
+          </div>
+          <div className='mx-auto max-w-2xl lg:max-w-7xl w-full h-full flex flex-col gap-10 mb-10'>
+            <div className='w-full flex flex-col gap-4'>
+              <h2 className="text-xl font-bold text-gray-900">Especificaciones: </h2>
+              <img src={specsImage?.fields.file.url} alt={`Especificaciones de ${titulo}`} />
+            </div>
+            <div className='w-full flex flex-col gap-4'>
+              <h2 className="text-xl  font-bold text-gray-900">Diagrama de conexión: </h2>
+            <img src={connectionDiagram?.fields.file.url} alt={`Diagrama de conexión de ${titulo}`}/>
           </div>
         </div>
       </div>
