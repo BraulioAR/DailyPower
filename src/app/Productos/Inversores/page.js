@@ -16,7 +16,7 @@ const categoryMap = {
   O: 'Otros',
 };
 
-export default function Productos() {
+export default function Inversores() {
   const [products, setProducts] = useState([]);
   const [showAll, setShowAll] = useState(false);
 
@@ -143,10 +143,10 @@ g
         </div>
 
         {/* Lista de productos */}
-          <div id="growatt" className="relative isolate z-50 px-6 lg:px-8 transition-transform duration-500">
+           <div id="growatt" className="relative isolate z-50 px-6 lg:px-8 transition-transform duration-500">
           <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6  lg:max-w-7xl lg:px-8">
             <h2 className="text-3xl font-bold tracking-tight text-gray-900 text-start">Inversores Solares Growatt</h2>
-            <div className="mt-12 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+            <div className="mt-5 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
               {filterProductsBySubcategory('IG').slice(0, showAll ? products.length : 4).map((producto) => (
                 <div key={producto.id} className="group relative">
                   <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
@@ -175,21 +175,23 @@ g
                 </div>
               ))}
             </div>
-           <div className="text-center mt-6">
-        <button onClick={toggleShowAll} className="text-[#E73516] hover:text-[#C33F1A] font-semibold">
-          {showAll ? (
-            <IoArrowUpCircleOutline className="text-[#E73516] h-12 w-12 animate-bounce animate-infinite animate-ease-in " /> 
-          ) : (
-            <IoArrowDownCircleOutline className="text-[#E73516] h-12 w-12 animate-bounce animate-infinite animate-ease-in " />  // Aquí puedes usar cualquier ícono de flecha
-          )}
-        </button>
-      </div>
+            {products.length < 4 &&
+              <div className="text-center mt-6">
+                <button onClick={toggleShowAll} className="text-[#E73516] hover:text-[#C33F1A] font-semibold">
+                  {showAll ? (
+                    <IoArrowUpCircleOutline className="text-[#E73516] h-12 w-12 animate-bounce animate-infinite animate-ease-in " />
+                  ) : (
+                    <IoArrowDownCircleOutline className="text-[#E73516] h-12 w-12 animate-bounce animate-infinite animate-ease-in " />  // Aquí puedes usar cualquier ícono de flecha
+                  )}
+                </button>
+              </div>
+            }
           </div>
         </div>
           <div id="offgrid" className="relative isolate z-50 px-6 lg:px-8 transition-transform duration-500">
           <div className="mx-auto max-w-2xl px-4 sm:px-6 py-16 lg:max-w-7xl lg:px-8">
             <h2 className="text-3xl font-bold tracking-tight text-gray-900 text-start">Inversores Solares Off-Grid</h2>
-            <div className="mt-12 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+            <div className="mt-5 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
               {filterProductsBySubcategory('IO').slice(0, showAll ? products.length : 4).map((producto) => (
                 <div key={producto.id} className="group relative">
                   <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
@@ -218,21 +220,23 @@ g
                 </div>
               ))}
             </div>
-           <div className="text-center mt-6">
-        <button onClick={toggleShowAll} className="text-[#E73516] hover:text-[#C33F1A] font-semibold">
-          {showAll ? (
-            <IoArrowUpCircleOutline className="text-[#E73516] h-12 w-12 animate-bounce animate-infinite animate-ease-in " /> 
-          ) : (
-            <IoArrowDownCircleOutline className="text-[#E73516] h-12 w-12 animate-bounce animate-infinite animate-ease-in " />  // Aquí puedes usar cualquier ícono de flecha
-          )}
-        </button>
-      </div>
+            {products.length < 4 &&
+              <div className="text-center mt-6">
+                <button onClick={toggleShowAll} className="text-[#E73516] hover:text-[#C33F1A] font-semibold">
+                  {showAll ? (
+                    <IoArrowUpCircleOutline className="text-[#E73516] h-12 w-12 animate-bounce animate-infinite animate-ease-in " />
+                  ) : (
+                    <IoArrowDownCircleOutline className="text-[#E73516] h-12 w-12 animate-bounce animate-infinite animate-ease-in " />  // Aquí puedes usar cualquier ícono de flecha
+                  )}
+                </button>
+              </div>
+            }
           </div>
         </div>
-          <div id="montaje" className="relative isolate z-50 px-6 lg:px-8 transition-transform duration-500">
+          <div id="montaje" className="relative isolate z-50 px-6 lg:px-8 transition-transform duration-500 pb-20">
           <div className="mx-auto max-w-2xl px-4 sm:px-6 py-16 lg:max-w-7xl lg:px-8">
             <h2 className="text-3xl font-bold tracking-tight text-gray-900 text-start">Estructuras de Montaje</h2>
-            <div className="mt-12 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+            <div className="mt-5 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
              {filterProductsBySubcategory('E').slice(0, showAll ? products.length : 4).map((producto) => (
                 <div key={producto.id} className="group relative">
                   <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
@@ -261,15 +265,17 @@ g
                 </div>
               ))}
             </div>
-           <div className="text-center mt-6">
-        <button onClick={toggleShowAll} className="text-[#E73516] hover:text-[#C33F1A] font-semibold">
-          {showAll ? (
-            <IoArrowUpCircleOutline className="text-[#E73516] h-12 w-12 animate-bounce animate-infinite animate-ease-in " /> 
-          ) : (
-            <IoArrowDownCircleOutline className="text-[#E73516] h-12 w-12 animate-bounce animate-infinite animate-ease-in " />  // Aquí puedes usar cualquier ícono de flecha
-          )}
-        </button>
-      </div>
+            {products.length < 4 &&
+              <div className="text-center mt-6">
+                <button onClick={toggleShowAll} className="text-[#E73516] hover:text-[#C33F1A] font-semibold">
+                  {showAll ? (
+                    <IoArrowUpCircleOutline className="text-[#E73516] h-12 w-12 animate-bounce animate-infinite animate-ease-in " />
+                  ) : (
+                    <IoArrowDownCircleOutline className="text-[#E73516] h-12 w-12 animate-bounce animate-infinite animate-ease-in " />  // Aquí puedes usar cualquier ícono de flecha
+                  )}
+                </button>
+              </div>
+            }
           </div>
         </div>
       </section>
