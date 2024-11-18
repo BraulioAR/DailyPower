@@ -13,12 +13,11 @@ export default function Footer() {
             <div className="flex justify-between gap-x-14">
               <nav className="flex flex-col gap-3 items-start  lg:justify-normal justify-center">
                 <a href="/" className={`${osans.className} text-[#F5F5F5] hover:[#EDB059] hover:scale-105 text-base font-normal text-start`}>Inicio</a>                    
-                <a href="/Busqueda" className={`${osans.className} text-[#F5F5F5] hover:[#EDB059] hover:scale-105 text-base font-normal text-start`}>Quienes Somos</a>
-                <a href="/Planes" className={`${osans.className} text-[#F5F5F5] hover:[#EDB059] hover:scale-105 text-base font-normal text-start`}>Contacto</a>
+                <a href="/Nosotros" className={`${osans.className} text-[#F5F5F5] hover:[#EDB059] hover:scale-105 text-base font-normal text-start`}>Quienes Somos</a>
+                <a href="/Contacto" className={`${osans.className} text-[#F5F5F5] hover:[#EDB059] hover:scale-105 text-base font-normal text-start`}>Contacto</a>
               </nav>
             <div>
               <nav className="flex flex-col gap-3 items-start lg:justify-normal justify-center">
-                <a href="/help" className={`${osans.className} text-[#F5F5F5] hover:[#EDB059] hover:scale-105 text-base font-normal`}>Centro de Ayuda</a>
                 <a href="/Doctors" className={`${osans.className} text-[#F5F5F5] hover:[#EDB059] hover:scale-105 text-base font-normal`}>Políticas de Privacidad</a>
                 <a href="/AboutUs" className={`${osans.className} text-[#F5F5F5] hover:[#EDB059] hover:scale-105 text-base font-normal`}>Términos y Condiciones</a>
               </nav>
@@ -29,20 +28,20 @@ export default function Footer() {
           <h1 className="text-base font-medium text-[#F5F5F5] lg:no-underline underline lg:my-0 my-2">Productos</h1>
           <div className="lg:flex lg:justify-between gap-x-14 grid grid-flow-row grid-cols-2 gap-y-2">
           <nav className="flex flex-col gap-3">
-              <a href={`/Busqueda?especialidad=${encodeURIComponent('Cirugía Plástica')}`} className={`${osans.className} text-[#F5F5F5] hover:[#EDB059] hover:scale-105 text-base font-normal`}>Baterias de Gelatina</a>
-              <a href={`/Busqueda?especialidad=${encodeURIComponent('Odontología')}`} className={`${osans.className} text-[#F5F5F5] hover:[#EDB059] hover:scale-105 text-base font-normal`}>Baterias de Litio</a>
-              <a href={`/Busqueda?especialidad=${encodeURIComponent('Medicina General')}`} className={`${osans.className} text-[#F5F5F5] hover:[#EDB059] hover:scale-105 text-base font-normal`}>Inversores Solares Off-Grid</a>
+              <a href="/Productos/Baterias#gelatina"className={`${osans.className} text-[#F5F5F5] hover:[#EDB059] hover:scale-105 text-base font-normal`}>Baterias de Gelatina</a>
+              <a href="/Productos/Baterias#litio" className={`${osans.className} text-[#F5F5F5] hover:[#EDB059] hover:scale-105 text-base font-normal`}>Baterias de Litio</a>
+              <a href="/Productos/Inversores#offgrid" className={`${osans.className} text-[#F5F5F5] hover:[#EDB059] hover:scale-105 text-base font-normal`}>Inversores Solares Off-Grid</a>
           </nav>
           <div>
               <nav className="flex flex-col gap-3">
-                <a href={`/Busqueda?especialidad=${encodeURIComponent('Ginecología')}`} className={`${osans.className} text-[#F5F5F5] hover:[#EDB059] hover:scale-105 text-base font-normal`}>Inversores Solares Growatt</a>
-                <a href={`/Busqueda?especialidad=${encodeURIComponent('Psicología')}`} className={`${osans.className} text-[#F5F5F5] hover:[#EDB059] hover:scale-105 text-base font-normal`}>Estructuras de Montaje</a>
-                <a href={`/Busqueda?especialidad=${encodeURIComponent('Pediatría')}`} className={`${osans.className} text-[#F5F5F5] hover:[#EDB059] hover:scale-105 text-base font-normal`}>Paneles Solares</a>
+                <a href="/Productos/Inversores#growatt"className={`${osans.className} text-[#F5F5F5] hover:[#EDB059] hover:scale-105 text-base font-normal`}>Inversores Solares Growatt</a>
+                <a href="/Productos#montaje"className={`${osans.className} text-[#F5F5F5] hover:[#EDB059] hover:scale-105 text-base font-normal`}>Estructuras de Montaje</a>
+                <a href="/Contacto" className={`${osans.className} text-[#F5F5F5] hover:[#EDB059] hover:scale-105 text-base font-normal`}>Paneles Solares</a>
               </nav>
             </div>
             <div>
               <nav className="flex flex-col gap-3">
-                <a href={`/Busqueda?especialidad=${encodeURIComponent('Dermatología')}`} className={`${osans.className} text-[#F5F5F5] hover:[#EDB059] hover:scale-105 text-base font-normal`}>Inversores Convencionales</a>                   
+                <a href="/Contacto" className={`${osans.className} text-[#F5F5F5] hover:[#EDB059] hover:scale-105 text-base font-normal`}>Inversores Convencionales</a>                   
               </nav>
             </div>
           </div>
@@ -51,8 +50,8 @@ export default function Footer() {
             <h1 className="text-base font-medium text-[#F5F5F5] lg:no-underline underline lg:my-0 my-2">Contacto</h1>
             <div className="flex justify-between gap-x-14">
               <nav className="flex flex-col gap-3">
-                <a href="mailto:silme@gmail.com" className={`${osans.className} text-[#F5F5F5] hover:[#EDB059] hover:scale-105 text-base font-normal`}>dailypower@gmail.com</a>
-                <a href="tel:18499127708"  className={`${osans.className} text-[#F5F5F5] hover:[#EDB059] hover:scale-105 text-base font-normal`}>+1 849-259-8088</a> <br/>
+                <a href="mailto:dailypower@gmail.com" className={`${osans.className} text-[#F5F5F5] hover:[#EDB059] hover:scale-105 text-base font-normal`}>dailypower@gmail.com</a>
+                <a href="tel:18492598088"  className={`${osans.className} text-[#F5F5F5] hover:[#EDB059] hover:scale-105 text-base font-normal`}>+1 849-259-8088</a> <br/>
               </nav>     
             </div>
           </div>
@@ -62,7 +61,7 @@ export default function Footer() {
         <div className=" flex lg:mx-96 justify-between items-center lg:flex-row flex-col-reverse h-full gap-y-4 ">
           <div className="flex items-center gap-x-8 flex-col lg:flex-row">
             <img src="../logo-daily-power-1.webp" alt="Logo Daily Power"  className="w-[102.5px] h-10" />
-            <h1 className={`${osans.className} text-base font-normal text-center lg:text-start`}>Copyright &copy; 2024 Dailypower, todos los derechos reservados.</h1>
+            <h1 className={`${osans.className} text-base font-normal text-center lg:text-start`}>Copyright &copy; 2024 Daily Power WYX, SRL, todos los derechos reservados.</h1>
            </div>
           <div className="flex items-center gap-x-5 justify-center ">
             <a href="/" className="hover:scale-105 ">

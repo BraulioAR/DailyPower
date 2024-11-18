@@ -8,19 +8,19 @@ import { IoChevronDown, IoClose  } from 'react-icons/io5'
 
 const navigation = [
   { name: 'Inicio', href: '/' },
-  { name: 'Quiénes Somos', href: '#aboutus' },
-  { name: 'Ubícanos', href: '#' },
+  { name: 'Quiénes Somos', href: '/Nosotros' },
+  { name: 'Ubícanos', href: '/Contacto#ubicacion' },
 ];
 
 const products = [
-   { name: 'Baterías de Gelatina',  href: '#' },
-  { name: 'Baterías para Vehículos',  href: '#'},
-  { name: 'Baterías de Litio', href: '#'},
-  { name: 'Inversores Solares Off-Grid', href: '#'},
-  { name: 'Inversores Solares Growatt',  href: '#' },
-  { name: 'Estructuras de Montaje', href: '#' },
-  { name: 'Paneles Solares', href: '#' },
-  { name: 'Inversores Convencionales',  href: '#'},
+   { name: 'Baterías de Gelatina',  href: '/Productos#gelatina' },
+  { name: 'Baterías para Vehículos',  href: '/Productos#vehiculo'},
+  { name: 'Baterías de Litio', href: '/Productos#litio'},
+  { name: 'Inversores Solares Off-Grid', href: '/Productos#offgrid'},
+  { name: 'Inversores Solares Growatt',  href: '/Productos#growatt' },
+  { name: 'Estructuras de Montaje', href: '/Productos#montaje' },
+  { name: 'Paneles Solares', href: '/Contacto' },
+  { name: 'Inversores Convencionales',  href: '/Contacto'},
 ];
 
 export default function Hedaerr() {
@@ -33,7 +33,7 @@ export default function Hedaerr() {
               <span className="sr-only">Daily Power</span>
               <img
                 alt="Logo DP"
-                src="../logo-daily-power-1.webp"
+                src="/logo-daily-power-1.webp"
                 className="h-16 w-auto object-contain"
               />
             </a>
@@ -94,7 +94,7 @@ export default function Hedaerr() {
             </Popover>
           </div>
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-            <a href="#" className="text-sm/6 font-semibold text-gray-900 hover:text-[#E73516] transition-colors duration-300">
+            <a href="/Contacto" className="text-sm/6 font-semibold text-gray-900 hover:text-[#E73516] transition-colors duration-300">
               Contáctanos <span aria-hidden="true">&rarr;</span>
             </a>
           </div>
@@ -103,7 +103,7 @@ export default function Hedaerr() {
           <div className="fixed inset-0 z-50" />
           <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
             <div className="flex items-center justify-between">
-              <a href="#" className="-m-1.5 p-1.5">
+              <a href="/" className="-m-1.5 p-1.5">
                 <span className="sr-only">Daily Power</span>
                 <img
                  alt="Logo DP"
@@ -157,7 +157,7 @@ export default function Hedaerr() {
                   </div>
                    <div className="flex items-center justify-center w-full divide-gray-900/5 bg-gray-50">
               <a
-                href="./Productos"
+                href="/Productos"
                 className=" p-3 font-semibold text-gray-900 hover:bg-gray-100 text-center"
               > Ver todos los productos
               </a>
