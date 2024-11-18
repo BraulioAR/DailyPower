@@ -3,7 +3,7 @@ import { ImPower } from "react-icons/im";
 
 export default function AboutUs() {
   return (
-    <div className="relative isolate overflow-hidden bg-white px-6 pt-24 lg:overflow-visible lg:px-0">
+    <div className="relative isolate overflow-hidden bg-white px-6 pt-24 pb-12 lg:overflow-visible lg:px-0">
       <div className="absolute inset-0 -z-10 overflow-hidden">
         <svg
           aria-hidden="true"

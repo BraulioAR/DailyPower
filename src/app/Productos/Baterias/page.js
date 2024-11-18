@@ -162,7 +162,7 @@ g
                     </button>
                   </div>
 
-                  <div className="mt-4 flex justify-between">
+                  <div className="mt-4 flex justify-center">
                     <div>
                       <h3 className="text-[18px] font-medium leading-[18px] text-gray-700 text-center">
                         <Link href={`/Productos/${categoryMap[producto.category] || 'otros'}/${producto.slug}`}>
@@ -206,7 +206,7 @@ g
                     </button>
                   </div>
 
-                  <div className="mt-4 flex justify-between">
+                  <div className="mt-4 flex justify-center">
                     <div>
                       <h3 className="text-[18px] font-medium leading-[18px] text-gray-700 text-center">
                          <Link href={`/Productos/${categoryMap[producto.category] || 'otros'}/${producto.slug}`}>
@@ -249,7 +249,7 @@ g
                     </button>
                   </div>
 
-                  <div className="mt-4 flex justify-between">
+                  <div className="mt-4 flex justify-center">
                     <div>
                       <h3 className="text-[18px] font-medium leading-[18px] text-gray-700 text-center">
                           <Link href={`/Productos/${categoryMap[producto.category] || 'otros'}/${producto.slug}`}>

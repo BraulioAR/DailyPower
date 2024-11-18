@@ -9,7 +9,7 @@ const osans = Open_Sans({ subsets: ["latin"], weight: ["400", "500", "600"] });
 
 // Mapeo de las letras a las categorías
 const categoryMap = {
-  B: 'Baterías',
+  B: 'Baterias',
   I: 'Inversores',
   P: 'Paneles-Solares',
   E: 'Estructuras-de-Montaje',
@@ -162,11 +162,11 @@ g
                     </button>
                   </div>
 
-                  <div className="mt-4 flex justify-between">
+                  <div className="mt-4 flex justify-center">
                     <div>
                       <h3 className="text-[18px] font-medium leading-[18px] text-gray-700 text-center">
                         <Link href={`/Productos/${categoryMap[producto.category] || 'otros'}/${producto.slug}`}>
-                          <span aria-hidden="true" className="absolute inset-0"></span>
+                          <span aria-hidden="true" className="absolute inset-0 "></span>
                           {producto.title}
                         </Link>
                       </h3>
@@ -206,7 +206,7 @@ g
                     </button>
                   </div>
 
-                  <div className="mt-4 flex justify-between">
+                  <div className="mt-4 flex justify-center">
                     <div>
                       <h3 className="text-[18px] font-medium leading-[18px] text-gray-700 text-center">
                          <Link href={`/Productos/${categoryMap[producto.category] || 'otros'}/${producto.slug}`}>
@@ -224,7 +224,7 @@ g
           {showAll ? (
             <IoArrowUpCircleOutline className="text-[#E73516] h-12 w-12 animate-bounce animate-infinite animate-ease-in " /> 
           ) : (
-            <IoArrowDownCircleOutline className="text-[#E73516] h-12 w-12 animate-bounce animate-infinite animate-ease-in " />  // Aquí puedes usar cualquier ícono de flecha
+            <IoArrowDownCircleOutline className="text-[#E73516] h-12 w-12 animate-bounce animate-infinite animate-ease-in " /> 
           )}
         </button>
       </div>
@@ -249,7 +249,7 @@ g
                     </button>
                   </div>
 
-                  <div className="mt-4 flex justify-between">
+                  <div className="mt-4 flex justify-center">
                     <div>
                       <h3 className="text-[18px] font-medium leading-[18px] text-gray-700 text-center">
                           <Link href={`/Productos/${categoryMap[producto.category] || 'otros'}/${producto.slug}`}>
@@ -292,7 +292,7 @@ g
                     </button>
                   </div>
 
-                  <div className="mt-4 flex justify-between">
+                  <div className="mt-4 flex justify-center">
                     <div>
                       <h3 className="text-[18px] font-medium leading-[18px] text-gray-700 text-center">
                           <Link href={`/Productos/${categoryMap[producto.category] || 'otros'}/${producto.slug}`}>
@@ -335,7 +335,7 @@ g
                     </button>
                   </div>
 
-                  <div className="mt-4 flex justify-between">
+                  <div className="mt-4 flex justify-center">
                     <div>
                       <h3 className="text-[18px] font-medium leading-[18px] text-gray-700 text-center">
                           <Link href={`/Productos/${categoryMap[producto.category] || 'otros'}/${producto.slug}`}>
@@ -378,7 +378,7 @@ g
                     </button>
                   </div>
 
-                  <div className="mt-4 flex justify-between">
+                  <div className="mt-4 flex justify-center">
                     <div>
                       <h3 className="text-[18px] font-medium leading-[18px] text-gray-700 text-center">
                         <Link href={`/Productos/${categoryMap[producto.category] || 'otros'}/${producto.slug}`}>

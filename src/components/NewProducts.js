@@ -6,6 +6,13 @@ import { IoArrowDownCircleOutline, IoArrowUpCircleOutline } from "react-icons/io
 import Link from 'next/link'; // Importa Link de Next.js
 
 const osans = Open_Sans({ subsets: ["latin"], weight: ["400", "500", "600"] });
+const categoryMap = {
+  B: 'Baterias',
+  I: 'Inversores',
+  P: 'Paneles-Solares',
+  E: 'Estructuras-de-Montaje',
+  O: 'Otros',
+};
 
 export default function NewProducts() {
   const [products, setProducts] = useState([]);
@@ -30,6 +37,7 @@ export default function NewProducts() {
           slug: item.fields.slug, // Asegúrate de obtener el slug
           title: item.fields.titulo, // Obtenemos el título del producto
           image: item.fields.productImage?.[0]?.fields.file.url, // Obtenemos la primera imagen del array de imágenes
+          category: item.fields.category,
         }));
         setProducts(items);
       } catch (error) {
@@ -56,11 +64,11 @@ export default function NewProducts() {
               </div>
 
               {/* Título del producto */}
-              <div className="mt-4 flex justify-between">
+              <div className="mt-4 flex justify-center">
                 <div>
                   <h3 className="text-[18px] font-medium leading-[18px] text-gray-700 text-center">
-                    <Link href={`/Productos/${producto.slug}`}>
-                      <span aria-hidden="true" className="absolute inset-0"></span>
+                      <Link href={`/Productos/${categoryMap[producto.category] || 'otros'}/${producto.slug}`}>
+                      <span aria-hidden="true" className="absolute inset-0 text-center"></span>
                       {producto.title}
                     </Link>
                   </h3>
