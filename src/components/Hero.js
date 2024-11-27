@@ -1,7 +1,9 @@
 import Header from "./Header";
+import { Suspense, lazy } from 'react';
 
+const LazyParagraph = lazy(() => import('./LazyParagraph'));
 
-export default function Heroo() {
+export default function Hero() {
 
   return (
     <div className="bg-white">
@@ -33,10 +35,9 @@ export default function Heroo() {
             <h1 className="lg:text-balance text-5xl font-semibold tracking-tight text-gray-900 lg:text-7xl">
               Daily Power
             </h1>
-            <p className="mt-8 lg:text-pretty text-lg font-medium text-gray-500 lg:text-xl/8">
-              Representante exclusivo para República Dominicana de Baterías Aokly.
-              Aplicaciones: Inversores, Paneles Solares y UPS.
-            </p>
+             <Suspense fallback={<div>...</div>}>
+          <LazyParagraph />
+        </Suspense>
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <a
                 href="/Productos"
