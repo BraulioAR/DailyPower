@@ -1,9 +1,7 @@
 import "./globals.css";
-import { Open_Sans } from 'next/font/google'
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
-const openSans = Open_Sans({ subsets: ['latin'], weight: ["400", "500", "600", "700"] })
 
 export const metadata = {
   icons: [
@@ -81,8 +79,38 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="es">
-      <body
-        className={`${openSans.className}`}>
+      <head>
+        {/* Preload para las fuentes */}
+        <link
+          rel="preload"
+          href="/fonts/OpenSans-Medium.ttf"
+          as="font"
+          type="font/ttf"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/fonts/OpenSans-Regular.ttf"
+          as="font"
+          type="font/ttf"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/fonts/OpenSans-SemiBold.ttf"
+          as="font"
+          type="font/ttf"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/fonts/OpenSans-Bold.ttf"
+          as="font"
+          type="font/ttf"
+          crossOrigin="anonymous"
+        />
+      </head>
+      <body className="font-sans text-[var(--foreground)] bg-[var(--background)]">
         <Header/>
         {children}
         <Footer/>

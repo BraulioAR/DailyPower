@@ -30,7 +30,7 @@ export const metadata = {
 export default function FAQs() {    
 
     return (
-        <section className="w-full h-full flex flex-col justify-center items-center lg:items-start lg:flex-row gap-12 py-40 max-w-7xl mx-auto ">    
+        <section className=" w-full h-full flex flex-col justify-center items-center lg:items-start lg:flex-row gap-12 py-40 max-w-7xl mx-auto ">    
             <div className="w-full lg:w-1/3 flex flex-col px-4 lg:px-0">
                 <h1 className="text-4xl font-bold tracking-tight text-gray-900 lg:text-start text-center">Preguntas Frecuentes</h1>
                 <p className="mt-4 text-xl text-gray-500 text-center lg:text-start">¿No encuentras la respuesta que buscabas? <span className="text-[#E73516]"><Link href="/Contacto" target="_self">Contacta directamente con nosotros.</Link></span></p>

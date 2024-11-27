@@ -1,5 +1,7 @@
 import animations from '@midudev/tailwind-animations'
 
+const defaultTheme = require("tailwindcss/defaultTheme");
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -15,6 +17,9 @@ module.exports = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+      },
+      fontFamily: {
+        sans: ["Open Sans", ...defaultTheme.fontFamily.sans],
       },
     },
   },

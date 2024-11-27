@@ -38,7 +38,7 @@ export const metadata = {
 }
 const Layout = ({ children }) => {
     return (<>
-        <Header />
+        <Header class="font-bold" />
         {children}
     </>)
 }
