@@ -1,4 +1,4 @@
-import Hedaerr from "@/components/Hedaerr"
+import Header from "@/components/Header"
 
 export const metadata = {
     title: 'Baterías de Gelatina, Paneles Solares, Inversores y Más para tu Sistema de Energía Solar | DailyPower',
@@ -38,7 +38,7 @@ export const metadata = {
 }
 const Layout = ({ children }) => {
     return (<>
-        <Hedaerr />
+        <Header />
         {children}
     </>)
 }

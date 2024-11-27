@@ -1,11 +1,9 @@
-'use client';
-import React, { useState, useEffect } from 'react';
+'use client'
+import { useState, useEffect } from 'react';
 import contentfulClient from '@/utils/contenfulClient';
 import { Open_Sans } from "next/font/google";
 import { IoArrowDownCircleOutline, IoArrowUpCircleOutline } from "react-icons/io5";
 import ProductView from '@/components/ProductView';
-import Head from 'next/head';
-
 
 const osans = Open_Sans({ subsets: ["latin"], weight: ["400", "500", "600"] });
 

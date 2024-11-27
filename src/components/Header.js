@@ -1,158 +1,184 @@
 'use client';
-import { useState, useRef } from 'react';
+
+import { useState } from 'react';
+import { Dialog, DialogPanel } from '@headlessui/react';
+import { FiMenu, FiX } from 'react-icons/fi';  // Reemplazamos los íconos de Heroicons con los de react-icons
+import { Popover } from '@headlessui/react'
+import { IoChevronDown, IoClose  } from 'react-icons/io5'
+
+const navigation = [
+  { name: 'Inicio', href: '/' },
+  { name: 'Quiénes Somos', href: '/Nosotros' },
+  { name: 'Ubícanos', href: '/Contacto#ubicacion' },
+];
+
+const products = [
+   { name: 'Baterías de Gelatina',  href: '/Productos/Baterias/#gelatina' },
+  { name: 'Baterías para Vehículos',  href: '/Productos/Baterias/#vehiculo'},
+  { name: 'Baterías de Litio', href: '/Productos/Baterias/#litio'},
+  { name: 'Inversores Solares Off-Grid', href: '/Productos/Inversores/#offgrid'},
+  { name: 'Inversores Solares Growatt',  href: '/Productos/Inversores/#growatt' },
+  { name: 'Estructuras de Montaje', href: '/Productos#montaje' },
+  { name: 'Paneles Solares', href: '/Contacto' },
+  { name: 'Inversores Convencionales',  href: '/Contacto'},
+];
 
 export default function Header() {
-  const [isProductsOpen, setIsProductsOpen] = useState(false);
-  const [activeSubmenu, setActiveSubmenu] = useState(null);
-  const [submenuDirection, setSubmenuDirection] = useState('right'); // Estado para la dirección del submenú
-  let menuTimeout; // Variable para almacenar el temporizador
-  const submenuRef = useRef(null); // Referencia al submenú
-
-  const handleMouseEnter = (submenu = null) => {
-    clearTimeout(menuTimeout); // Limpia cualquier temporizador de cierre activo
-    setIsProductsOpen(true);
-    setActiveSubmenu(submenu);
-    
-    // Si es un submenú, verifica la posición
-    if (submenu && submenuRef.current) {
-      const submenuRect = submenuRef.current.getBoundingClientRect();
-      const viewportWidth = window.innerWidth;
-      const isOverflowingRight = submenuRect.right > viewportWidth;
-      
-      // Cambia la dirección del submenú si es necesario
-      setSubmenuDirection(isOverflowingRight ? 'left' : 'right');
-    }
-  };
-
-  const handleMouseLeave = () => {
-    menuTimeout = setTimeout(() => {
-      setIsProductsOpen(false);
-      setActiveSubmenu(null);
-    }, 200); // Temporizador de 200ms antes de cerrar el menú
-  };
-
-  return (
-    <header className="w-full max-w-7xl mx-auto">
-      <div className="w-full h-full flex flex-row justify-between items-center px-20 py-5">
-        <img src="./logo-daily-power-1.webp" alt="Logo Daily Power" className="w-[80px] h-[60px] object-fit" />
-        <nav>
-          <ul className="flex gap-x-4">
-            <li>
-              <a href="/" className="text-[17px] font-semibold text-gray-700 hover:text-[#EDB25C]">Inicio</a>
-            </li>
-
-            {/* Productos con Dropdown */}
-            <li
-              className="relative"
-              onMouseEnter={() => handleMouseEnter()}
-              onMouseLeave={handleMouseLeave}
+       const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+     return (
+         <header className="absolute inset-x-0 top-0 z-50">
+        <nav aria-label="Global" className="flex items-center justify-between p-6 lg:px-8">
+          <div className="flex lg:flex-1">
+            <a href="/" className="-m-1.5 p-1.5 hover:scale-105 transition-transform duration-300">
+              <span className="sr-only">Daily Power</span>
+              <img
+                alt="Logo DP"
+                src="/logo-daily-power-1.webp"
+                 className="h-16 w-auto object-contain"
+                 title="Daily Power WYX SRL, "
+              />
+            </a>
+          </div>
+          <div className="flex lg:hidden">
+            <button
+              type="button"
+              onClick={() => setMobileMenuOpen(true)}
+              className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700 hover:text-[#E73516] transition-colors duration-300"
             >
-                          <a href="/" className="text-[17px] font-semibold text-gray-700 hover:text-[#EDB25C] flex flex-row items-center gap-2">Productos
-                                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 20 20" fill="none" >
-                                 <path fillRule="evenodd" clipRule="evenodd" d="M4.16672 6.19946L10.0001 12.0328L15.8334 6.19946L16.7173 7.08335L10.0001 13.8006L3.28284 7.08335L4.16672 6.19946Z" fill="#374151" stroke="#374151" strokeWidth="0.5" strokeLinecap="square"/>
-                                </svg></a>
-              
-              {/* Dropdown de Productos */}
-              {isProductsOpen && (
-                <div className="absolute flex flex-col bg-white border border-gray-300 p-4 mt-4 shadow-lg border-b border-t-2 border-t-[#EDB25C] z-30 w-80 "
-                  onMouseEnter={() => clearTimeout(menuTimeout)} // Evita que el menú se cierre
-                  onMouseLeave={handleMouseLeave} // Cierra cuando se sale del dropdown
-                >
-                  <ul>
-                    <li
-                      className="relative"
-                      onMouseEnter={() => handleMouseEnter('bateriasGelatina')}
-                      onMouseLeave={handleMouseLeave}
-                    >
-                                          <a href="#" className=" text-gray-700 hover:text-[#EDB25C] flex flex-row items-center justify-between gap-2 hover:rounded-lg hover:opacity-[0.5] hover:bg-slate-100 px-2 py-2">Baterias de Gelatina
-                                              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 20 20" fill="none" >
-                                                 <path fillRule="evenodd" clipRule="evenodd" d="M4.16672 6.19946L10.0001 12.0328L15.8334 6.19946L16.7173 7.08335L10.0001 13.8006L3.28284 7.08335L4.16672 6.19946Z" fill="#374151" stroke="#374151" strokeWidth="0.5" strokeLinecap="square"/>
-                                                </svg></a>
-                      {/* Submenu de Baterias de Gelatina */}
-                      {activeSubmenu === 'bateriasGelatina' && (
-                        <div 
-                        ref={submenuRef}
-                          className={`absolute top-0 mt-0 bg-white border border-gray-300 p-4 shadow-lg z-40 w-[400px] gap-y-1 ${submenuDirection === 'left' ? 'right-full' : 'right-full'} border-b border-t-2 border-t-[#EDB25C]`}>
-                          <ul>
-                            <li><a href="#" className="block text-gray-700 hover:text-[#EDB25C] py-2 px-2">Bateria De Gelatina Aokly 100Ah</a></li>
-                            <li><a href="#" className="block text-gray-700 hover:text-[#EDB25C] py-2 px-2">Bateria De Gelatina Aokly 150Ah</a></li>
-                            <li><a href="#" className="block text-gray-700 hover:text-[#EDB25C] py-2 px-2">Bateria De Gelatina Aokly 200Ah</a></li>
-                          </ul>
-                        </div>
-                      )}
-                    </li>
-                    <li
-                      className="relative"
-                      onMouseEnter={() => handleMouseEnter('bateriasLitio')}
-                      onMouseLeave={handleMouseLeave}
-                    >
-                      <a href="#" className=" text-gray-700 hover:text-[#EDB25C] flex  flex-row items-center justify-between gap-2 hover:rounded-lg hover:opacity-[0.5] hover:bg-slate-100 px-2 py-2">Baterias de Litio 
-                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 20 20" fill="none" >
-                            <path fillRule="evenodd" clipRule="evenodd" d="M4.16672 6.19946L10.0001 12.0328L15.8334 6.19946L16.7173 7.08335L10.0001 13.8006L3.28284 7.08335L4.16672 6.19946Z" fill="#374151" stroke="#374151" strokeWidth="0.5" strokeLinecap="square"/>
-                        </svg>
-                      </a>
-                      {/* Submenu de Baterias de Litio */}
-                      {activeSubmenu === 'bateriasLitio' && (
-                        <div 
-                        ref={submenuRef}
-                          className={`absolute top-0 mt-0 bg-white border border-gray-300 p-4 shadow-lg z-40 w-[400px] gap-y-1 ${submenuDirection === 'right' ? 'left-full' : 'right-full'} border-b border-t-2 border-t-[#EDB25C]`}>
-                          <ul>
-                            <li><a href="#" className="block text-gray-700 hover:text-[#EDB25C] py-2 px-2">Bateria Felicity de 5KWH 24Vdc</a></li>
-                            <li><a href="#" className="block text-gray-700 hover:text-[#EDB25C] py-2 px-2">Bateria Felicity de 10KWH 51.2Vdc</a></li>
-                            <li><a href="#" className="block text-gray-700 hover:text-[#EDB25C] py-2 px-2">Bateria Felicity de 15KWH 51.2Vdc</a></li>
-                            <li><a href="#" className="block text-gray-700 hover:text-[#EDB25C] py-2 px-2">Bateria Felicity de 17.5KWH 51.2Vdc</a></li>
-                          </ul>
-                        </div>
-                      )}
-                    </li>
-                    <li
-                      className="relative"
-                      onMouseEnter={() => handleMouseEnter('inversoresOffGrid')}
-                      onMouseLeave={handleMouseLeave}
-                    >
-                      <a href="#" className=" text-gray-700 hover:text-[#EDB25C] flex flex-row items-center justify-between gap-2 hover:rounded-lg hover:opacity-[0.5] hover:bg-slate-100 px-2 py-2">Inversores solares Off-Grid
-                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 20 20" fill="none" >
-                            <path fillRule="evenodd" clipRule="evenodd" d="M4.16672 6.19946L10.0001 12.0328L15.8334 6.19946L16.7173 7.08335L10.0001 13.8006L3.28284 7.08335L4.16672 6.19946Z" fill="#374151" stroke="#374151" strokeWidth="0.5" strokeLinecap="square"/>
-                        </svg>
-                      </a>
-                      {/* Submenu de Inversores solares Off-Grid */}
-                      {activeSubmenu === 'inversoresOffGrid' && (
-                        <div 
-                        ref={submenuRef}
-                          className={`absolute top-0 mt-0 bg-white border border-gray-300 p-4 shadow-lg z-40 w-[400px] gap-y-1 ${submenuDirection === 'right' ? 'left-full' : 'right-full'} border-b border-t-2 border-t-[#EDB25C]`}>
-                          <ul>
-                            <li><a href="#" className="block text-gray-700 hover:text-[#EDB25C] ">Inversor Felicity Solar 8KW IVPA10048</a></li>
-                          </ul>
-                        </div>
-                      )}
-                    </li>
-                    <li  className="relative"
-                      onMouseEnter={() => handleMouseEnter('inversoresSolares')}
-                      onMouseLeave={handleMouseLeave}><a href="#" className="block text-gray-700 hover:text-[#EDB25C] hover:rounded-lg hover:opacity-[0.5] hover:bg-slate-100 px-2 py-2">Inversores Solares Growatt</a></li>
-                    <li  className="relative"
-                      onMouseEnter={() => handleMouseEnter('estructurasdeMontaje')}
-                      onMouseLeave={handleMouseLeave}><a href="#" className="block text-gray-700 hover:text-[#EDB25C] hover:rounded-lg hover:opacity-[0.5] hover:bg-slate-100 px-2 py-2">Estructuras de Montaje</a></li>
-                    <li  className="relative"
-                      onMouseEnter={() => handleMouseEnter('panelesSolares')}
-                      onMouseLeave={handleMouseLeave}><a href="#" className="block text-gray-700 hover:text-[#EDB25C] hover:rounded-lg hover:opacity-[0.5] hover:bg-slate-100 px-2 py-2">Paneles Solares</a></li>
-                    <li  className="relative"
-                      onMouseEnter={() => handleMouseEnter('inversoresConvencionales')}
-                      onMouseLeave={handleMouseLeave}><a href="#" className="block text-gray-700 hover:text-[#EDB25C] hover:rounded-lg hover:opacity-[0.5] hover:bg-slate-100 px-2 py-2">Inversores Convencionales</a></li>
-                  </ul>
-                </div>
-              )}
-            </li>
-            
-            <li >
-              <a href="/" className="text-[17px] font-semibold text-gray-700 hover:text-[#EDB25C]">Quienes Somos</a>
-            </li>
-            <li>
-              <a href="/" className="text-[17px] font-semibold text-gray-700 hover:text-[#EDB25C]">Contacto</a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </header>
-  );
-}
+              <span className="sr-only">Abrir menu</span>
+              <FiMenu aria-hidden="true" className="h-6 w-6" />
+            </button>
+          </div>
+          <div className="hidden lg:flex lg:gap-x-12">
+            {navigation.map((item) => (
+              <a
+                key={item.name}
+                href={item.href}
+                className="text-sm/6 font-semibold text-gray-900 hover:text-[#E73516] transition-colors duration-300"
+              >
+                {item.name}
+              </a>
+            ))}
+            {/* Aquí agregamos el Popover para Productos */}
+            <Popover className="relative z-50">
+              <Popover.Button className="inline-flex items-center gap-x-1 text-sm/6 font-semibold text-gray-900">
+                <span>Productos</span>
+                <IoChevronDown aria-hidden="true" className="h-5 w-5" />
+              </Popover.Button>
 
+              <Popover.Panel
+                transition
+                className="absolute left-1/2 z-10 mt-5 flex w-screen max-w-max -translate-x-1/2 px-4 transition data-[closed]:translate-y-1 data-[closed]:opacity-0 data-[enter]:duration-200 data-[leave]:duration-150 data-[enter]:ease-out data-[leave]:ease-in"
+              >
+                <div className="w-screen max-w-md flex-auto overflow-hidden rounded-3xl bg-white text-sm/6 shadow-lg ring-1 ring-gray-900/5">
+                  <div className="p-4">
+                    {products.map((item) => (
+                      <div key={item.name} className="group relative flex gap-x-6 rounded-lg p-4 hover:bg-gray-50">
+                        <div>
+                          <a href={item.href} className="font-semibold text-gray-900">
+                            {item.name}
+                            <span className="absolute inset-0" />
+                          </a>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="flex items-center justify-center w-full divide-gray-900/5 bg-gray-50">
+              <a
+                href="/Productos"
+                className=" p-3 font-semibold text-gray-900 hover:bg-gray-100 text-center"
+              > Ver todos los productos
+              </a>
+          </div>
+                </div>
+              </Popover.Panel>
+            </Popover>
+          </div>
+          <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+            <a href="/Contacto" className="text-sm/6 font-semibold text-gray-900 hover:text-[#E73516] transition-colors duration-300">
+              Contáctanos <span aria-hidden="true">&rarr;</span>
+            </a>
+          </div>
+        </nav>
+         <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">
+          <div className="fixed inset-0 z-50" />
+          <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+            <div className="flex items-center justify-between">
+              <a href="/" className="-m-1.5 p-1.5">
+                <span className="sr-only">Daily Power</span>
+                <img
+                 alt="Logo DP"
+                src="/logo-daily-power-1.webp"
+                className="h-16 w-auto object-contain"
+                />
+              </a>
+              <button
+                type="button"
+                onClick={() => setMobileMenuOpen(false)}
+                className="-m-2.5 rounded-md p-2.5 text-gray-700"
+              >
+                <span className="sr-only">Close menu</span>
+                <IoClose aria-hidden="true" className="size-6" />
+              </button>
+            </div>
+            <div className="mt-6 flow-root">
+              <div className="-my-6 divide-y divide-gray-500/10">
+                <div className="space-y-2 py-6">
+                  {navigation.map((item) => (
+                    <a
+                      key={item.name}
+                      href={item.href}
+                      className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
+                    >
+                      {item.name}
+                    </a>
+                  ))}
+                   <Popover className="relative z-50">
+              <Popover.Button className="inline-flex items-center gap-x-1 -mx-3 rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">
+                <span>Productos</span>
+                <IoChevronDown aria-hidden="true" className="h-5 w-5" />
+              </Popover.Button>
+
+              <Popover.Panel
+                transition
+                className="absolute left-1/2 z-10 mt-5 flex w-screen max-w-max -translate-x-1/2 px-4 transition data-[closed]:translate-y-1 data-[closed]:opacity-0 data-[enter]:duration-200 data-[leave]:duration-150 data-[enter]:ease-out data-[leave]:ease-in"
+              >
+                <div className="w-screen max-w-md flex-auto overflow-hidden rounded-3xl bg-white text-sm/6 shadow-lg ring-1 ring-gray-900/5">
+                  <div className="p-4">
+                    {products.map((item) => (
+                      <div key={item.name} className="group relative flex gap-x-6 rounded-lg lg:justify-normal justify-center p-4 hover:bg-gray-50">
+                        <div>
+                          <a href={item.href} className="font-semibold text-gray-900">
+                            {item.name}
+                            <span className="absolute inset-0" />
+                          </a>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                   <div className="flex items-center justify-center w-full divide-gray-900/5 bg-gray-50">
+              <a
+                href="/Productos"
+                className=" p-3 font-semibold text-gray-900 hover:bg-gray-100 text-center"
+              > Ver todos los productos
+              </a>
+                  </div>
+                </div>
+              </Popover.Panel>
+            </Popover>
+                </div>
+                <div className="py-6">
+                  <a
+                    href="#"
+                    className="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
+                  >
+                    Contáctanos
+                  </a>
+                </div>
+              </div>
+            </div>
+          </DialogPanel>
+        </Dialog>
+         </header>
+     );
+}

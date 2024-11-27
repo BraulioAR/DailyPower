@@ -1,7 +1,6 @@
-
 import "./globals.css";
 import { Open_Sans } from 'next/font/google'
-import Hedaerr from "@/components/Hedaerr";
+import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 const openSans = Open_Sans({ subsets: ['latin'], weight: ["400", "500", "600", "700"] })
@@ -84,7 +83,7 @@ export default function RootLayout({ children }) {
     <html lang="es">
       <body
         className={`${openSans.className}`}>
-        <Hedaerr/>
+        <Header/>
         {children}
         <Footer/>
       </body>

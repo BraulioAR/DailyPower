@@ -1,9 +1,8 @@
 import AboutUs from "@/components/AboutUs";
 import Clients from "@/components/Clients";
 import NewProducts from "@/components/NewProducts";
-import Heroo from "@/components/Heroo";
-import Valuess from "@/components/Valuess";
-
+import Hero from "@/components/Hero";
+import Values from "@/components/Values";
 
 export const metadata = {
   title: "Daily Power | Distribuidor Exclusivo de las Baterias Aokly",
@@ -14,8 +13,8 @@ export const metadata = {
 export default function Home() {
   return (
     <main className="scroll-smooth">
-     <Heroo/>
-      <Valuess/>
+     <Hero/>
+      <Values/>
       <AboutUs />
       <NewProducts />
       <Clients />

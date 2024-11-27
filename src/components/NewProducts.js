@@ -1,11 +1,9 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import contentfulClient from '../utils/contenfulClient';
-import { Open_Sans } from "next/font/google";
 import { IoArrowDownCircleOutline, IoArrowUpCircleOutline } from "react-icons/io5";
 import ProductView from './ProductView';
 
-const osans = Open_Sans({ subsets: ["latin"], weight: ["400", "500", "600"] });
 const categoryMap = {
   B: 'Baterias',
   I: 'Inversores',

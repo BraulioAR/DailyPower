@@ -4,14 +4,6 @@ import { notFound } from 'next/navigation';
 import { headers } from "next/headers";
 
 
-const categoryMap = {
-  'B': 'Baterias',
-  'I': 'Inversores',
-  'P': 'Paneles-Solares',
-  'E': 'Estructuras-de-Montaje',
-  'O': 'Otros',
-};
-
 export async function generateMetadata({ params }) {
   const { category, slug } = await params;
 
