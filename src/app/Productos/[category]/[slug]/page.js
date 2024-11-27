@@ -1,8 +1,8 @@
 
-import Head from 'next/head';
 import { fetchProductBySlugAndCategory } from '@/app/contenfulClient';
 import { notFound } from 'next/navigation';
 import { headers } from "next/headers";
+import Script from 'next/script';
 
 
 const categoryMap = {
@@ -47,6 +47,26 @@ export async function generateMetadata({ params }) {
         product.productImage?.[0]?.fields?.file?.url,
       ],
     },
+     jsonLd: {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": titulo,
+      "image": [
+        productImage?.[0]?.fields.file.url,
+        productImage?.[1]?.fields.file.url
+      ],
+      "description": descripcion,
+      "brand": {
+        "@type": "Brand",
+        "name": "DailyPower"
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": currentUrl,
+        "itemCondition": "https://schema.org/NewCondition",
+        "availability": "https://schema.org/InStock"
+      }
+    }
   };
 }
 
@@ -82,29 +102,7 @@ export default async function ProductoPage({ params }) {
     garantia,
   } = product;
 
-
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    "name": titulo,
-    "image": [
-      productImage?.[0]?.fields.file.url,
-      productImage?.[1]?.fields.file.url
-    ],
-    "description": descripcion,
-    "brand": {
-      "@type": "Brand",
-      "name": "DailyPower"
-    },
-    "offers": {
-      "@type": "Offer",
-      "url": currentUrl,
-      "itemCondition": "https://schema.org/NewCondition",
-      "availability": "https://schema.org/InStock"
-    }
-  };
-
-  
+const { jsonLd } = useHead()
 
 
   return (
