@@ -1,6 +1,6 @@
 'use client';
 import React, { useState, useEffect } from 'react';
-import contentfulClient from '@/app/contenfulClient';
+import contentfulClient from '@/utils/contenfulClient';
 import { Open_Sans } from "next/font/google";
 import { IoArrowDownCircleOutline, IoArrowUpCircleOutline } from "react-icons/io5";
 import ProductView from '@/components/ProductView';

@@ -29,7 +29,7 @@ export default function ContactUs() {
   const handleSubmit = async (e) => {
     e.preventDefault();
      const formData = new FormData(e.target);
-    await fetch('/__forms.html', {
+    await fetch('@/utils/__forms.html', {
         method: 'POST',
         headers: {'Content-Type': 'application/x-www-form-urlencoded'},
         body: new URLSearchParams(formData).toString()

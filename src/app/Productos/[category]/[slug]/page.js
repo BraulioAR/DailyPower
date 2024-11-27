@@ -1,5 +1,5 @@
 
-import { fetchProductBySlugAndCategory } from '@/app/contenfulClient';
+import { fetchProductBySlugAndCategory } from '@/utils/contenfulClient';
 import { notFound } from 'next/navigation';
 import { headers } from "next/headers";
 

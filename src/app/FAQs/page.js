@@ -1,4 +1,4 @@
-import Accordion from "@/components/Accordion";
+
 import Link from "next/link";
 import PreguntasFrecuentes from "@/components/PreguntasFrecuentes";
 

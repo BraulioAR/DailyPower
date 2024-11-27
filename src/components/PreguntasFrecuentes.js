@@ -2,7 +2,7 @@
 
 import Accordion from "@/components/Accordion";
 import { useEffect, useState } from "react";
-import client from "@/app/contenfulClient";
+import client from "@/utils/contenfulClient";
 
 export default function PreguntasFrecuentes() {
   const [accordionItems, setAccordionItems] = useState([]);

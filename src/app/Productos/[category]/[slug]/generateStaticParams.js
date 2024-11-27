@@ -1,4 +1,4 @@
-import { fetchAllProductSlugsAndCategories } from '../../contenfulClient';
+import { fetchAllProductSlugsAndCategories } from '@/utils/contenfulClient';
 
 export async function generateStaticParams() {
   const products = await fetchAllProductSlugsAndCategories(); // Asegúrate de que esta función también devuelva la categoría
