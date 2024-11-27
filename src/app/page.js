@@ -3,6 +3,9 @@ import Clients from "@/components/Clients";
 import NewProducts from "@/components/NewProducts";
 import Hero from "@/components/Hero";
 import Values from "@/components/Values";
+import dynamic from 'next/dynamic';
+
+const LazyComponent = dynamic(() => import('../components/NewProducts'), { ssr: false });
 
 export const metadata = {
   title: "Daily Power | Distribuidor Exclusivo de las Baterias Aokly",
@@ -16,7 +19,7 @@ export default function Home() {
      <Hero/>
       <Values/>
       <AboutUs />
-      <NewProducts />
+      <LazyComponent />
       <Clients />
           <div className="w-full h-full bg-[#292929] relative z-40">
       <div className="w-full h-full max-w-7xl mx-auto">
