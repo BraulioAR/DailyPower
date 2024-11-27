@@ -1,11 +1,10 @@
 import AboutUs from "@/components/AboutUs";
 import Clients from "@/components/Clients";
-import NewProducts from "@/components/NewProducts";
 import Hero from "@/components/Hero";
 import Values from "@/components/Values";
 import dynamic from 'next/dynamic';
 
-const LazyComponent = dynamic(() => import('../components/NewProducts'), { ssr: false });
+const LazyComponent = dynamic(() => import('../components/NewProducts'));
 
 export const metadata = {
   title: "Daily Power | Distribuidor Exclusivo de las Baterias Aokly",
