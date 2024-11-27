@@ -4,6 +4,7 @@ import contentfulClient from '@/app/contenfulClient';
 import { Open_Sans } from "next/font/google";
 import { IoArrowDownCircleOutline, IoArrowUpCircleOutline } from "react-icons/io5";
 import Link from 'next/link';
+import ProductView from '@/components/ProductView';
 
 const osans = Open_Sans({ subsets: ["latin"], weight: ["400", "500", "600"] });
 
@@ -64,9 +65,9 @@ export default function Productos() {
               <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
                 La solución que necesitas la encuentras aquí
               </h1>
-              <p className="mt-4 text-xl text-gray-500">
+              <h2 className="mt-4 text-xl text-gray-500">
                 Baterías para Vehículos, Inversores, Paneles Solares, UPS, Sistema Solar.
-              </p>
+              </h2>
             </div>
             <div>
               <div className="mt-10">
@@ -148,31 +149,7 @@ g
             <h2 className="text-3xl font-bold tracking-tight text-gray-900 text-start">Baterías de Gelatina</h2>
             <div className="mt-5 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
               {filterProductsBySubcategory('BG').slice(0, showAll ? products.length : 4).map((producto) => (
-                <div key={producto.id} className="group relative">
-                  <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
-                    <img
-                      src={producto.image}
-                      alt={producto.title}
-                      className="h-full w-full object-cover object-center lg:h-full lg:w-full"
-                    />
-                  </div>
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <button className="bg-transparent border border-[#E73516] text-[#E73516] hover:bg-[#E73516] hover:text-white px-4 py-2 rounded-lg z-40">
-                      Ver Más
-                    </button>
-                  </div>
-
-                  <div className="mt-4 flex justify-center">
-                    <div>
-                      <h3 className="text-[18px] font-medium leading-[18px] text-gray-700 text-center">
-                        <Link href={`/Productos/${categoryMap[producto.category] || 'otros'}/${producto.slug}`}>
-                          <span aria-hidden="true" className="absolute inset-0 "></span>
-                          {producto.title}
-                        </Link>
-                      </h3>
-                    </div>
-                  </div>
-                </div>
+                  <ProductView key={producto.id} src={producto.image} title={producto.title} route={categoryMap[producto.category]} slug={producto.slug}/>
               ))}
             </div>
             {products.length < 4 &&
@@ -194,31 +171,7 @@ g
             <h2 className="text-3xl font-bold tracking-tight text-gray-900 text-start">Baterías de Litio</h2>
             <div className="mt-5 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
                {filterProductsBySubcategory('BL').slice(0, showAll ? products.length : 4).map((producto) => (
-                <div key={producto.id} className="group relative">
-                  <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
-                    <img
-                      src={producto.image}
-                      alt={producto.title}
-                      className="h-full w-full object-cover object-center lg:h-full lg:w-full"
-                    />
-                  </div>
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <button className="bg-transparent border border-[#E73516] text-[#E73516] hover:bg-[#E73516] hover:text-white px-4 py-2 rounded-lg z-40">
-                      Ver Más
-                    </button>
-                  </div>
-
-                  <div className="mt-4 flex justify-center">
-                    <div>
-                      <h3 className="text-[18px] font-medium leading-[18px] text-gray-700 text-center">
-                         <Link href={`/Productos/${categoryMap[producto.category] || 'otros'}/${producto.slug}`}>
-                          <span aria-hidden="true" className="absolute inset-0"></span>
-                          {producto.title}
-                        </Link>
-                      </h3>
-                    </div>
-                  </div>
-                </div>
+                <ProductView key={producto.id} src={producto.image} title={producto.title} route={categoryMap[producto.category]} slug={producto.slug}/>
               ))}
             </div>
             {products.length < 4 &&
@@ -239,31 +192,7 @@ g
             <h2 className="text-3xl font-bold tracking-tight text-gray-900 text-start">Baterías para Vehículos</h2>
             <div className=" grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
               {filterProductsBySubcategory('BV').slice(0, showAll ? products.length : 4).map((producto) => (
-                <div key={producto.id} className="group relative">
-                  <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
-                    <img
-                      src={producto.image}
-                      alt={producto.title}
-                      className="h-full w-full object-cover object-center lg:h-full lg:w-full"
-                    />
-                  </div>
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <button className="bg-transparent border border-[#E73516] text-[#E73516] hover:bg-[#E73516] hover:text-white px-4 py-2 rounded-lg z-40">
-                      Ver Más
-                    </button>
-                  </div>
-
-                  <div className="mt-4 flex justify-center">
-                    <div>
-                      <h3 className="text-[18px] font-medium leading-[18px] text-gray-700 text-center">
-                          <Link href={`/Productos/${categoryMap[producto.category] || 'otros'}/${producto.slug}`}>
-                          <span aria-hidden="true" className="absolute inset-0"></span>
-                          {producto.title}
-                        </Link>
-                      </h3>
-                    </div>
-                  </div>
-                </div>
+               <ProductView key={producto.id} src={producto.image} title={producto.title} route={categoryMap[producto.category]} slug={producto.slug}/>
               ))}
             </div>
             {products.length < 4 &&
@@ -284,31 +213,7 @@ g
             <h2 className="text-3xl font-bold tracking-tight text-gray-900 text-start">Inversores Solares Growatt</h2>
             <div className="mt-5 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
               {filterProductsBySubcategory('IG').slice(0, showAll ? products.length : 4).map((producto) => (
-                <div key={producto.id} className="group relative">
-                  <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
-                    <img
-                      src={producto.image}
-                      alt={producto.title}
-                      className="h-full w-full object-cover object-center lg:h-full lg:w-full"
-                    />
-                  </div>
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <button className="bg-transparent border border-[#E73516] text-[#E73516] hover:bg-[#E73516] hover:text-white px-4 py-2 rounded-lg z-40">
-                      Ver Más
-                    </button>
-                  </div>
-
-                  <div className="mt-4 flex justify-center">
-                    <div>
-                      <h3 className="text-[18px] font-medium leading-[18px] text-gray-700 text-center">
-                          <Link href={`/Productos/${categoryMap[producto.category] || 'otros'}/${producto.slug}`}>
-                          <span aria-hidden="true" className="absolute inset-0"></span>
-                          {producto.title}
-                        </Link>
-                      </h3>
-                    </div>
-                  </div>
-                </div>
+                <ProductView key={producto.id} src={producto.image} title={producto.title} route={categoryMap[producto.category]} slug={producto.slug}/>
               ))}
             </div>
             {products.length < 4 &&
@@ -329,31 +234,7 @@ g
             <h2 className="text-3xl font-bold tracking-tight text-gray-900 text-start">Inversores Solares Off-Grid</h2>
             <div className="mt-5 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
               {filterProductsBySubcategory('IO').slice(0, showAll ? products.length : 4).map((producto) => (
-                <div key={producto.id} className="group relative">
-                  <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
-                    <img
-                      src={producto.image}
-                      alt={producto.title}
-                      className="h-full w-full object-cover object-center lg:h-full lg:w-full"
-                    />
-                  </div>
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <button className="bg-transparent border border-[#E73516] text-[#E73516] hover:bg-[#E73516] hover:text-white px-4 py-2 rounded-lg z-40">
-                      Ver Más
-                    </button>
-                  </div>
-
-                  <div className="mt-4 flex justify-center">
-                    <div>
-                      <h3 className="text-[18px] font-medium leading-[18px] text-gray-700 text-center">
-                          <Link href={`/Productos/${categoryMap[producto.category] || 'otros'}/${producto.slug}`}>
-                          <span aria-hidden="true" className="absolute inset-0"></span>
-                          {producto.title}
-                        </Link>
-                      </h3>
-                    </div>
-                  </div>
-                </div>
+                <ProductView key={producto.id} src={producto.image} title={producto.title} route={categoryMap[producto.category]} slug={producto.slug}/>
               ))}
             </div>
             {products.length < 4 &&
@@ -374,31 +255,7 @@ g
             <h2 className="text-3xl font-bold tracking-tight text-gray-900 text-start">Estructuras de Montaje</h2>
             <div className="mt-5 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
              {filterProductsBySubcategory('E').slice(0, showAll ? products.length : 4).map((producto) => (
-                <div key={producto.id} className="group relative">
-                  <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
-                    <img
-                      src={producto.image}
-                      alt={producto.title}
-                      className="h-full w-full object-cover object-center lg:h-full lg:w-full"
-                    />
-                  </div>
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <button className="bg-transparent border border-[#E73516] text-[#E73516] hover:bg-[#E73516] hover:text-white px-4 py-2 rounded-lg z-40">
-                      Ver Más
-                    </button>
-                  </div>
-
-                  <div className="mt-4 flex justify-center">
-                    <div>
-                      <h3 className="text-[18px] font-medium leading-[18px] text-gray-700 text-center">
-                        <Link href={`/Productos/${categoryMap[producto.category] || 'otros'}/${producto.slug}`}>
-                          <span aria-hidden="true" className="absolute inset-0"></span>
-                          {producto.title}
-                        </Link>
-                      </h3>
-                    </div>
-                  </div>
-                </div>
+                <ProductView key={producto.id} src={producto.image} title={producto.title} route={categoryMap[producto.category]} slug={producto.slug}/>
               ))}
             </div>
             {products.length < 4 &&

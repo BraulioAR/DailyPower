@@ -4,6 +4,7 @@ import contentfulClient from '../app/contenfulClient';
 import { Open_Sans } from "next/font/google";
 import { IoArrowDownCircleOutline, IoArrowUpCircleOutline } from "react-icons/io5";
 import Link from 'next/link'; // Importa Link de Next.js
+import ProductView from './ProductView';
 
 const osans = Open_Sans({ subsets: ["latin"], weight: ["400", "500", "600"] });
 const categoryMap = {
@@ -53,28 +54,9 @@ export default function NewProducts() {
         <h2 className="text-6xl font-bold tracking-tight text-gray-900 text-center">Productos Nuevos</h2>
         <div className="mt-12 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
           {/* Mostrar solo los primeros 4 productos si showAll es falso */}
-          {products.slice(0, showAll ? products.length : 4).map((producto) => (
-            <div key={producto.id} className="group relative">
-              {/* Imagen del producto */}
-              <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
-                <img src={producto.image} alt={producto.title} className="h-full w-full object-cover object-center lg:h-full lg:w-full" />
-              </div>
-              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <button className="bg-transparent border border-[#E73516] text-[#E73516] hover:bg-[#E73516] hover:text-white px-4 py-2 rounded-lg z-40">Ver Más</button>
-              </div>
-
-              {/* Título del producto */}
-              <div className="mt-4 flex justify-center">
-                <div>
-                  <h3 className="text-[18px] font-medium leading-[18px] text-gray-700 text-center">
-                      <Link href={`/Productos/${categoryMap[producto.category] || 'otros'}/${producto.slug}`}>
-                      <span aria-hidden="true" className="absolute inset-0 text-center"></span>
-                      {producto.title}
-                    </Link>
-                  </h3>
-                </div>
-              </div>
-            </div>
+        {products.slice(0, showAll ? products.length : 4).map((producto) => (
+            <ProductView key={producto.id} src={producto.image} title={producto.title} route={categoryMap[producto.category]} slug={producto.slug}/>
+            
           ))}
         </div>
 

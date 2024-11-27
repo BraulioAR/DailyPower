@@ -58,16 +58,16 @@ export default function Inversores() {
 
   return (
     <div className="bg-white w-full h-full mx-auto max-w-7xl">
-      <div className="relative pt-20 lg:mt-24">
+      <section className="relative pt-20 lg:mt-24">
         <div className="lg:pb-80 pt-16 sm:pt-24 pb-24 lg:pt-40">
           <div className="relative mx-auto max-w-7xl px-4 sm:static sm:px-6 lg:px-8">
             <div className="sm:max-w-lg">
               <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
                 La batería que necesitas la encuentras aquí
               </h1>
-              <p className="mt-4 text-xl text-gray-500">
+              <h2 className="mt-4 text-xl text-gray-500">
                 Baterías para Vehículos, Inversores, Paneles Solares, UPS, Sistema Solar.
-              </p>
+              </h2>
             </div>
             <div>
               <div className="mt-10">
@@ -130,13 +130,13 @@ export default function Inversores() {
             </a>
           </div>
         </div>
-      </div>
+      </section>
 g
       <section>
         <div id="baterias" className='w-full flex flex-col gap-y-10 mx-auto max-w-5xl justify-center'>
           <h1 className='text-3xl font-bold tracking-tight text-gray-900 text-center'>Categorías</h1>
           <div className='grid grid-cols-2 grid-flow-row lg:flex lg:flex-row gap-4 lg:gap-10 justify-center'>
-            <Link href="#baterias" className='rounded-md p-4 text-[#E73516] bg-transparent border shadow border-[#E73516] hover:text-white hover:bg-[#E73516] lg:w-52 flex justify-center items-center'>Baterías</Link>
+            <Link href="#baterias" className='rounded-md p-4 border shadow border-[#E73516] text-white bg-[#E73516] hover:scale-105 lg:w-52 flex justify-center items-center'>Baterías</Link>
             <Link href="Inversores#inversores" className='rounded-md p-4 text-[#E73516] bg-transparent border shadow border-[#E73516] hover:text-white hover:bg-[#E73516] lg:w-52 flex justify-center items-center'>Inversores</Link>
             <Link href="/Contacto" className='rounded-md p-4 text-[#E73516] bg-transparent border shadow border-[#E73516] hover:text-white hover:bg-[#E73516] lg:w-52 flex justify-center items-center'>Paneles Solares</Link>
             <Link href="#montaje" className='rounded-md p-4 text-[#E73516] bg-transparent border shadow border-[#E73516] hover:text-white hover:bg-[#E73516] lg:w-52 flex justify-center text-center '>Estructuras de Montaje</Link>
@@ -149,31 +149,7 @@ g
             <h2 className="text-3xl font-bold tracking-tight text-gray-900 text-start">Baterías de Gelatina</h2>
             <div className="mt-5 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
               {filterProductsBySubcategory('BG').slice(0, showAll ? products.length : 4).map((producto) => (
-                <div key={producto.id} className="group relative">
-                  <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
-                    <img
-                      src={producto.image}
-                      alt={producto.title}
-                      className="h-full w-full object-cover object-center lg:h-full lg:w-full"
-                    />
-                  </div>
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <button className="bg-transparent border border-[#E73516] text-[#E73516] hover:bg-[#E73516] hover:text-white px-4 py-2 rounded-lg z-40">
-                      Ver Más
-                    </button>
-                  </div>
-
-                  <div className="mt-4 flex justify-center">
-                    <div>
-                      <h3 className="text-[18px] font-medium leading-[18px] text-gray-700 text-center">
-                        <Link href={`/Productos/${categoryMap[producto.category] || 'otros'}/${producto.slug}`}>
-                          <span aria-hidden="true" className="absolute inset-0 "></span>
-                          {producto.title}
-                        </Link>
-                      </h3>
-                    </div>
-                  </div>
-                </div>
+                <ProductView key={producto.id} src={producto.image} title={producto.title} route={categoryMap[producto.category]} slug={producto.slug}/>
               ))}
             </div>
             {products.length < 4 &&
@@ -195,31 +171,7 @@ g
             <h2 className="text-3xl font-bold tracking-tight text-gray-900 text-start">Baterías de Litio</h2>
             <div className="mt-5 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
                {filterProductsBySubcategory('BL').slice(0, showAll ? products.length : 4).map((producto) => (
-                <div key={producto.id} className="group relative">
-                  <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
-                    <img
-                      src={producto.image}
-                      alt={producto.title}
-                      className="h-full w-full object-cover object-center lg:h-full lg:w-full"
-                    />
-                  </div>
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <button className="bg-transparent border border-[#E73516] text-[#E73516] hover:bg-[#E73516] hover:text-white px-4 py-2 rounded-lg z-40">
-                      Ver Más
-                    </button>
-                  </div>
-
-                  <div className="mt-4 flex justify-center">
-                    <div>
-                      <h3 className="text-[18px] font-medium leading-[18px] text-gray-700 text-center">
-                         <Link href={`/Productos/${categoryMap[producto.category] || 'otros'}/${producto.slug}`}>
-                          <span aria-hidden="true" className="absolute inset-0"></span>
-                          {producto.title}
-                        </Link>
-                      </h3>
-                    </div>
-                  </div>
-                </div>
+                <ProductView key={producto.id} src={producto.image} title={producto.title} route={categoryMap[producto.category]} slug={producto.slug}/>
               ))}
             </div>
             {products.length < 4 &&
@@ -240,31 +192,7 @@ g
             <h2 className="text-3xl font-bold tracking-tight text-gray-900 text-start">Baterías para Vehículos</h2>
             <div className=" grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
               {filterProductsBySubcategory('BV').slice(0, showAll ? products.length : 4).map((producto) => (
-                <div key={producto.id} className="group relative">
-                  <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
-                    <img
-                      src={producto.image}
-                      alt={producto.title}
-                      className="h-full w-full object-cover object-center lg:h-full lg:w-full"
-                    />
-                  </div>
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <button className="bg-transparent border border-[#E73516] text-[#E73516] hover:bg-[#E73516] hover:text-white px-4 py-2 rounded-lg z-40">
-                      Ver Más
-                    </button>
-                  </div>
-
-                  <div className="mt-4 flex justify-center">
-                    <div>
-                      <h3 className="text-[18px] font-medium leading-[18px] text-gray-700 text-center">
-                          <Link href={`/Productos/${categoryMap[producto.category] || 'otros'}/${producto.slug}`}>
-                          <span aria-hidden="true" className="absolute inset-0"></span>
-                          {producto.title}
-                        </Link>
-                      </h3>
-                    </div>
-                  </div>
-                </div>
+                 <ProductView key={producto.id} src={producto.image} title={producto.title} route={categoryMap[producto.category]} slug={producto.slug}/>
               ))}
             </div>
             {products.length < 4 &&

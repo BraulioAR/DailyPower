@@ -84,7 +84,7 @@ export default function Hedaerr() {
                   </div>
                   <div className="flex items-center justify-center w-full divide-gray-900/5 bg-gray-50">
               <a
-                href="./Productos"
+                href="/Productos"
                 className=" p-3 font-semibold text-gray-900 hover:bg-gray-100 text-center"
               > Ver todos los productos
               </a>

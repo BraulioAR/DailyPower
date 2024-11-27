@@ -1,6 +1,8 @@
+
 import Head from 'next/head';
 import { fetchProductBySlugAndCategory } from '@/app/contenfulClient';
 import { notFound } from 'next/navigation';
+import { headers } from "next/headers";
 
 
 const categoryMap = {
@@ -11,8 +13,46 @@ const categoryMap = {
   'O': 'Otros',
 };
 
+export async function generateMetadata({ params }) {
+  const { category, slug } = await params;
+
+  // Obtener el producto para generar metadata
+  const product = await fetchProductBySlugAndCategory(slug, category);
+
+  if (!product) {
+    return {
+      title: 'Producto no encontrado',
+      description: 'El producto que buscas no existe.',
+    };
+  }
+
+  const { titulo, descripcion } = product;
+
+  return {
+    title: titulo,
+    description: descripcion,
+    openGraph: {
+      title: titulo,
+      description: descripcion,
+      url: `/Productos/${category}/${slug}`,
+      images: [
+        product.productImage?.[0]?.fields?.file?.url,
+        product.productImage?.[1]?.fields?.file?.url,
+      ],
+    },
+    twitter: {
+      title:titulo,
+      description: descripcion,
+      images: [
+        product.productImage?.[0]?.fields?.file?.url,
+      ],
+    },
+  };
+}
+
+
 export default async function ProductoPage({ params }) {
-  const { category, slug } = params; // Accede a los parámetros de la URL directamente desde 'params'
+    const { category, slug } = await params; // Accede a los parámetros de la URL directamente desde 'params'
 
   // Llamamos a la función fetchProductBySlugAndCategory pasando el slug y la categoría
   const product = await fetchProductBySlugAndCategory(slug, category);
@@ -21,28 +61,55 @@ export default async function ProductoPage({ params }) {
     notFound(); // Si no se encuentra el producto, devuelve un 404
   }
 
+  // Obtener el host desde los headers
+  const headersList = await headers();
+  const host = headersList.get("host");
+
+  // Construir la URL completa usando 'params'
+  const currentUrl = `https://${host}/Productos/${category}/${slug}`;
+
   const {
-    titulo, 
-    descripcion, 
-    productImage, 
-    specsPdf, 
-    ventajas, 
-    specsImage, 
-    connectionDiagram, 
+    titulo,
+    descripcion,
+    productImage,
+    specsPdf,
+    ventajas,
+    specsImage,
+    connectionDiagram,
     disponibilidad,
     pdfAdicionales,
     titulosPdfAdicionales,
     garantia,
   } = product;
 
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": titulo,
+    "image": [
+      productImage?.[0]?.fields.file.url,
+      productImage?.[1]?.fields.file.url
+    ],
+    "description": descripcion,
+    "brand": {
+      "@type": "Brand",
+      "name": "DailyPower"
+    },
+    "offers": {
+      "@type": "Offer",
+      "url": currentUrl,
+      "itemCondition": "https://schema.org/NewCondition",
+      "availability": "https://schema.org/InStock"
+    }
+  };
+
+  
+
+
   return (
-    <>
-      <Head>
-        <title>{`Detalles de ${titulo}`}</title>
-        <meta name="description" content={`Detalles del producto ${titulo}`} />
-      </Head>
-      <div className="bg-white mt-20">
-        <div className="pt-6">
+      <section className="bg-white mt-20">
+        <article className="pt-6">
           {/* Image gallery */}
           <div className="mx-auto mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:gap-x-8 lg:px-8">
             <div className="aspect-h-4 aspect-w-3 hidden overflow-hidden rounded-lg lg:block">
@@ -172,8 +239,7 @@ export default async function ProductoPage({ params }) {
               </div>
             </div>
           )}
-        </div>
-      </div>
-    </>
+        </article>
+      </section>
   );
 }

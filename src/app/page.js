@@ -1,12 +1,14 @@
-import Hero from "@/components/Hero";
-import Header from "../components/Header";
-import Values from "@/components/Values";
 import AboutUs from "@/components/AboutUs";
 import Clients from "@/components/Clients";
 import NewProducts from "@/components/NewProducts";
 import Heroo from "@/components/Heroo";
 import Valuess from "@/components/Valuess";
 
+
+export const metadata = {
+  title: "Daily Power | Distribuidor Exclusivo de las Baterias Aokly",
+  description: "Distribuidor Exclusivo de las Baterias Aokly",
+};
 
 
 export default function Home() {
@@ -25,6 +27,6 @@ export default function Home() {
           </div>
           </div>
       </div>
-    </main>
+      </main>
   );
 }
