@@ -33,7 +33,7 @@ export default function Hero() {
             </div>
           </div>
           <div className="text-center">
-            <h1 className="lg:text-balance text-5xl font-semibold tracking-tight text-gray-900 lg:text-7xl">
+            <h1 className="mb-8 lg:text-balance text-5xl font-semibold tracking-tight text-gray-900 lg:text-7xl">
               Daily Power
             </h1>
              <Suspense fallback={<div>...</div>}>
