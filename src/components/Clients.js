@@ -50,7 +50,7 @@ export default function Clients() {
               </div>
               <div className="w-full h-full flex justify-center items-center">
                     <a href="#" target="_blank" className="w-fit h-fit flex justify-center">
-              <Image  width={224} height={224} src="/logo-rensa.webp" alt="Logo Rensa" className="transition-all duration-500 lg:grayscale lg:hover:grayscale-0 cursor-pointer object-fit overflow-hidden w-1/2 lg:w-full"/>
+              <Image  width={224} height={224} src="/logo-rensa.webp" alt="Logo Rensa" className="transition-all duration-500 lg:grayscale lg:hover:grayscale-0 cursor-pointer object-fit overflow-hidden w-1/2 "/>
                </a>
               </div>
                 <div className="w-full h-full flex justify-center items-center">

@@ -22,7 +22,7 @@ export default function Hero() {
           />
         </div>
         <div className="mx-auto max-w-7xl py-32 lg:py-56 animate-blurred-fade-in animate-duration-[300ms] animate-ease-in">
-          <div className="hidden md:flex lg:mb-8 lg:flex lg:justify-center">
+          <div className="hidden md:flex mb-8 lg:flex justify-center">
             <div className="relative rounded-full px-3 py-1 text-sm text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
               Productos para todas tus necesidades eléctricas.{' '}
               <Link href="/Productos" className="font-semibold text-[#E73516] scroll-smooth">

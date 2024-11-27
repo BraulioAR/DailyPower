@@ -8,9 +8,6 @@ export default function ContactPage() {
     <div className="min-h-screen flex items-center w-full lg:w-1/3">
       <div className="max-w-5xl mx-auto px-4 py-16 sm:px-6 lg:px-8">
         <div className="max-w-2xl mx-auto">
-          {/* Header */}
-         
-
           {/* Contact Grid */}
           <div className="grid grid-cols-1 gap-8">
             {/* Phone */}
@@ -21,13 +18,13 @@ export default function ContactPage() {
                   <h3 className="text-lg font-semibold text-gray-900">Teléfono</h3>
                   <div className="mt-2 space-y-2 flex-col flex">
                   <Link 
-                    href="https://api.whatsapp.com/send/?phone=8495678088&text&type=phone_number&app_absent=0" 
+                    href="https://api.whatsapp.com/send/?phone=18495678088&text&type=phone_number&app_absent=0" 
                     className=" text-gray-600 hover:text-[#E73516] transition-colors"
                   >
                     +1 (849) 567-8088 
                   </Link>
                   <Link 
-                    href="https://api.whatsapp.com/send/?phone=8092878266&text&type=phone_number&app_absent=0" 
+                    href="https://api.whatsapp.com/send/?phone=18092878266&text&type=phone_number&app_absent=0" 
                     className=" text-gray-600 hover:text-[#E73516] transition-colors"
                   >
                     +1 (809) 287-8266 
