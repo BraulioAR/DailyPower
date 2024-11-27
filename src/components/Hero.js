@@ -30,10 +30,10 @@ export default function Heroo() {
             </div>
           </div>
           <div className="text-center">
-            <h1 className="text-balance text-5xl font-semibold tracking-tight text-gray-900 lg:text-7xl">
+            <h1 className="lg:text-balance text-5xl font-semibold tracking-tight text-gray-900 lg:text-7xl">
               Daily Power
             </h1>
-            <p className="mt-8 text-pretty text-lg font-medium text-gray-500 lg:text-xl/8">
+            <p className="mt-8 lg:text-pretty text-lg font-medium text-gray-500 lg:text-xl/8">
               Representante exclusivo para República Dominicana de Baterías Aokly.
               Aplicaciones: Inversores, Paneles Solares y UPS.
             </p>

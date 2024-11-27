@@ -11,10 +11,10 @@ const stats = [
 
 export default function Values() {
   return (
-    <div className="relative isolate overflow-hidden bg-gradient-to-b from-[#EC7610] to-[#E73516] py-32 lg:py-28">
+    <div className="relative isolate overflow-hidden bg-gradient-to-b from-[#EC7610] to-[#E73516] py-20 lg:py-28">
       <div
         aria-hidden="true"
-        className="hidden sm:absolute sm:-top-10 sm:right-1/2 sm:-z-10 sm:mr-10 sm:block sm:transform-gpu sm:blur-3xl"
+        className="hidden absolute -top-10 right-1/2 -z-10 mr-10 lg:block transform-gpu blur-3xl"
       >
         <div
           style={{
@@ -27,7 +27,7 @@ export default function Values() {
      
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl lg:mx-0">
-          <h2 className="text-5xl font-semibold tracking-tight text-white sm:text-7xl">Propuesta de Valor</h2>
+          <h2 className="text-4xl font-semibold tracking-tight text-white ">Propuesta de Valor</h2>
         </div>
         <div className="mx-auto mt-10 max-w-2xl lg:mx-0 lg:max-w-none">
           <dl className="mt-16 grid grid-cols-1 gap-8 sm:mt-20 sm:grid-cols-2 lg:grid-cols-4">

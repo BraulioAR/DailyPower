@@ -37,7 +37,7 @@ export const metadata = {
 
 export default function Home() {
   return (
-    <main className="scroll-smooth">
+    <main className="scroll-smooth py-8">
     <AboutUs/>
     </main>
   );

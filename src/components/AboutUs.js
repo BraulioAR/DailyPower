@@ -41,7 +41,9 @@ export default function AboutUs() {
         <div className="-ml-12 -mt-12 p-12 lg:sticky lg:top-4 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:overflow-hidden">
           <Image
             alt="Team Daily Power"
-            src="nosotros.webp"
+            src="/nosotros.webp"
+            width={768}
+            height={768}
             className="w-[48rem] max-w-none rounded-xl bg-gray-900 shadow-xl ring-1 ring-gray-400/10 hidden lg:block"
           />
         </div>
@@ -77,7 +79,7 @@ export default function AboutUs() {
                   </span>
                 </li>
               </ul>
-              <h2 className="mt-16 text-2xl font-bold tracking-tight text-gray-900 text-justify">Somos representantes exclusivos de AOKLY en República Dominicana.</h2>
+              <h2 className="mt-16 text-2xl font-bold tracking-tight text-gray-900 text-start lg:text-justify">Somos representantes exclusivos de AOKLY en República Dominicana.</h2>
               <p className="mt-6 text-justify">
                 AOKLY es la fábrica de baterías más grande del sur de China con más de 30 años de experiencia en I+D y producción. Sus productos son baterías GEL, baterías AGM, baterías de automóviles, baterías de vehículos eléctricos, baterías de montacargas, baterías de litio, etc. La fábrica cuenta con equipos de producción e instrumentos de prueba avanzados importados de Italia, Canadá y Alemania, además de una amplia variedad de baterías selladas de alta tecnología y líneas de producción automatizadas. Aokly mantiene un estricto control de la calidad en sus productos, sus procesos productivos han adoptado estándares internacionales, en los cuales hemos sido evaluados y certificados, como son: ISO9001, TS16949, ISO14001 en el sistema de control de calidad y el sistema ambiental, ROHS y las pruebas completas de IEC60095, etc. Ha sido reconocido por clientes globales en el mercado.
               </p>
