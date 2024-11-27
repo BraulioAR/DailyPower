@@ -1,5 +1,6 @@
 import Header from "./Header";
 import { Suspense, lazy } from 'react';
+import Link from "next/link";
 
 const LazyParagraph = lazy(() => import('../components/LazyParagraph'));
 
@@ -25,10 +26,10 @@ export default function Hero() {
           <div className="hidden lg:mb-8 lg:flex lg:justify-center">
             <div className="relative rounded-full px-3 py-1 text-sm/6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
               Productos para todas tus necesidades eléctricas.{' '}
-              <a href="./Productos" className="font-semibold text-[#E73516] scroll-smooth">
+              <Link href="/Productos" className="font-semibold text-[#E73516] scroll-smooth">
                 <span aria-hidden="true" className="absolute inset-0" />
                 Ver Productos <span aria-hidden="true">&rarr;</span>
-              </a>
+              </Link>
             </div>
           </div>
           <div className="text-center">
@@ -39,15 +40,15 @@ export default function Hero() {
           <LazyParagraph />
         </Suspense>
             <div className="mt-10 flex items-center justify-center gap-x-6">
-              <a
+              <Link
                 href="/Productos"
                 className="rounded-md bg-[#E73516] px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm  hover:scale-105 transition-transform duration-300 "
               >
                 Ver Catálogo
-              </a>
-              <a href="/Contacto" className="text-sm/6 font-semibold text-gray-900 hover:text-[#f54f31] hover:scale-105">
+              </Link>
+              <Link href="/Contacto" className="text-sm/6 font-semibold text-gray-900 hover:text-[#f54f31] hover:scale-105">
                 Contáctanos <span aria-hidden="true">→</span>
-              </a>
+              </Link>
             </div>
           </div>
         </div>
