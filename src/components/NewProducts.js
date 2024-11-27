@@ -47,9 +47,9 @@ export default function NewProducts() {
   }, []);
 
   return (
-      <div className=" relative z-50 mx-auto max-w-2xl px-4 py-10 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
-        <h2 className="text-6xl font-bold tracking-tight text-gray-900 text-center">Productos Nuevos</h2>
-        <div className="mt-12 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+      <div className=" relative z-50 mx-auto max-w-2xl px-4 py-10 lg:py-24 lg:max-w-7xl lg:px-8">
+        <h2 className="text-4xl font-bold tracking-tight text-gray-900 text-center">Productos Nuevos</h2>
+        <div className="mt-12 grid gap-x-6 gap-y-10 grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
           {/* Mostrar solo los primeros 4 productos si showAll es falso */}
         {products.slice(0, showAll ? products.length : 4).map((producto) => (
             <ProductView key={producto.id} src={producto.image} title={producto.title} route={categoryMap[producto.category]} slug={producto.slug}/>

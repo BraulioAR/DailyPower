@@ -1,23 +1,20 @@
 'use client'
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
 import contentfulClient from '@/utils/contenfulClient';
-import { Open_Sans } from "next/font/google";
 import { IoArrowDownCircleOutline, IoArrowUpCircleOutline } from "react-icons/io5";
 import ProductView from '@/components/ProductView';
 import Link from 'next/link';
 
-const osans = Open_Sans({ subsets: ["latin"], weight: ["400", "500", "600"] });
-
 // Mapeo de las letras a las categorías
 const categoryMap = {
-  B: 'Baterías',
+  B: 'Baterias',
   I: 'Inversores',
   P: 'Paneles-Solares',
   E: 'Estructuras-de-Montaje',
   O: 'Otros',
 };
 
-export default function Inversores() {
+export default function Productos() {
   const [products, setProducts] = useState([]);
   const [showAll, setShowAll] = useState(false);
 
@@ -27,20 +24,21 @@ export default function Inversores() {
   };
 
   useEffect(() => {
-    // Función para obtener productos desde Contentful
+
+    // Fetching products from Contentful
+
     const fetchProducts = async () => {
       try {
         const response = await contentfulClient.getEntries({
-          content_type: 'producto', // Usa el ID del content model
+          content_type: 'producto',
         });
 
-        // Almacenar los productos en el estado
         const items = response.items.map((item) => ({
           id: item.sys.id,
-          title: item.fields.titulo, // Obtenemos el título del producto
-          image: item.fields.productImage?.[0]?.fields.file.url, // Obtenemos la primera imagen del array de imágenes
-          slug: item.fields.slug, // Obtener el slug del producto
-          category: item.fields.category, // Obtenemos la categoría del producto
+          title: item.fields.titulo,
+          image: item.fields.productImage?.[0]?.fields.file.url,
+          slug: item.fields.slug,
+          category: item.fields.category,
           subcategory: item.fields.subcategory,
         }));
         setProducts(items);
@@ -50,18 +48,19 @@ export default function Inversores() {
     };
 
     fetchProducts();
+    
   }, []);
 
-    const filterProductsBySubcategory = (subcategoryCode) => {
+  const filterProductsBySubcategory = (subcategoryCode) => {
     return products.filter((producto) => producto.subcategory === subcategoryCode);
   };
 
   return (
     <div className="bg-white w-full h-full mx-auto max-w-7xl">
       <section className="relative pt-20 lg:mt-24">
-        <div className="lg:pb-80 pt-16 sm:pt-24 pb-24 lg:pt-40">
-          <div className="relative mx-auto max-w-7xl px-4 sm:static sm:px-6 lg:px-8">
-            <div className="sm:max-w-lg">
+        <div className="lg:pb-80 pt-16 pb-24 lg:pt-40">
+          <div className="lg:relative mx-auto max-w-7xl px-4 static lg:px-6">
+            <div className="max-w-lg">
               <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
                 El inversor que necesitas lo encuentras aquí
               </h1>
@@ -70,16 +69,16 @@ export default function Inversores() {
               </h2>
             </div>
             <div>
-                <div className="mt-10">
+              <div className="mt-10">
                 {/* Decorative image grid */}
                 <div
                   aria-hidden="true"
                   className="pointer-events-none lg:absolute lg:inset-y-0 lg:mx-auto lg:w-full lg:max-w-7xl"
                 >
-                  <div className="absolute transform sm:left-1/2 sm:top-0 sm:translate-x-8 lg:left-1/2 lg:top-1/2 lg:-translate-y-1/2 lg:translate-x-8">
+                  <div className="absolute transform top-0 lg:left-1/2 lg:top-1/2 lg:-translate-y-1/2 lg:translate-x-8">
                     <div className="hidden lg:flex items-center space-x-6 lg:space-x-8">
-                      <div className="grid shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
-                        <div className="h-64 w-44 overflow-hidden rounded-lg sm:opacity-0 lg:opacity-100">
+                      <div className="grid shrink-0 gap-y-6 lg:gap-y-8">
+                        <div className="h-64 w-44 overflow-hidden rounded-lg opacity-100">
                           <img
                             alt="Baterías libres de mantenimiento para vehículos"
                             title="Baterías libres de mantenimiento para vehículos"
@@ -96,7 +95,7 @@ export default function Inversores() {
                           />
                         </div>
                       </div>
-                      <div className="grid shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
+                      <div className="grid shrink-0 gap-y-6 lg:gap-y-8">
                         <div className="h-64 w-44 overflow-hidden rounded-lg">
                           <img
                             alt="Baterías de litio"
@@ -136,10 +135,10 @@ export default function Inversores() {
           </div>
         </div>
       </section>
-      <section>
-        <div id="inversores" className='w-full flex flex-col gap-y-10 mx-auto max-w-5xl justify-center'>
+      <section id="inversores">
+        <div className='w-full flex flex-col gap-y-10 mx-auto max-w-5xl justify-center'>
           <h1 className='text-3xl font-bold tracking-tight text-gray-900 text-center'>Categorías</h1>
-          <div className='grid grid-cols-2 grid-flow-row lg:flex lg:flex-row gap-4 lg:gap-10 justify-center mx-auto px-4 lg:px-0'>
+           <div className='grid grid-cols-2 grid-flow-row lg:flex lg:flex-row gap-4 lg:gap-10 justify-center mx-auto px-4 lg:px-0'>
            <Link href="Baterias#baterias" className='rounded-md p-4 text-[#E73516] bg-transparent border shadow border-[#E73516] hover:text-white hover:bg-[#E73516] lg:w-52 flex justify-center items-center'>Baterías</Link>
             <Link href="#inversores" className='rounded-md p-4 border shadow border-[#E73516] text-white bg-[#E73516] hover:scale-105 lg:w-52 flex justify-center items-center'>Inversores</Link>
             <Link href="/Contacto" className='rounded-md p-4 text-[#E73516] bg-transparent border shadow border-[#E73516] hover:text-white hover:bg-[#E73516] lg:w-52 flex justify-center items-center'>Paneles Solares</Link>
@@ -148,10 +147,10 @@ export default function Inversores() {
         </div>
 
         {/* Lista de productos */}
-           <div id="growatt" className="relative isolate z-50 px-6 lg:px-8 transition-transform duration-500">
-          <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6  lg:max-w-7xl lg:px-8">
+          <div id="growatt" className="relative isolate z-50 px-6 lg:px-8 transition-transform duration-500">
+          <div className="mx-auto max-w-2xl px-4 pt-16 lg:max-w-7xl lg:px-6">
             <h2 className="text-3xl font-bold tracking-tight text-gray-900 text-start">Inversores Solares Growatt</h2>
-            <div className="mt-5 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+            <div className="mt-5 grid gap-x-6 gap-y-10 grid-cols-2 lg:grid-cols-4 ">
               {filterProductsBySubcategory('IG').slice(0, showAll ? products.length : 4).map((producto) => (
                 <ProductView key={producto.id} src={producto.image} title={producto.title} route={categoryMap[producto.category]} slug={producto.slug}/>
               ))}
@@ -170,11 +169,11 @@ export default function Inversores() {
           </div>
         </div>
           <div id="offgrid" className="relative isolate z-50 px-6 lg:px-8 transition-transform duration-500">
-          <div className="mx-auto max-w-2xl px-4 sm:px-6 py-16 lg:max-w-7xl lg:px-8">
+          <div className="mx-auto max-w-2xl px-4 pt-16 lg:max-w-7xl lg:px-6">
             <h2 className="text-3xl font-bold tracking-tight text-gray-900 text-start">Inversores Solares Off-Grid</h2>
-            <div className="mt-5 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+            <div className="mt-5 grid gap-x-6 gap-y-10 grid-cols-2 lg:grid-cols-4 ">
               {filterProductsBySubcategory('IO').slice(0, showAll ? products.length : 4).map((producto) => (
-                 <ProductView key={producto.id} src={producto.image} title={producto.title} route={categoryMap[producto.category]} slug={producto.slug}/>
+                <ProductView key={producto.id} src={producto.image} title={producto.title} route={categoryMap[producto.category]} slug={producto.slug}/>
               ))}
             </div>
             {products.length < 4 &&
@@ -190,12 +189,12 @@ export default function Inversores() {
             }
           </div>
         </div>
-          <div id="montaje" className="relative isolate z-50 px-6 lg:px-8 transition-transform duration-500 pb-20">
-          <div className="mx-auto max-w-2xl px-4 sm:px-6 py-16 lg:max-w-7xl lg:px-8">
+          <div id="montaje" className="relative isolate z-50 px-6 lg:px-8 transition-transform duration-500">
+          <div className="mx-auto max-w-2xl px-4 py-16 lg:max-w-7xl lg:px-6">
             <h2 className="text-3xl font-bold tracking-tight text-gray-900 text-start">Estructuras de Montaje</h2>
-            <div className="mt-5 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+            <div className="mt-5 grid gap-x-6 gap-y-10 grid-cols-2 lg:grid-cols-4 ">
              {filterProductsBySubcategory('E').slice(0, showAll ? products.length : 4).map((producto) => (
-                 <ProductView key={producto.id} src={producto.image} title={producto.title} route={categoryMap[producto.category]} slug={producto.slug}/>
+                <ProductView key={producto.id} src={producto.image} title={producto.title} route={categoryMap[producto.category]} slug={producto.slug}/>
               ))}
             </div>
             {products.length < 4 &&
@@ -212,6 +211,6 @@ export default function Inversores() {
           </div>
         </div>
       </section>
-    </div>
+      </div>
   );
 }
