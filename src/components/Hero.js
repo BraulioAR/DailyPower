@@ -1,7 +1,7 @@
 import Header from "./Header";
 import { Suspense, lazy } from 'react';
 
-const LazyParagraph = lazy(() => import('./LazyParagraph'));
+const LazyParagraph = lazy(() => import('../components/LazyParagraph'));
 
 export default function Hero() {
 
