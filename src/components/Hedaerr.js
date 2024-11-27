@@ -145,7 +145,7 @@ export default function Hedaerr() {
                 <div className="w-screen max-w-md flex-auto overflow-hidden rounded-3xl bg-white text-sm/6 shadow-lg ring-1 ring-gray-900/5">
                   <div className="p-4">
                     {products.map((item) => (
-                      <div key={item.name} className="group relative flex gap-x-6 rounded-lg p-4 hover:bg-gray-50">
+                      <div key={item.name} className="group relative flex gap-x-6 rounded-lg lg:justify-normal justify-center p-4 hover:bg-gray-50">
                         <div>
                           <a href={item.href} className="font-semibold text-gray-900">
                             {item.name}
