@@ -8,7 +8,7 @@ export default function Hero() {
   return (
     <div className="bg-white">
       <Header/>
-      <div className="relative isolate px-6 pt-14 lg:px-8">
+      <div className="relative lg:isolate px-6 pt-14 lg:px-8">
         <div
           aria-hidden="true"
           className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl lg:-top-80"
@@ -35,7 +35,9 @@ export default function Hero() {
             <h1 className="mb-8 lg:text-balance text-5xl font-semibold tracking-tight text-gray-900 lg:text-7xl text-center">
               Daily Power
             </h1>
-            
+            <h2 className="font-medium text-gray-500 lg:text-xl text-center ">
+              Representante exclusivo para República Dominicana de Baterías Aokly. Aplicaciones: Inversores, Paneles Solares y UPS.
+            </h2>
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <Link
                 href="/Productos"
