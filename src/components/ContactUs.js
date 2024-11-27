@@ -138,9 +138,9 @@ export default function ContactUs() {
       <section className="max-w-6xl gap-4 m-auto px-6 pt-10 pb-20 w-full">
         
       <h2
-        className="font-boxing text-white pb-4 uppercase text-center text-4xl font-extralight"
+        className="text-gray-900 pb-4  text-center lg:text-start text-4xl font-bold"
       >
-        Ubícanos
+        Visítanos
         </h2>
         <div id='ubicacion' className="mt-10">
         <LeafletMap />

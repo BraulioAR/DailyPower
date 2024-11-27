@@ -139,7 +139,7 @@ export default function Inversores() {
       <section>
         <div id="inversores" className='w-full flex flex-col gap-y-10 mx-auto max-w-5xl justify-center'>
           <h1 className='text-3xl font-bold tracking-tight text-gray-900 text-center'>Categorías</h1>
-          <div className='grid grid-cols-2 grid-flow-row lg:flex lg:flex-row gap-4 lg:gap-10 justify-center mx-auto'>
+          <div className='grid grid-cols-2 grid-flow-row lg:flex lg:flex-row gap-4 lg:gap-10 justify-center mx-auto px-4 lg:px-0'>
            <Link href="Baterias#baterias" className='rounded-md p-4 text-[#E73516] bg-transparent border shadow border-[#E73516] hover:text-white hover:bg-[#E73516] lg:w-52 flex justify-center items-center'>Baterías</Link>
             <Link href="#inversores" className='rounded-md p-4 border shadow border-[#E73516] text-white bg-[#E73516] hover:scale-105 lg:w-52 flex justify-center items-center'>Inversores</Link>
             <Link href="/Contacto" className='rounded-md p-4 text-[#E73516] bg-transparent border shadow border-[#E73516] hover:text-white hover:bg-[#E73516] lg:w-52 flex justify-center items-center'>Paneles Solares</Link>

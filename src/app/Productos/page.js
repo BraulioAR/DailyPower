@@ -60,15 +60,6 @@ export default function Productos() {
   };
 
   return (
-    <>
-      <Head>
-        <title>Baterías Solares, Inversores y Más para tu Sistema de Energía Solar | DailyPower</title>
-        <meta name="description" content="Encuentra baterías solares, de litio, para inversores y más en DailyPower. Ofrecemos productos de alta calidad y fiabilidad con la mejor garantía del mercado, ideal para sistemas solares, UPS, música para vehículos y más. Ubicados en Santo Domingo, garantizamos la mejor experiencia de uso y servicio." />
-        <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="Baterías Solares, Inversores y Más para tu Sistema de Energía Solar | DailyPower" key="title"/>
-        <meta property="og:description" content="Encuentra baterías solares, de litio, para inversores y más en DailyPower. Ofrecemos productos de alta calidad y fiabilidad con la mejor garantía del mercado, ideal para sistemas solares, UPS, música para vehículos y más. Ubicados en Santo Domingo, garantizamos la mejor experiencia de uso y servicio." />
-        <meta property="og:image" content="/logo-daily-power-1.webp" />
-      </Head>
     <div className="bg-white w-full h-full mx-auto max-w-7xl">
       <section className="relative pt-20 lg:mt-24">
         <div className="lg:pb-80 pt-16 sm:pt-24 pb-24 lg:pt-40">
@@ -151,7 +142,7 @@ export default function Productos() {
       <section id="productos">
         <div className='w-full flex flex-col gap-y-10 mx-auto max-w-5xl justify-center'>
           <h1 className='text-3xl font-bold tracking-tight text-gray-900 text-center'>Categorías</h1>
-          <div className='grid grid-cols-2 grid-flow-row lg:flex lg:flex-row gap-4 lg:gap-10 justify-center mx-auto'>
+          <div className='grid grid-cols-2 grid-flow-row lg:flex lg:flex-row gap-4 lg:gap-10 justify-center mx-auto px-4 lg:px-0'>
             <a href="Productos/Baterias#baterias" className='rounded-md p-4 text-[#E73516] bg-transparent border shadow border-[#E73516] hover:text-white hover:bg-[#E73516] lg:w-52 flex justify-center items-center'>Baterías</a>
             <a href="Productos/Inversores#inversores" className='rounded-md p-4 text-[#E73516] bg-transparent border shadow border-[#E73516] hover:text-white hover:bg-[#E73516] lg:w-52 flex justify-center items-center'>Inversores</a>
             <a href="/Contacto" className='rounded-md p-4 text-[#E73516] bg-transparent border shadow border-[#E73516] hover:text-white hover:bg-[#E73516] lg:w-52 flex justify-center items-center'>Paneles Solares</a>
@@ -289,6 +280,5 @@ export default function Productos() {
         </div>
       </section>
       </div>
-      </>
   );
 }

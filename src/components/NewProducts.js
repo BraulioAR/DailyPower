@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 import contentfulClient from '../app/contenfulClient';
 import { Open_Sans } from "next/font/google";
 import { IoArrowDownCircleOutline, IoArrowUpCircleOutline } from "react-icons/io5";
-import Link from 'next/link'; // Importa Link de Next.js
 import ProductView from './ProductView';
 
 const osans = Open_Sans({ subsets: ["latin"], weight: ["400", "500", "600"] });
@@ -56,7 +55,6 @@ export default function NewProducts() {
           {/* Mostrar solo los primeros 4 productos si showAll es falso */}
         {products.slice(0, showAll ? products.length : 4).map((producto) => (
             <ProductView key={producto.id} src={producto.image} title={producto.title} route={categoryMap[producto.category]} slug={producto.slug}/>
-            
           ))}
         </div>
 
