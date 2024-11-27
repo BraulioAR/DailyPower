@@ -29,12 +29,34 @@ export default function ContactUs() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-     const netlifyFormData = new FormData(e.target);
+
+    const netlifyFormData = new FormData(e.target);
+    
     await fetch('/__forms.html', {
         method: 'POST',
         headers: {'Content-Type': 'application/x-www-form-urlencoded'},
         body: new URLSearchParams(netlifyFormData).toString()
-    });
+    })
+      .then(() => (
+        
+        setShowSuccess(true) 
+
+        // Clear the form fields
+    && setFormData({
+      name: '',
+      company: '',
+      email: '',
+      message: ''
+    })
+
+    // Hide the success message after 4 seconds
+    && setTimeout(() => {
+      setShowSuccess(false);
+    }, 4000)
+      )
+      
+
+    )
 
     if (!formData.name || !formData.email || !formData.message || !agreed) {
       setFormError('Por favor, acepta la política de privacidad.');
@@ -44,21 +66,7 @@ export default function ContactUs() {
       return;
     }
     
-    // Simulate form submission
-    setShowSuccess(true);
     
-    // Clear the form fields
-    setFormData({
-      name: '',
-      company: '',
-      email: '',
-      message: ''
-    });
-
-    // Hide the success message after 4 seconds
-    setTimeout(() => {
-      setShowSuccess(false);
-    }, 4000);
   };
 
   return (
