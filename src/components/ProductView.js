@@ -8,6 +8,7 @@ export default function ProductView({ src, title, route, slug }) {
         <img
           src={src}
           alt={title}
+          loading="lazy" 
           className="h-full w-full object-cover object-center lg:h-full lg:w-full"
         />
       </div>

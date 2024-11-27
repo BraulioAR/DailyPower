@@ -82,7 +82,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="es">
       <body
-        className={`${openSans.variable}`}>
+        className={`${openSans.variable} `}>
         <Header/>
         {children}
         <Footer/>
