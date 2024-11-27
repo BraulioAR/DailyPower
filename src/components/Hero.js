@@ -19,7 +19,7 @@ export default function Heroo() {
             className=" relative w-[72.1875rem] aspect-[1155/678] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#EC7610] to-[#E73516] opacity-30 lg:left-[calc(50%-30rem)]"
           />
         </div>
-        <div className="mx-auto max-w-2xl py-32 lg:py-56 animate-blurred-fade-in animate-duration-[300ms] animate-ease-in">
+        <div className="mx-auto max-w-2xl py-32 lg:py-56 lg:animate-blurred-fade-in lg:animate-duration-[300ms] lg:animate-ease-in">
           <div className="hidden lg:mb-8 lg:flex lg:justify-center">
             <div className="relative rounded-full px-3 py-1 text-sm/6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
               Productos para todas tus necesidades eléctricas.{' '}

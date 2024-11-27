@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function Clients() {
   return (
       <div className="relative isolate z-40 px-6 pt-14 lg:px-8">
@@ -18,87 +20,87 @@ export default function Clients() {
           <div className="grid grid-cols-2 lg:grid-cols-4 grid-flow-row py-10 gap-6">
                 <div className="w-full h-full flex justify-center items-center lg:px-2 ">
                     <a href="#" target="_blank" className=" w-fit h-fit flex justify-center">
-                    <img src="/awm_logo_dark.webp" alt="Logo AWM" className="transition-all duration-500 lg:grayscale lg:hover:grayscale-0 cursor-pointer object-fit overflow-hidden w-1/2 lg:w-full"/>
+                    <Image src="/awm_logo_dark.webp" alt="Logo AWM" className="transition-all duration-500 lg:grayscale lg:hover:grayscale-0 cursor-pointer object-fit overflow-hidden w-1/2 lg:w-full"/>
                   </a>
               </div>
               <div className="w-full h-full flex justify-center items-center">
                     <a href="#" target="_blank" className="w-fit h-fit flex justify-center">
-              <img src="/Logo-Electro-Servicios-Quisqueya.webp" alt="Logo Electro Servicios Quisqueya" className="transition-all duration-500 lg:grayscale lg:hover:grayscale-0 cursor-pointer object-fit overflow-hidden w-1/2 lg:w-full"/>
+              <Image src="/Logo-Electro-Servicios-Quisqueya.webp" alt="Logo Electro Servicios Quisqueya" className="transition-all duration-500 lg:grayscale lg:hover:grayscale-0 cursor-pointer object-fit overflow-hidden w-1/2 lg:w-full"/>
                       </a>
                       </div>
              <div className="w-full h-full flex justify-center items-center">
                     <a href="#" target="_blank" className="w-fit h-fit flex justify-center">
-              <img src="/Logo-Microsolutions.webp" alt="Logo Microsolutions" className="transition-all duration-500 lg:grayscale lg:hover:grayscale-0 cursor-pointer object-fit overflow-hidden w-1/2 lg:w-full"/>
+              <Image src="/Logo-Microsolutions.webp" alt="Logo Microsolutions" className="transition-all duration-500 lg:grayscale lg:hover:grayscale-0 cursor-pointer object-fit overflow-hidden w-1/2 lg:w-full"/>
                  </a>
               </div>
                 <div className="w-full h-full flex justify-center items-center">
                     <a href="#" target="_blank" className="w-fit h-fit flex justify-center">
-              <img src="/Logo-Max-Ferreteria.webp" alt="Logo Max Ferreteria" className="transition-all duration-500 lg:grayscale lg:hover:grayscale-0 cursor-pointer object-fit overflow-hidden w-1/2 lg:w-full"/>
+              <Image src="/Logo-Max-Ferreteria.webp" alt="Logo Max Ferreteria" className="transition-all duration-500 lg:grayscale lg:hover:grayscale-0 cursor-pointer object-fit overflow-hidden w-1/2 lg:w-full"/>
                       </a>
               </div>
                 <div className="w-full h-full flex justify-center items-center">
                     <a href="#" target="_blank" className="w-fit h-fit flex justify-center">
-              <img src="/Logo-Global-Green.webp" alt="Logo Global Green" className="transition-all duration-500 lg:grayscale lg:hover:grayscale-0 cursor-pointer object-fit overflow-hidden w-1/2 lg:w-full"/>
+              <Image src="/Logo-Global-Green.webp" alt="Logo Global Green" className="transition-all duration-500 lg:grayscale lg:hover:grayscale-0 cursor-pointer object-fit overflow-hidden w-1/2 lg:w-full"/>
                   </a>
               </div>
                 <div className="w-full h-full flex justify-center items-center">
                     <a href="#" target="_blank" className="w-fit h-fit flex justify-center">
-              <img src="/vifa-logo.webp" alt="Logo Vifa, SRL" className="transition-all duration-500 lg:grayscale lg:hover:grayscale-0 cursor-pointer object-scale-down lg:object-fit overflow-hidden w-1/2 h-1/2 lg:w-56 lg:h-56"/>
+              <Image src="/vifa-logo.webp" alt="Logo Vifa, SRL" className="transition-all duration-500 lg:grayscale lg:hover:grayscale-0 cursor-pointer object-scale-down lg:object-fit overflow-hidden w-1/2 h-1/2 lg:w-56 lg:h-56"/>
                  </a>
               </div>
               <div className="w-full h-full flex justify-center items-center">
                     <a href="#" target="_blank" className="w-fit h-fit flex justify-center">
-              <img src="/logo-rensa.webp" alt="Logo Rensa" className="transition-all duration-500 lg:grayscale lg:hover:grayscale-0 cursor-pointer object-fit overflow-hidden w-1/2 lg:w-full"/>
+              <Image src="/logo-rensa.webp" alt="Logo Rensa" className="transition-all duration-500 lg:grayscale lg:hover:grayscale-0 cursor-pointer object-fit overflow-hidden w-1/2 lg:w-full"/>
                </a>
               </div>
                 <div className="w-full h-full flex justify-center items-center">
                     <a href="#" target="_blank" className="w-fit h-fit flex justify-center">
-              <img src="/Logo-Zalex-Electric.webp" alt="Logo Zalex-Electric" className="transition-all duration-500 lg:grayscale lg:hover:grayscale-0 cursor-pointer object-fit overflow-hidden w-full"/>
+              <Image src="/Logo-Zalex-Electric.webp" alt="Logo Zalex-Electric" className="transition-all duration-500 lg:grayscale lg:hover:grayscale-0 cursor-pointer object-fit overflow-hidden w-full"/>
                   </a>
               </div>
                <div className="w-full h-full flex justify-center items-center">
                     <a href="#" target="_blank" className="w-fit h-fit flex justify-center">
-              <img src="/Logo-Arias-Motors.webp" alt="Logo Arias Motors" className="transition-all duration-500 lg:grayscale lg:hover:grayscale-0 cursor-pointer object-fit overflow-hidden w-1/2 lg:w-full"/>
+              <Image src="/Logo-Arias-Motors.webp" alt="Logo Arias Motors" className="transition-all duration-500 lg:grayscale lg:hover:grayscale-0 cursor-pointer object-fit overflow-hidden w-1/2 lg:w-full"/>
                   </a>
               </div>
                <div className="w-full h-full flex justify-center items-center">
                     <a href="#" target="_blank" className="w-fit h-fit flex justify-center">
-              <img src="/logo-rc-tecnology.png" alt="Logo RC Technology" className="transition-all duration-500 lg:grayscale lg:hover:grayscale-0 cursor-pointer object-fit overflow-hidden w-1/2 lg:w-full"/>
+              <Image src="/logo-rc-tecnology.png" alt="Logo RC Technology" className="transition-all duration-500 lg:grayscale lg:hover:grayscale-0 cursor-pointer object-fit overflow-hidden w-1/2 lg:w-full"/>
                   </a>
               </div>
               <div className="w-full h-full flex justify-center items-center">
                     <a href="#" target="_blank" className="w-fit h-fit flex justify-center">
-              <img src="/Logo-Tesercom.webp" alt="Logo Tesercom" className="transition-all duration-500 lg:grayscale lg:hover:grayscale-0 cursor-pointer object-fit overflow-hidden w-1/2 lg:w-full"/>
+              <Image src="/Logo-Tesercom.webp" alt="Logo Tesercom" className="transition-all duration-500 lg:grayscale lg:hover:grayscale-0 cursor-pointer object-fit overflow-hidden w-1/2 lg:w-full"/>
                  </a>
               </div>
               <div className="w-full h-full flex justify-center items-center">
                     <a href="#" target="_blank" className="w-fit h-fit flex justify-center">
-              <img src="/Logo-ACH.webp" alt="Logo ACH" className="transition-all duration-500 lg:grayscale lg:hover:grayscale-0 cursor-pointer object-fit overflow-hidden w-1/2 lg:w-full"/>
+              <Image src="/Logo-ACH.webp" alt="Logo ACH" className="transition-all duration-500 lg:grayscale lg:hover:grayscale-0 cursor-pointer object-fit overflow-hidden w-1/2 lg:w-full"/>
                   </a>
               </div>
                <div className="w-full h-full flex justify-center items-center">
                     <a href="#" target="_blank" className="w-fit h-fit flex justify-center">
-              <img src="/logoferremix.webp" alt="Logo Ferremix" className="transition-all duration-500 lg:grayscale lg:hover:grayscale-0 cursor-pointer object-fit overflow-hidden w-1/2 lg:w-full"/>
+              <Image src="/logoferremix.webp" alt="Logo Ferremix" className="transition-all duration-500 lg:grayscale lg:hover:grayscale-0 cursor-pointer object-fit overflow-hidden w-1/2 lg:w-full"/>
                   </a>
               </div>
               <div className="w-full h-full flex justify-center items-center">
                     <a href="#" target="_blank" className="w-fit h-fit flex justify-center">
-              <img src="/Logo-Luis-F-Gomez.webp" alt="Logo Luis F. Gomez & Asociados" className="transition-all duration-500 lg:grayscale lg:hover:grayscale-0 cursor-pointer object-fit overflow-hidden w-1/2 lg:w-full"/>
+              <Image src="/Logo-Luis-F-Gomez.webp" alt="Logo Luis F. Gomez & Asociados" className="transition-all duration-500 lg:grayscale lg:hover:grayscale-0 cursor-pointer object-fit overflow-hidden w-1/2 lg:w-full"/>
                   </a>
               </div>
             <div className="w-full h-full flex justify-center items-center">
                     <a href="#" target="_blank" className="w-fit h-fit flex justify-center">
-              <img src="/logo-innovacentro.webp" alt="Logo Innovacentro" className="transition-all duration-500 lg:grayscale lg:hover:grayscale-0 cursor-pointer lg:object-fit object-scale-down overflow-hidden w-1/2 h-1/2 lg:w-56 lg:h-56"/>
+              <Image src="/logo-innovacentro.webp" alt="Logo Innovacentro" className="transition-all duration-500 lg:grayscale lg:hover:grayscale-0 cursor-pointer lg:object-fit object-scale-down overflow-hidden w-1/2 h-1/2 lg:w-56 lg:h-56"/>
               </a>
               </div>
               <div className="w-full h-full flex justify-center items-center">
                     <a href="#" target="_blank" className="w-fit h-fit flex justify-center">
-              <img src="/logo-iqtek.webp" alt="Logo IQTek Solutions" className="transition-all duration-500 lg:grayscale lg:hover:grayscale-0 cursor-pointer object-fit overflow-hidden w-1/2 lg:w-full"/>
+              <Image src="/logo-iqtek.webp" alt="Logo IQTek Solutions" className="transition-all duration-500 lg:grayscale lg:hover:grayscale-0 cursor-pointer object-fit overflow-hidden w-1/2 lg:w-full"/>
                </a>
               </div>
               <div className="w-full h-full flex justify-center items-center">
                     <a href="#" target="_blank" className="w-fit h-fit flex justify-center">
-              <img src="/Logo-Marinez-Motors.webp" alt="Logo Mariñez Motors, SRL" className="transition-all duration-500 lg:grayscale lg:hover:grayscale-0 cursor-pointer object-fit overflow-hidden w-1/2 lg:w-full"/>
+              <Image src="/Logo-Marinez-Motors.webp" alt="Logo Mariñez Motors, SRL" className="transition-all duration-500 lg:grayscale lg:hover:grayscale-0 cursor-pointer object-fit overflow-hidden w-1/2 lg:w-full"/>
               </a>
               </div>
 

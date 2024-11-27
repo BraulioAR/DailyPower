@@ -1,9 +1,10 @@
 import { ImPower } from "react-icons/im";
+import Image from "next/image";
 
 export default function AboutUs() {
   return (
     <div className="relative isolate overflow-hidden bg-white px-6 pt-24 pb-12 lg:overflow-visible lg:px-0">
-      <div className="absolute inset-0 -z-10 overflow-hidden">
+      <div className="absolute inset-0 -z-10 overflow-hidden hidden lg:block">
         <svg
           aria-hidden="true"
           className="absolute left-[max(50%,25rem)] top-0 h-[64rem] w-[128rem] -translate-x-1/2 stroke-gray-200 [mask-image:radial-gradient(64rem_64rem_at_top,white,transparent)]"
@@ -38,7 +39,7 @@ export default function AboutUs() {
           </div>
         </div>
         <div className="-ml-12 -mt-12 p-12 lg:sticky lg:top-4 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:overflow-hidden">
-          <img
+          <Image
             alt="Team Daily Power"
             src="nosotros.webp"
             className="w-[48rem] max-w-none rounded-xl bg-gray-900 shadow-xl ring-1 ring-gray-400/10 hidden lg:block"
@@ -76,7 +77,7 @@ export default function AboutUs() {
                   </span>
                 </li>
               </ul>
-              <h2 className="mt-16 text-2xl font-bold tracking-tight text-gray-900 text-justify">En el campo de las baterías, somos representantes exclusivos de AOKLY en República Dominicana.</h2>
+              <h2 className="mt-16 text-2xl font-bold tracking-tight text-gray-900 text-justify">Somos representantes exclusivos de AOKLY en República Dominicana.</h2>
               <p className="mt-6 text-justify">
                 AOKLY es la fábrica de baterías más grande del sur de China con más de 30 años de experiencia en I+D y producción. Sus productos son baterías GEL, baterías AGM, baterías de automóviles, baterías de vehículos eléctricos, baterías de montacargas, baterías de litio, etc. La fábrica cuenta con equipos de producción e instrumentos de prueba avanzados importados de Italia, Canadá y Alemania, además de una amplia variedad de baterías selladas de alta tecnología y líneas de producción automatizadas. Aokly mantiene un estricto control de la calidad en sus productos, sus procesos productivos han adoptado estándares internacionales, en los cuales hemos sido evaluados y certificados, como son: ISO9001, TS16949, ISO14001 en el sistema de control de calidad y el sistema ambiental, ROHS y las pruebas completas de IEC60095, etc. Ha sido reconocido por clientes globales en el mercado.
               </p>
