@@ -1,8 +1,4 @@
-/* eslint-disable @next/next/no-img-element */
-import { Open_Sans } from "next/font/google";
 import Link from "next/link";
-
-const osans = Open_Sans({ subsets: ["latin"], weight: ["400", "500", "600"] });
 
 export default function Footer() {
   return (
@@ -13,13 +9,13 @@ export default function Footer() {
             <h1 className="text-base font-medium text-[#F5F5F5] lg:no-underline underline">Daily Power</h1>
             <div className="flex justify-between gap-x-14">
               <nav className="flex flex-col gap-3 items-start  lg:justify-normal justify-center">
-                <Link href="/" className={`${osans.className} text-[#F5F5F5] hover:[#EDB059] hover:scale-105 text-base font-normal text-start`}>Inicio</Link>                    
-                <Link href="/Nosotros" className={`${osans.className} text-[#F5F5F5] hover:[#EDB059] hover:scale-105 text-base font-normal text-start`}>Quienes Somos</Link>
-                <Link href="/Contacto" className={`${osans.className} text-[#F5F5F5] hover:[#EDB059] hover:scale-105 text-base font-normal text-start`}>Contacto</Link>
+                <Link href="/" className=" text-[#F5F5F5] hover:[#EDB059] hover:scale-105 text-base font-normal text-start">Inicio</Link>                    
+                <Link href="/Nosotros" className=" text-[#F5F5F5] hover:[#EDB059] hover:scale-105 text-base font-normal text-start">Quienes Somos</Link>
+                <Link href="/Contacto" className=" text-[#F5F5F5] hover:[#EDB059] hover:scale-105 text-base font-normal text-start">Contacto</Link>
               </nav>
             <div>
               <nav className="flex flex-col gap-3 items-start lg:justify-normal justify-center">
-                <Link href="/FAQs" className={`${osans.className} text-[#F5F5F5] hover:[#EDB059] hover:scale-105 text-base font-normal`}>Preguntas Frecuentes</Link>
+                <Link href="/FAQs" className=" text-[#F5F5F5] hover:[#EDB059] hover:scale-105 text-base font-normal">Preguntas Frecuentes</Link>
               </nav>
             </div>
           </div>
@@ -28,20 +24,20 @@ export default function Footer() {
           <h1 className="text-base font-medium text-[#F5F5F5] lg:no-underline underline lg:my-0 my-2">Productos</h1>
           <div className="lg:flex lg:justify-between gap-x-14 grid grid-flow-row grid-cols-2 gap-y-2">
           <nav className="flex flex-col gap-3">
-              <Link href="/Productos/Baterias#gelatina"className={`${osans.className} text-[#F5F5F5] hover:[#EDB059] hover:scale-105 text-base font-normal`}>Baterias de Gelatina</Link>
-              <Link href="/Productos/Baterias#litio" className={`${osans.className} text-[#F5F5F5] hover:[#EDB059] hover:scale-105 text-base font-normal`}>Baterias de Litio</Link>
-              <Link href="/Productos/Inversores#offgrid" className={`${osans.className} text-[#F5F5F5] hover:[#EDB059] hover:scale-105 text-base font-normal`}>Inversores Solares Off-Grid</Link>
+              <Link href="/Productos/Baterias#gelatina"className=" text-[#F5F5F5] hover:[#EDB059] hover:scale-105 text-base font-normal">Baterias de Gelatina</Link>
+              <Link href="/Productos/Baterias#litio" className=" text-[#F5F5F5] hover:[#EDB059] hover:scale-105 text-base font-normal">Baterias de Litio</Link>
+              <Link href="/Productos/Inversores#offgrid" className=" text-[#F5F5F5] hover:[#EDB059] hover:scale-105 text-base font-normal">Inversores Solares Off-Grid</Link>
           </nav>
           <div>
               <nav className="flex flex-col gap-3">
-                <Link href="/Productos/Inversores#growatt"className={`${osans.className} text-[#F5F5F5] hover:[#EDB059] hover:scale-105 text-base font-normal`}>Inversores Solares Growatt</Link>
-                <Link href="/Productos#montaje"className={`${osans.className} text-[#F5F5F5] hover:[#EDB059] hover:scale-105 text-base font-normal`}>Estructuras de Montaje</Link>
-                <Link href="/Contacto" className={`${osans.className} text-[#F5F5F5] hover:[#EDB059] hover:scale-105 text-base font-normal`}>Paneles Solares</Link>
+                <Link href="/Productos/Inversores#growatt"className=" text-[#F5F5F5] hover:[#EDB059] hover:scale-105 text-base font-normal">Inversores Solares Growatt</Link>
+                <Link href="/Productos#montaje"className=" text-[#F5F5F5] hover:[#EDB059] hover:scale-105 text-base font-normal">Estructuras de Montaje</Link>
+                <Link href="/Contacto" className=" text-[#F5F5F5] hover:[#EDB059] hover:scale-105 text-base font-normal">Paneles Solares</Link>
               </nav>
             </div>
             <div>
               <nav className="flex flex-col gap-3">
-                <Link href="/Contacto" className={`${osans.className} text-[#F5F5F5] hover:[#EDB059] hover:scale-105 text-base font-normal`}>Inversores Convencionales</Link>                   
+                <Link href="/Contacto" className=" text-[#F5F5F5] hover:[#EDB059] hover:scale-105 text-base font-normal">Inversores Convencionales</Link>                   
               </nav>
             </div>
           </div>
@@ -50,8 +46,8 @@ export default function Footer() {
             <h1 className="text-base font-medium text-[#F5F5F5] lg:no-underline underline lg:my-0 my-2">Contacto</h1>
             <div className="flex justify-between gap-x-14">
               <nav className="flex flex-col gap-3">
-                <Link href="mailto:dailypower@gmail.com" className={`${osans.className} text-[#F5F5F5] hover:[#EDB059] hover:scale-105 text-base font-normal`}>dailypower@gmail.com</Link>
-                <Link href="tel:18492598088"  className={`${osans.className} text-[#F5F5F5] hover:[#EDB059] hover:scale-105 text-base font-normal`}>+1 849-259-8088</Link> <br/>
+                <Link href="mailto:dailypower@gmail.com" className=" text-[#F5F5F5] hover:[#EDB059] hover:scale-105 text-base font-normal">dailypower@gmail.com</Link>
+                <Link href="tel:18492598088"  className=" text-[#F5F5F5] hover:[#EDB059] hover:scale-105 text-base font-normal">+1 849-259-8088</Link> <br/>
               </nav>     
             </div>
           </div>
@@ -61,7 +57,7 @@ export default function Footer() {
         <div className="w-full flex px-20 md:px-10 lg:px-40 justify-between items-center lg:flex-row flex-col-reverse h-full gap-y-4 ">
           <div className="flex items-center gap-x-8 flex-col lg:flex-row">
             <img src="/logo-daily-power-1.webp" alt="Logo Daily Power"  className="w-[102.5px] h-10" />
-            <h1 className={`${osans.className} text-base font-normal text-center lg:text-start`}>Copyright &copy; 2024 Daily Power WYX, SRL, todos los derechos reservados.</h1>
+            <h1 className=" text-base font-normal text-center lg:text-start">Copyright &copy; 2024 Daily Power WYX, SRL, todos los derechos reservados.</h1>
            </div>
           <div className="flex items-center gap-x-5 justify-center ">
             <Link href="https://www.instagram.com/dailypower.rd" className="hover:scale-105 ">

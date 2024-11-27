@@ -1,8 +1,7 @@
-import Header from "./Header";
-import { Suspense, lazy } from 'react';
+import Header from "@/components/Header";
 import Link from "next/link";
 
-const LazyParagraph = lazy(() => import('../components/LazyParagraph'));
+
 
 export default function Hero() {
 
@@ -24,7 +23,7 @@ export default function Hero() {
         </div>
         <div className="mx-auto max-w-2xl py-32 lg:py-56 lg:animate-blurred-fade-in lg:animate-duration-[300ms] lg:animate-ease-in">
           <div className="hidden lg:mb-8 lg:flex lg:justify-center">
-            <div className="relative rounded-full px-3 py-1 text-sm/6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
+            <div className="relative rounded-full px-3 py-1 text-sm text-gray-600 ">
               Productos para todas tus necesidades eléctricas.{' '}
               <Link href="/Productos" className="font-semibold text-[#E73516] scroll-smooth">
                 <span aria-hidden="true" className="absolute inset-0" />
@@ -36,9 +35,9 @@ export default function Hero() {
             <h1 className="mb-8 lg:text-balance text-5xl font-semibold tracking-tight text-gray-900 lg:text-7xl">
               Daily Power
             </h1>
-             <Suspense fallback={<div>...</div>}>
-          <LazyParagraph />
-        </Suspense>
+            <h2 className="text-lg font-medium text-gray-500 lg:text-xl">
+              Representante exclusivo para República Dominicana de Baterías Aokly. Aplicaciones: Inversores, Paneles Solares y UPS.
+            </h2>
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <Link
                 href="/Productos"
