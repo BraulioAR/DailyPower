@@ -26,9 +26,15 @@ export default function ContactUs() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    
+     const formData = new FormData(e.target);
+    await fetch('/__forms.html', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+        body: new URLSearchParams(formData).toString()
+    });
+
     if (!formData.name || !formData.email || !formData.message || !agreed) {
       setFormError('Por favor, acepta la política de privacidad.');
       setTimeout(() => {
@@ -86,7 +92,7 @@ export default function ContactUs() {
               <span>Mensaje enviado con éxito, nuestro equipo estará en contacto contigo pronto.</span>
             </div>
           )}
-          <form onSubmit={handleSubmit} className="mx-auto mt-16 max-w-xl sm:mt-20" data-netlify="true">
+          <form name="contactus" onSubmit={handleSubmit} className="mx-auto mt-16 max-w-xl sm:mt-20" >
             <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
               <div className="sm:col-span-2">
                 <label htmlFor="name" className="block text-sm/6 font-semibold text-gray-900">
@@ -95,7 +101,7 @@ export default function ContactUs() {
                 <div className="mt-2.5">
                   <input
                     id="name"
-                    name="name"
+                    name="form-name"
                     type="text"
                     value={formData.name}
                     onChange={handleChange}
