@@ -13,11 +13,11 @@ const navigation = [
 ];
 
 const products = [
-   { name: 'Baterías de Gelatina',  href: '/Productos#gelatina' },
-  { name: 'Baterías para Vehículos',  href: '/Productos#vehiculo'},
-  { name: 'Baterías de Litio', href: '/Productos#litio'},
-  { name: 'Inversores Solares Off-Grid', href: '/Productos#offgrid'},
-  { name: 'Inversores Solares Growatt',  href: '/Productos#growatt' },
+   { name: 'Baterías de Gelatina',  href: '/Productos/Baterias/#gelatina' },
+  { name: 'Baterías para Vehículos',  href: '/Productos/Baterias/#vehiculo'},
+  { name: 'Baterías de Litio', href: '/Productos/Baterias/#litio'},
+  { name: 'Inversores Solares Off-Grid', href: '/Productos/Inversores/#offgrid'},
+  { name: 'Inversores Solares Growatt',  href: '/Productos/Inversores/#growatt' },
   { name: 'Estructuras de Montaje', href: '/Productos#montaje' },
   { name: 'Paneles Solares', href: '/Contacto' },
   { name: 'Inversores Convencionales',  href: '/Contacto'},

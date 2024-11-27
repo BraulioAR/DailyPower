@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import contentfulClient from '@/app/contenfulClient';
 import { Open_Sans } from "next/font/google";
 import { IoArrowDownCircleOutline, IoArrowUpCircleOutline } from "react-icons/io5";
+import ProductView from '@/components/ProductView';
 import Link from 'next/link';
 
 const osans = Open_Sans({ subsets: ["latin"], weight: ["400", "500", "600"] });
@@ -57,7 +58,7 @@ export default function Inversores() {
 
   return (
     <div className="bg-white w-full h-full mx-auto max-w-7xl">
-      <div className="relative pt-20 lg:mt-24">
+      <section className="relative pt-20 lg:mt-24">
         <div className="lg:pb-80 pt-16 sm:pt-24 pb-24 lg:pt-40">
           <div className="relative mx-auto max-w-7xl px-4 sm:static sm:px-6 lg:px-8">
             <div className="sm:max-w-lg">
@@ -69,7 +70,7 @@ export default function Inversores() {
               </h2>
             </div>
             <div>
-              <div className="mt-10">
+                <div className="mt-10">
                 {/* Decorative image grid */}
                 <div
                   aria-hidden="true"
@@ -80,14 +81,16 @@ export default function Inversores() {
                       <div className="grid shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
                         <div className="h-64 w-44 overflow-hidden rounded-lg sm:opacity-0 lg:opacity-100">
                           <img
-                            alt="Imagen Batería"
+                            alt="Baterías libres de mantenimiento para vehículos"
+                            title="Baterías libres de mantenimiento para vehículos"
                             src="/Bat-5kwh-2.webp"
                             className="size-full object-cover object-center"
                           />
                         </div>
                         <div className="h-64 w-44 overflow-hidden rounded-lg">
                           <img
-                            alt=""
+                            alt="Baterías de gelatina para inversores, UPS, sistemas solares y música."
+                            title="Baterías de gelatina para inversores, UPS, sistemas solares y música."
                             src="/Bat-175kwh-4.webp"
                             className="size-full object-cover object-center"
                           />
@@ -96,21 +99,24 @@ export default function Inversores() {
                       <div className="grid shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
                         <div className="h-64 w-44 overflow-hidden rounded-lg">
                           <img
-                            alt=""
+                            alt="Baterías de litio"
+                            title="Baterías de litio"
                             src="/Bat-15kwh-2.webp"
                             className="size-full object-cover object-center"
                           />
                         </div>
                         <div className="h-64 w-44 overflow-hidden rounded-lg">
                           <img
-                            alt=""
+                            alt="Inversores solares"
+                            title="Paneles solares"
                             src="/IVPA10048-1.webp"
                             className="size-full object-cover object-center"
                           />
                         </div>
                         <div className="h-64 w-44 overflow-hidden rounded-lg">
                           <img
-                            alt=""
+                            alt="Estructura para instalación de paneles solares"
+                            title="Estructura para instalación de paneles solares"
                             src="/RAIL-CROSS-CONNECTER.webp"
                             className="size-full object-cover object-center"
                           />
@@ -129,16 +135,15 @@ export default function Inversores() {
             </a>
           </div>
         </div>
-      </div>
-g
+      </section>
       <section>
         <div id="inversores" className='w-full flex flex-col gap-y-10 mx-auto max-w-5xl justify-center'>
           <h1 className='text-3xl font-bold tracking-tight text-gray-900 text-center'>Categorías</h1>
-          <div className='grid grid-cols-2 grid-flow-row lg:flex lg:flex-row gap-4 lg:gap-10 justify-center'>
-           <a href="Baterias#baterias" className='rounded-md p-4 text-[#E73516] bg-transparent border shadow border-[#E73516] hover:text-white hover:bg-[#E73516] lg:w-52 flex justify-center items-center'>Baterías</a>
-            <a href="#inversores" className='rounded-md p-4 border shadow border-[#E73516] text-white bg-[#E73516] hover:scale-105 lg:w-52 flex justify-center items-center'>Inversores</a>
-            <a href="/Contacto" className='rounded-md p-4 text-[#E73516] bg-transparent border shadow border-[#E73516] hover:text-white hover:bg-[#E73516] lg:w-52 flex justify-center items-center'>Paneles Solares</a>
-            <a href="#montaje" className='rounded-md p-4 text-[#E73516] bg-transparent border shadow border-[#E73516] hover:text-white hover:bg-[#E73516] lg:w-52 flex justify-center text-center '>Estructuras de Montaje</a>
+          <div className='grid grid-cols-2 grid-flow-row lg:flex lg:flex-row gap-4 lg:gap-10 justify-center mx-auto'>
+           <Link href="Baterias#baterias" className='rounded-md p-4 text-[#E73516] bg-transparent border shadow border-[#E73516] hover:text-white hover:bg-[#E73516] lg:w-52 flex justify-center items-center'>Baterías</Link>
+            <Link href="#inversores" className='rounded-md p-4 border shadow border-[#E73516] text-white bg-[#E73516] hover:scale-105 lg:w-52 flex justify-center items-center'>Inversores</Link>
+            <Link href="/Contacto" className='rounded-md p-4 text-[#E73516] bg-transparent border shadow border-[#E73516] hover:text-white hover:bg-[#E73516] lg:w-52 flex justify-center items-center'>Paneles Solares</Link>
+            <Link href="#montaje" className='rounded-md p-4 text-[#E73516] bg-transparent border shadow border-[#E73516] hover:text-white hover:bg-[#E73516] lg:w-52 flex justify-center text-center '>Estructuras de Montaje</Link>
           </div>
         </div>
 

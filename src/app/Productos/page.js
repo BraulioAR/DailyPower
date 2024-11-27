@@ -1,10 +1,11 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import contentfulClient from '@/app/contenfulClient';
 import { Open_Sans } from "next/font/google";
 import { IoArrowDownCircleOutline, IoArrowUpCircleOutline } from "react-icons/io5";
-import Link from 'next/link';
 import ProductView from '@/components/ProductView';
+import Head from 'next/head';
+
 
 const osans = Open_Sans({ subsets: ["latin"], weight: ["400", "500", "600"] });
 
@@ -27,20 +28,21 @@ export default function Productos() {
   };
 
   useEffect(() => {
-    // Función para obtener productos desde Contentful
+
+    // Fetching products from Contentful
+
     const fetchProducts = async () => {
       try {
         const response = await contentfulClient.getEntries({
-          content_type: 'producto', // Usa el ID del content model
+          content_type: 'producto',
         });
 
-        // Almacenar los productos en el estado
         const items = response.items.map((item) => ({
           id: item.sys.id,
-          title: item.fields.titulo, // Obtenemos el título del producto
-          image: item.fields.productImage?.[0]?.fields.file.url, // Obtenemos la primera imagen del array de imágenes
-          slug: item.fields.slug, // Obtener el slug del producto
-          category: item.fields.category, // Obtenemos la categoría del producto
+          title: item.fields.titulo,
+          image: item.fields.productImage?.[0]?.fields.file.url,
+          slug: item.fields.slug,
+          category: item.fields.category,
           subcategory: item.fields.subcategory,
         }));
         setProducts(items);
@@ -50,15 +52,25 @@ export default function Productos() {
     };
 
     fetchProducts();
+    
   }, []);
 
-    const filterProductsBySubcategory = (subcategoryCode) => {
+  const filterProductsBySubcategory = (subcategoryCode) => {
     return products.filter((producto) => producto.subcategory === subcategoryCode);
   };
 
   return (
+    <>
+      <Head>
+        <title>Baterías Solares, Inversores y Más para tu Sistema de Energía Solar | DailyPower</title>
+        <meta name="description" content="Encuentra baterías solares, de litio, para inversores y más en DailyPower. Ofrecemos productos de alta calidad y fiabilidad con la mejor garantía del mercado, ideal para sistemas solares, UPS, música para vehículos y más. Ubicados en Santo Domingo, garantizamos la mejor experiencia de uso y servicio." />
+        <meta name="robots" content="index, follow" />
+        <meta property="og:title" content="Baterías Solares, Inversores y Más para tu Sistema de Energía Solar | DailyPower" key="title"/>
+        <meta property="og:description" content="Encuentra baterías solares, de litio, para inversores y más en DailyPower. Ofrecemos productos de alta calidad y fiabilidad con la mejor garantía del mercado, ideal para sistemas solares, UPS, música para vehículos y más. Ubicados en Santo Domingo, garantizamos la mejor experiencia de uso y servicio." />
+        <meta property="og:image" content="/logo-daily-power-1.webp" />
+      </Head>
     <div className="bg-white w-full h-full mx-auto max-w-7xl">
-      <div className="relative pt-20 lg:mt-24">
+      <section className="relative pt-20 lg:mt-24">
         <div className="lg:pb-80 pt-16 sm:pt-24 pb-24 lg:pt-40">
           <div className="relative mx-auto max-w-7xl px-4 sm:static sm:px-6 lg:px-8">
             <div className="sm:max-w-lg">
@@ -81,14 +93,16 @@ export default function Productos() {
                       <div className="grid shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
                         <div className="h-64 w-44 overflow-hidden rounded-lg sm:opacity-0 lg:opacity-100">
                           <img
-                            alt="Imagen Batería"
+                            alt="Baterías libres de mantenimiento para vehículos"
+                            title="Baterías libres de mantenimiento para vehículos"
                             src="/Bat-5kwh-2.webp"
                             className="size-full object-cover object-center"
                           />
                         </div>
                         <div className="h-64 w-44 overflow-hidden rounded-lg">
                           <img
-                            alt=""
+                            alt="Baterías de gelatina para inversores, UPS, sistemas solares y música."
+                            title="Baterías de gelatina para inversores, UPS, sistemas solares y música."
                             src="/Bat-175kwh-4.webp"
                             className="size-full object-cover object-center"
                           />
@@ -97,21 +111,24 @@ export default function Productos() {
                       <div className="grid shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
                         <div className="h-64 w-44 overflow-hidden rounded-lg">
                           <img
-                            alt=""
+                            alt="Baterías de litio"
+                            title="Baterías de litio"
                             src="/Bat-15kwh-2.webp"
                             className="size-full object-cover object-center"
                           />
                         </div>
                         <div className="h-64 w-44 overflow-hidden rounded-lg">
                           <img
-                            alt=""
+                            alt="Inversores solares"
+                            title="Paneles solares"
                             src="/IVPA10048-1.webp"
                             className="size-full object-cover object-center"
                           />
                         </div>
                         <div className="h-64 w-44 overflow-hidden rounded-lg">
                           <img
-                            alt=""
+                            alt="Estructura para instalación de paneles solares"
+                            title="Estructura para instalación de paneles solares"
                             src="/RAIL-CROSS-CONNECTER.webp"
                             className="size-full object-cover object-center"
                           />
@@ -130,12 +147,11 @@ export default function Productos() {
             </a>
           </div>
         </div>
-      </div>
-g
+      </section>
       <section id="productos">
         <div className='w-full flex flex-col gap-y-10 mx-auto max-w-5xl justify-center'>
           <h1 className='text-3xl font-bold tracking-tight text-gray-900 text-center'>Categorías</h1>
-          <div className='grid grid-cols-2 grid-flow-row lg:flex lg:flex-row gap-4 lg:gap-10 justify-center'>
+          <div className='grid grid-cols-2 grid-flow-row lg:flex lg:flex-row gap-4 lg:gap-10 justify-center mx-auto'>
             <a href="Productos/Baterias#baterias" className='rounded-md p-4 text-[#E73516] bg-transparent border shadow border-[#E73516] hover:text-white hover:bg-[#E73516] lg:w-52 flex justify-center items-center'>Baterías</a>
             <a href="Productos/Inversores#inversores" className='rounded-md p-4 text-[#E73516] bg-transparent border shadow border-[#E73516] hover:text-white hover:bg-[#E73516] lg:w-52 flex justify-center items-center'>Inversores</a>
             <a href="/Contacto" className='rounded-md p-4 text-[#E73516] bg-transparent border shadow border-[#E73516] hover:text-white hover:bg-[#E73516] lg:w-52 flex justify-center items-center'>Paneles Solares</a>
@@ -272,6 +288,7 @@ g
           </div>
         </div>
       </section>
-    </div>
+      </div>
+      </>
   );
 }
