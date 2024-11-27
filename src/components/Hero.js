@@ -7,7 +7,7 @@ export default function Hero() {
 
   return (
     <div className="bg-white">
-      
+      <Header/>
       <div className="relative isolate px-6 pt-14 lg:px-8">
         <div
           aria-hidden="true"
@@ -22,15 +22,7 @@ export default function Hero() {
           />
         </div>
         <div className="mx-auto max-w-7xl py-32 lg:py-56 animate-blurred-fade-in animate-duration-[300ms] animate-ease-in">
-          <div className="hidden lg:mb-8 lg:flex lg:justify-center">
-            <div className="relative rounded-full px-3 py-1 text-sm text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
-              Productos para todas tus necesidades eléctricas.{' '}
-              <Link href="/Productos" className="font-semibold text-[#E73516] scroll-smooth">
-                <span aria-hidden="true" className="absolute inset-0" />
-                Ver Productos <span aria-hidden="true">&rarr;</span>
-              </Link>
-            </div>
-          </div>
+         
           <div className="flex flex-col">
             <h1 className="mb-8 lg:text-balance text-5xl font-semibold tracking-tight text-gray-900 lg:text-7xl text-center">
               Daily Power
