@@ -34,7 +34,7 @@ export default function Values() {
             {stats.map((stat) => (
               <div key={stat.name} className="flex flex-col-reverse gap-1 items-center justify-center">
                 <dt className="text-base/7 text-gray-300 text-center">{stat.name}</dt>
-                <dd className="text-4xl font-semibold tracking-tight text-white"><img src={stat.src} className="w-16 h-16"/></dd>
+                <dd className="text-4xl font-semibold tracking-tight text-white"><img src={stat.src} className="w-16 h-16" alt={`Icono ${stat.name}`}/></dd>
               </div>
             ))}
           </dl>

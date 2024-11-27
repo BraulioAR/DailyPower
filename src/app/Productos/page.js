@@ -157,13 +157,17 @@ export default function Productos() {
             </div>
             {products.length < 4 &&
               <div className="text-center mt-6">
-                <button onClick={toggleShowAll} className="text-[#E73516] hover:text-[#C33F1A] font-semibold">
-                  {showAll ? (
-                    <IoArrowUpCircleOutline className="text-[#E73516] h-12 w-12 animate-bounce animate-infinite animate-ease-in " />
-                  ) : (
-                    <IoArrowDownCircleOutline className="text-[#E73516] h-12 w-12 animate-bounce animate-infinite animate-ease-in " />
-                  )}
-                </button>
+                <button
+                onClick={toggleShowAll}
+                className="text-[#E73516] hover:text-[#C33F1A] font-semibold"
+                aria-label={showAll ? "Ver menos" : "Ver más"}
+              >
+                {showAll ? (
+                  <IoArrowUpCircleOutline className="text-[#E73516] h-12 w-12 animate-bounce animate-infinite animate-ease-in" />
+                ) : (
+                  <IoArrowDownCircleOutline className="text-[#E73516] h-12 w-12 animate-bounce animate-infinite animate-ease-in" />
+                )}
+              </button>
               </div>
             }
           </div>
@@ -179,13 +183,17 @@ export default function Productos() {
             </div>
             {products.length < 4 &&
               <div className="text-center mt-6">
-                <button onClick={toggleShowAll} className="text-[#E73516] hover:text-[#C33F1A] font-semibold">
-                  {showAll ? (
-                    <IoArrowUpCircleOutline className="text-[#E73516] h-12 w-12 animate-bounce animate-infinite animate-ease-in " />
-                  ) : (
-                    <IoArrowDownCircleOutline className="text-[#E73516] h-12 w-12 animate-bounce animate-infinite animate-ease-in " />
-                  )}
-                </button>
+                <button
+                onClick={toggleShowAll}
+                className="text-[#E73516] hover:text-[#C33F1A] font-semibold"
+                aria-label={showAll ? "Ver menos" : "Ver más"}
+              >
+                {showAll ? (
+                  <IoArrowUpCircleOutline className="text-[#E73516] h-12 w-12 animate-bounce animate-infinite animate-ease-in" />
+                ) : (
+                  <IoArrowDownCircleOutline className="text-[#E73516] h-12 w-12 animate-bounce animate-infinite animate-ease-in" />
+                )}
+              </button>
               </div>
             }
           </div>
