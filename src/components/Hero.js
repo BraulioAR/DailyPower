@@ -1,13 +1,13 @@
 import Header from "@/components/Header";
 import Link from "next/link";
-import { Suspense, lazy } from 'react';
-
+import React, { Suspense, lazy, memo } from 'react';
 const LazyParagraph = lazy(() => import('../components/LazyParagraph'));
 
 
 export default function Hero() {
 
   return (
+    <React.memo>
     <div className="bg-white">
       <Header/>
       <div className="relative isolate px-6 pt-14 lg:px-8">
@@ -66,6 +66,7 @@ export default function Hero() {
           />
         </div>
       </div>
-    </div>
+      </div>
+      </React.memo>
   )
 }
