@@ -93,6 +93,7 @@ export default function ContactUs() {
             </div>
           )}
           <form name="contactus" onSubmit={handleSubmit} className="mx-auto mt-16 max-w-xl sm:mt-20" >
+            <input required type='hidden' name='form-name' value='contactus' />
             <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
               <div className="sm:col-span-2">
                 <label htmlFor="name" className="block text-sm/6 font-semibold text-gray-900">
@@ -101,7 +102,7 @@ export default function ContactUs() {
                 <div className="mt-2.5">
                   <input
                     id="name"
-                    name="form-name"
+                    name="name"
                     type="text"
                     value={formData.name}
                     onChange={handleChange}
