@@ -3,8 +3,9 @@
 <head></head>
 
 <body>
-    <form name="contactus" data-netlify="true" hidden>
+    <form name="contactus" data-netlify="true" netlify-honeypot="bot-field" hidden>
         <input required type="hidden" name="form-name" value="contactus" />
+        <input name="bot-field" />
         <input name="name" type="text" />
         <input name="company" type="text" />
         <input name="email" type="text" />

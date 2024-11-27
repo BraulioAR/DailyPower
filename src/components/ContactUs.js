@@ -28,46 +28,49 @@ export default function ContactUs() {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    const netlifyFormData = new FormData(e.target);
-    
+  const netlifyFormData = new FormData(e.target);
+
+  try {
+    // Hacemos la solicitud POST
     await fetch('/__forms.html', {
-        method: 'POST',
-        headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-        body: new URLSearchParams(netlifyFormData).toString()
-    })
-      .then(() => (
-        
-        setShowSuccess(true) 
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(netlifyFormData).toString()
+    });
 
-        // Clear the form fields
-    && setFormData({
-      name: '',
-      company: '',
-      email: '',
-      message: ''
-    })
+    // Si el acuerdo con la política de privacidad está marcado
+    if (agreed) {
+      // Mostrar mensaje de éxito
+      setShowSuccess(true);
 
-    // Hide the success message after 4 seconds
-    && setTimeout(() => {
-      setShowSuccess(false);
-    }, 4000)
-      )
-      
+      // Limpiar los campos del formulario
+      setFormData({
+        name: '',
+        company: '',
+        email: '',
+        message: ''
+      });
 
-    )
-
-    if (!formData.name || !formData.email || !formData.message || !agreed) {
-      setFormError('Por favor, acepta la política de privacidad.');
+      // Ocultar el mensaje de éxito después de 4 segundos
       setTimeout(() => {
-      setFormError('');
-    }, 4000);
-      return;
+        setShowSuccess(false);
+      }, 4000);
+    } else {
+      // Si no se acepta la política de privacidad, mostrar el mensaje de error
+      setFormError('Por favor, acepta la política de privacidad.');
+
+      // Limpiar el mensaje de error después de 2.5 segundos
+      setTimeout(() => {
+        setFormError('');
+      }, 2500);
     }
-    
-    
-  };
+  } catch (error) {
+    setFormError('Error al enviar el formulario. Por favor contáctanos via Whatsapp.');
+    console.error('Error al enviar el formulario:', error);
+  }
+};
 
   return (
     <div className="isolate bg-white px-6 py-24 sm:py-32 lg:px-8">
@@ -103,6 +106,7 @@ export default function ContactUs() {
           )}
           <form name="contactus" onSubmit={handleSubmit} className="mx-auto mt-16 max-w-xl sm:mt-20" >
             <input required type='hidden' name='form-name' value='contactus' />
+            <p className="hidden"><label>Don’t fill this out if you’re human: <input name="bot-field" /></label></p>
             <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
               <div className="sm:col-span-2">
                 <label htmlFor="name" className="block text-sm/6 font-semibold text-gray-900">
