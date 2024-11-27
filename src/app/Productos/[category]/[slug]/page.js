@@ -26,7 +26,14 @@ export async function generateMetadata({ params }) {
     };
   }
 
-  const { titulo, descripcion } = product;
+  const { titulo, descripcion, productImage } = product;
+
+  // Obtener el host desde los headers
+  const headersList = await headers();
+  const host = headersList.get("host");
+
+  // Construir la URL completa usando 'params'
+  const currentUrl = `https://${host}/Productos/${category}/${slug}`;
 
   return {
     title: titulo,
@@ -81,13 +88,7 @@ export default async function ProductoPage({ params }) {
     notFound(); // Si no se encuentra el producto, devuelve un 404
   }
 
-  // Obtener el host desde los headers
-  const headersList = await headers();
-  const host = headersList.get("host");
-
-  // Construir la URL completa usando 'params'
-  const currentUrl = `https://${host}/Productos/${category}/${slug}`;
-
+  
   const {
     titulo,
     descripcion,
@@ -101,8 +102,6 @@ export default async function ProductoPage({ params }) {
     titulosPdfAdicionales,
     garantia,
   } = product;
-
-const { jsonLd } = useHead()
 
 
   return (

@@ -33,7 +33,7 @@ export default function Hedaerr() {
               <span className="sr-only">Daily Power</span>
               <img
                 alt="Logo DP"
-                src="\logo-daily-power-1.webp"
+                src="/logo-daily-power-1.webp"
                  className="h-16 w-auto object-contain"
                  title="Daily Power WYX SRL, "
               />
