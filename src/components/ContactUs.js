@@ -29,11 +29,11 @@ export default function ContactUs() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-     const formData = new FormData(e.target);
+     const netlifyFormData = new FormData(e.target);
     await fetch('/__forms.html', {
         method: 'POST',
         headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-        body: new URLSearchParams(formData).toString()
+        body: new URLSearchParams(netlifyFormData).toString()
     });
 
     if (!formData.name || !formData.email || !formData.message || !agreed) {
