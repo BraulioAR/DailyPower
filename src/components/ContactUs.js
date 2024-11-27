@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { Field, Label, Switch } from '@headlessui/react'
 import dynamic from 'next/dynamic';
 import ContactCard from '@/components/ContactCard'
+import forms from
 
 const LeafletMap = dynamic(() => import('./LeafletMap'), { ssr: false });
 
@@ -29,7 +30,7 @@ export default function ContactUs() {
   const handleSubmit = async (e) => {
     e.preventDefault();
      const formData = new FormData(e.target);
-    await fetch('@/utils/__forms.html', {
+    await fetch('../utils/__forms.html', {
         method: 'POST',
         headers: {'Content-Type': 'application/x-www-form-urlencoded'},
         body: new URLSearchParams(formData).toString()
