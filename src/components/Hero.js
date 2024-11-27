@@ -1,13 +1,12 @@
 import Header from "@/components/Header";
 import Link from "next/link";
-import React, { Suspense, lazy, memo } from 'react';
+import React, { Suspense, lazy } from 'react';
 const LazyParagraph = lazy(() => import('../components/LazyParagraph'));
 
 
 export default function Hero() {
 
   return (
-    <React.memo>
     <div className="bg-white">
       <Header/>
       <div className="relative isolate px-6 pt-14 lg:px-8">
@@ -37,9 +36,9 @@ export default function Hero() {
             <h1 className="mb-8 lg:text-balance text-5xl font-semibold tracking-tight text-gray-900 lg:text-7xl">
               Daily Power
             </h1>
-            <Suspense fallback={<div>...</div>}>
-              <LazyParagraph />
-            </Suspense>
+            <p>
+      Representante exclusivo para República Dominicana de Baterías Aokly. Aplicaciones: Inversores, Paneles Solares y UPS.
+    </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <Link
                 href="/Productos"
@@ -67,6 +66,5 @@ export default function Hero() {
         </div>
       </div>
       </div>
-      </React.memo>
   )
 }
