@@ -32,15 +32,13 @@ export default function Hero() {
               </Link>
             </div>
           </div>
-          <div className="flex flex-col">
-            <div className="flex flex-col justify-center">
+          <div className="flex flex-col justify-center items-center ">
             <h1 className="mb-8 lg:text-balance text-5xl font-semibold tracking-tight text-gray-900 lg:text-7xl text-center"  >
               Daily Power
             </h1>
-            <h2 className="font-medium text-gray-500 lg:text-xl text-center ">
+            <h2 className="font-medium text-gray-500 lg:text-xl text-center max-w-2xl ">
               Representante exclusivo para República Dominicana de Baterías Aokly. Aplicaciones: Inversores, Paneles Solares y UPS.
               </h2>
-             </div> 
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <Link
                 href="/Productos"
