@@ -2,7 +2,6 @@
 import { fetchProductBySlugAndCategory } from '@/app/contenfulClient';
 import { notFound } from 'next/navigation';
 import { headers } from "next/headers";
-import Script from 'next/script';
 
 
 const categoryMap = {
@@ -26,14 +25,7 @@ export async function generateMetadata({ params }) {
     };
   }
 
-  const { titulo, descripcion, productImage } = product;
-
-  // Obtener el host desde los headers
-  const headersList = await headers();
-  const host = headersList.get("host");
-
-  // Construir la URL completa usando 'params'
-  const currentUrl = `https://${host}/Productos/${category}/${slug}`;
+  const { titulo, descripcion } = product;
 
   return {
     title: titulo,
@@ -54,26 +46,6 @@ export async function generateMetadata({ params }) {
         product.productImage?.[0]?.fields?.file?.url,
       ],
     },
-     jsonLd: {
-      "@context": "https://schema.org",
-      "@type": "Product",
-      "name": titulo,
-      "image": [
-        productImage?.[0]?.fields.file.url,
-        productImage?.[1]?.fields.file.url
-      ],
-      "description": descripcion,
-      "brand": {
-        "@type": "Brand",
-        "name": "DailyPower"
-      },
-      "offers": {
-        "@type": "Offer",
-        "url": currentUrl,
-        "itemCondition": "https://schema.org/NewCondition",
-        "availability": "https://schema.org/InStock"
-      }
-    }
   };
 }
 
@@ -88,7 +60,13 @@ export default async function ProductoPage({ params }) {
     notFound(); // Si no se encuentra el producto, devuelve un 404
   }
 
-  
+  // Obtener el host desde los headers
+  const headersList = await headers();
+  const host = headersList.get("host");
+
+  // Construir la URL completa usando 'params'
+  const currentUrl = `https://${host}/Productos/${category}/${slug}`;
+
   const {
     titulo,
     descripcion,
@@ -104,7 +82,35 @@ export default async function ProductoPage({ params }) {
   } = product;
 
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": titulo,
+    "image": [
+      productImage?.[0]?.fields.file.url,
+      productImage?.[1]?.fields.file.url
+    ],
+    "description": descripcion,
+    "brand": {
+      "@type": "Brand",
+      "name": "DailyPower"
+    },
+    "offers": {
+      "@type": "Offer",
+      "url": currentUrl,
+      "itemCondition": "https://schema.org/NewCondition",
+      "availability": "https://schema.org/InStock"
+    }
+  };
+
+  
+
+
   return (
+    <> <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <section className="bg-white mt-20">
         <article className="pt-6">
           {/* Image gallery */}
@@ -238,5 +244,6 @@ export default async function ProductoPage({ params }) {
           )}
         </article>
       </section>
+      </>
   );
 }
