@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
-import contentfulClient, { fetchProducts } from '@/utils/contenfulClient'; 
+import { fetchProducts } from '@/utils/contenfulClient'; 
 import { IoArrowDownCircleOutline, IoArrowUpCircleOutline } from "react-icons/io5";
 import ProductView from '@/components/ProductView';
 
