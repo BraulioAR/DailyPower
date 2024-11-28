@@ -1,5 +1,4 @@
 import AboutUs from "@/components/AboutUs";
-import Clients from "@/components/Clients";
 import NewProducts from "@/components/NewProducts";
 import Hero from "@/components/Hero";
 import Values from "@/components/Values";
@@ -17,7 +16,6 @@ export default function Home() {
       <Values/>
       <AboutUs />
       <NewProducts />
-      <Clients />
           <section className="w-full h-full bg-[#292929] relative z-40">
       <div className="w-full h-full max-w-7xl mx-auto">
         <div className="w-full h-full flex flex-col lg:flex-row gap-4 lg:gap-0  items-center justify-between py-9">
