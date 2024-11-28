@@ -1,14 +1,16 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
 import ContactCard from '@/components/ContactCard';
 
 const LeafletMap = dynamic(() => import('./LeafletMap'), { ssr: false });
 
 export default function ContactUs() {
+  const [formLoaded, setFormLoaded] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
-    // Agregar el script de HubSpot dinámicamente
     const script = document.createElement('script');
     script.src = '//js.hsforms.net/forms/embed/v2.js';
     script.type = 'text/javascript';
@@ -16,20 +18,33 @@ export default function ContactUs() {
     script.charset = 'utf-8';
 
     script.onload = () => {
-      // Crear el formulario de HubSpot una vez que el script haya cargado
       if (window.hbspt) {
         window.hbspt.forms.create({
           portalId: '19748987',
           formId: '41f9a36b-b12e-4867-9ef6-d0763b151a8d',
-          target: '#hubspot-form', // El contenedor donde se cargará el formulario
+          target: '#hubspot-form',
+          onFormReady: () => {
+            setFormLoaded(true); // El formulario se cargó con éxito
+            setIsLoading(false); // Dejar de mostrar el estado de carga
+          },
         });
       }
     };
 
+    script.onerror = () => {
+      setIsLoading(false); // Dejar de mostrar el estado de carga si ocurre un error
+    };
+
     document.body.appendChild(script);
 
-    // Limpieza del script al desmontar el componente
+    const timeout = setTimeout(() => {
+      if (!formLoaded) {
+        setIsLoading(false); // Si después de un tiempo no se carga, dejar de mostrar la carga
+      }
+    }, 5000); // Tiempo de espera máximo antes de determinar que falló
+
     return () => {
+      clearTimeout(timeout);
       document.body.removeChild(script);
     };
   }, []);
@@ -58,10 +73,19 @@ export default function ContactUs() {
       </div>
       <section className="w-full flex lg:flex-row flex-col justify-center gap-14">
         <div className="flex flex-col justify-center">
-          <h2 className="text-2xl font-bold tracking-tight text-gray-900">
+          <h2 className="text-2xl font-bold tracking-tight text-gray-900 mt-4">
             Envíanos un mensaje
           </h2>
-          {/* Contenedor para el formulario de HubSpot */}
+          {isLoading && (
+            <div className="bg-blue-100 mt-8 mb-0 lg:my-64 text-blue-800 p-4 rounded-md max-w-md">
+              Cargando el formulario, por favor espera...
+            </div>
+          )}
+          {!isLoading && !formLoaded && (
+            <div className="bg-yellow-100 mt-8 mb-0 lg:my-64 text-yellow-800 p-4 rounded-md max-w-md">
+              Parece que un bloqueador de anuncios está impidiendo cargar el formulario. Por favor, desactiva el bloqueador y recarga la página.
+            </div>
+          )}
           <div id="hubspot-form" className="mt-8"></div>
         </div>
         <ContactCard />
