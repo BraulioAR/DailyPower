@@ -2,8 +2,8 @@ import { createClient } from 'contentful';
 
 // Inicializa el cliente de Contentful
 const client = createClient({
-  space: 'wbod95ak2u6e', // Reemplaza con tu space ID
-  accessToken: 'fLik6D9n-h1xnYe3qZEargvUzXI16VAdxkzJZMhA91Y', // Reemplaza con tu access token
+  space: process.env.CONTENTFUL_SPACE_ID, // Reemplaza con tu space ID
+  accessToken: process.env.CONTENTFUL_API_KEY, // Reemplaza con tu access token
 });
 
 // Cache simple para evitar llamadas repetidas a la API

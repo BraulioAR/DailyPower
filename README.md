@@ -1,36 +1,52 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# DailyPower
 
-## Getting Started
+**DailyPower** es una página web para una empresa dedicada a la venta de insumos, como baterías. En esta web, los administradores pueden gestionar productos, ver información detallada de cada uno, y los clientes pueden obtener detalles sobre los productos y realizar compras.
 
-First, run the development server:
+## Características
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Administración de productos**: Los administradores pueden agregar, editar y eliminar productos de manera sencilla.
+- **Página de productos**: Los clientes pueden ver los productos con imágenes, títulos, descripciones, PDF descargables de especificaciones, ventajas y diagramas de conexión.
+- **Optimización SEO**: Se ha implementado un enfoque de SEO para asegurar un buen posicionamiento de la página en los motores de búsqueda.
+- **Formulario de contacto**: Integración con HubSpot para enviar consultas o solicitudes a la empresa.
+- **Ubicación de la empresa**: Mapa interactivo utilizando **Leaflet.js** para mostrar la ubicación de la empresa.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Tecnologías utilizadas
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+- **Frontend**:
+  - [Next.js](https://nextjs.org/) (React Framework)
+  - [Tailwind CSS](https://tailwindcss.com/)
+  - [HubSpot Forms](https://www.hubspot.com/products/forms)
+  - [Leaflet.js](https://leafletjs.com/) para mapas interactivos
+- **Backend y Base de Datos**:
+  - **Contentful** para la gestión de contenido de productos
+  - **Netlify** para el despliegue del frontend y manejo de DNS
+  - **Cloudinary** para almacenamiento de imágenes de productos
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Funcionalidades
 
-## Learn More
+### Administración de productos
 
-To learn more about Next.js, take a look at the following resources:
+- Los administradores pueden agregar productos, especificando:
+  - Imagen del producto
+  - Título y descripción
+  - PDF con especificaciones técnicas
+  - Ventajas y diagrama de conexión
+  - Todo esto se puede hacer fácilmente desde el panel de administración en **Contentful**.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Mapa de ubicación
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Se integra un mapa interactivo con **Leaflet.js** para mostrar la ubicación de la empresa.
 
-## Deploy on Vercel
+### Formularios de contacto
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Se utiliza la integración con **HubSpot** para manejar los formularios de contacto. Si el formulario no carga correctamente, se le informa al usuario que podría tener un bloqueador de anuncios activo.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## SEO
+
+Se ha implementado una optimización SEO básica para asegurar que los productos y la página principal tengan un buen posicionamiento en Google.
+
+### Estrategias SEO implementadas:
+
+- **Meta tags** adecuados para cada página y producto.
+- **Sitemap.xml** para facilitar el rastreo de Googlebot.
+- **Optimización de imágenes** para tiempos de carga rápidos.

@@ -20,8 +20,8 @@ export default function ContactUs() {
     script.onload = () => {
       if (window.hbspt) {
         window.hbspt.forms.create({
-          portalId: '19748987',
-          formId: '41f9a36b-b12e-4867-9ef6-d0763b151a8d',
+          portalId: process.env.HUBSPOT_PORTAL_ID,
+          formId: process.env.NEXT_PUBLIC_HUBSPOT_FORM_ID,
           target: '#hubspot-form',
           onFormReady: () => {
             setFormLoaded(true); // El formulario se cargó con éxito
