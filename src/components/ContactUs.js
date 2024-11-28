@@ -1,76 +1,38 @@
-'use client'
+'use client';
 
-import { useState } from 'react'
-import { Field, Label, Switch } from '@headlessui/react'
+import { useEffect } from 'react';
 import dynamic from 'next/dynamic';
-import ContactCard from '@/components/ContactCard'
-
+import ContactCard from '@/components/ContactCard';
 
 const LeafletMap = dynamic(() => import('./LeafletMap'), { ssr: false });
 
 export default function ContactUs() {
-  const [agreed, setAgreed] = useState(false);
-  const [formData, setFormData] = useState({
-    name: '',
-    company: '',
-    email: '',
-    message: ''
-  });
-  const [showSuccess, setShowSuccess] = useState(false);
-  const [formError, setFormError] = useState('');
+  useEffect(() => {
+    // Agregar el script de HubSpot dinámicamente
+    const script = document.createElement('script');
+    script.src = '//js.hsforms.net/forms/embed/v2.js';
+    script.type = 'text/javascript';
+    script.async = true;
+    script.charset = 'utf-8';
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
+    script.onload = () => {
+      // Crear el formulario de HubSpot una vez que el script haya cargado
+      if (window.hbspt) {
+        window.hbspt.forms.create({
+          portalId: '19748987',
+          formId: '41f9a36b-b12e-4867-9ef6-d0763b151a8d',
+          target: '#hubspot-form', // El contenedor donde se cargará el formulario
+        });
+      }
+    };
 
-  const handleSubmit = async (e) => {
-  e.preventDefault();
+    document.body.appendChild(script);
 
-  const netlifyFormData = new FormData(e.target);
-
-  try {
-    // Hacemos la solicitud POST
-    await fetch('/__forms.html', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams(netlifyFormData).toString()
-    });
-
-    // Si el acuerdo con la política de privacidad está marcado
-    if (agreed) {
-      // Mostrar mensaje de éxito
-      setShowSuccess(true);
-
-      // Limpiar los campos del formulario
-      setFormData({
-        name: '',
-        company: '',
-        email: '',
-        message: ''
-      });
-
-      // Ocultar el mensaje de éxito después de 4 segundos
-      setTimeout(() => {
-        setShowSuccess(false);
-      }, 4000);
-    } else {
-      // Si no se acepta la política de privacidad, mostrar el mensaje de error
-      setFormError('Por favor, acepta la política de privacidad.');
-
-      // Limpiar el mensaje de error después de 2.5 segundos
-      setTimeout(() => {
-        setFormError('');
-      }, 2500);
-    }
-  } catch (error) {
-    setFormError('Error al enviar el formulario. Por favor contáctanos via Whatsapp.');
-    console.error('Error al enviar el formulario:', error);
-  }
-};
+    // Limpieza del script al desmontar el componente
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
 
   return (
     <div className="isolate bg-white px-6 py-24 sm:py-32 lg:px-8">
@@ -94,125 +56,15 @@ export default function ContactUs() {
           Estamos aquí para atenderte
         </p>
       </div>
-      <section className='w-full flex lg:flex-row flex-col justify-center gap-14'>
-        <div className='flex flex-col justify-center'>
+      <section className="w-full flex lg:flex-row flex-col justify-center gap-14">
+        <div className="flex flex-col justify-center">
           <h2 className="text-2xl font-bold tracking-tight text-gray-900">
-            Envianos un mensaje
+            Envíanos un mensaje
           </h2>
-          {showSuccess && (
-            <div className="bg-green-100 text-green-800 p-4 rounded-md mt-4 max-w-md">
-              <span>Mensaje enviado con éxito, nuestro equipo estará en contacto contigo pronto.</span>
-            </div>
-          )}
-          <form name="contactus" onSubmit={handleSubmit} className="mx-auto mt-16 max-w-xl sm:mt-20" >
-            <input required type='hidden' name='form-name' value='contactus' />
-            <p className="hidden"><label>Don’t fill this out if you’re human: <input name="bot-field" /></label></p>
-            <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
-              <div className="sm:col-span-2">
-                <label htmlFor="name" className="block text-sm/6 font-semibold text-gray-900">
-                  Nombre
-                </label>
-                <div className="mt-2.5">
-                  <input
-                    id="name"
-                    name="name"
-                    type="text"
-                    value={formData.name}
-                    onChange={handleChange}
-                    autoComplete="given-name"
-                    className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6"
-                    required
-                  />
-                </div>
-              </div>
-              <div className="sm:col-span-2">
-                <label htmlFor="company" className="block text-sm/6 font-semibold text-gray-900">
-                  Empresa
-                </label>
-                <div className="mt-2.5">
-                  <input
-                    id="company"
-                    name="company"
-                    type="text"
-                    value={formData.company}
-                    onChange={handleChange}
-                    autoComplete="organization"
-                    className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6"
-                  />
-                </div>
-              </div>
-              <div className="sm:col-span-2">
-                <label htmlFor="email" className="block text-sm/6 font-semibold text-gray-900">
-                  Email
-                </label>
-                <div className="mt-2.5">
-                  <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    autoComplete="email"
-                    className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6"
-                    required
-                  />
-                </div>
-              </div>
-              <div className="sm:col-span-2">
-                <label htmlFor="message" className="block text-sm/6 font-semibold text-gray-900">
-                  Mensaje
-                </label>
-                <div className="mt-2.5">
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows={4}
-                    value={formData.message}
-                    onChange={handleChange}
-                    className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6"
-                    required
-                  />
-                </div>
-              </div>
-              {formError && (
-                    <div className="bg-red-100 text-red-800 p-4 rounded-md mt-4 col-span-2">
-                      <span>{formError}</span>
-                    </div>
-                  )}
-              <Field className="flex gap-x-4 sm:col-span-2">
-                <div className="flex h-6 items-center">
-                  <Switch
-                    checked={agreed}
-                    onChange={setAgreed}
-                    className="group flex w-8 flex-none cursor-pointer rounded-full bg-gray-200 p-px ring-1 ring-inset ring-gray-900/5 transition-colors duration-200 ease-in-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#E73516] data-[checked]:bg-[#E73516]"
-                  >
-                    <span className="sr-only">Estoy de acuerdo con la política de privacidad.</span>
-                    <span
-                      aria-hidden="true"
-                      className="size-4 transform rounded-full bg-white shadow-sm ring-1 ring-gray-900/5 transition duration-200 ease-in-out group-data-[checked]:translate-x-3.5"
-                    />
-                  </Switch>
-                </div>
-                <Label className="text-sm/6 text-gray-600">
-                  Al marcar esta opción, aceptas el uso de tu información de contacto para ser contactado por un representante de {' '}
-                  <a href="/Nosotros" className="font-semibold text-[#E73516]">
-                    Daily&nbsp;Power&nbsp;WYX&nbsp;SRL.
-                  </a>
-                  .
-                </Label>
-              </Field>
-            </div>
-            <div className="mt-4 flex justify-center gap-x-6">
-              <button
-                type="submit"
-                className="inline-flex justify-center rounded-md border border-transparent bg-[#E73516] px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-[#EC7610] focus:outline-none focus:ring-2 focus:ring-[#E73516] focus:ring-offset-2"
-              >
-                Enviar mensaje
-              </button>
-            </div>
-          </form>
+          {/* Contenedor para el formulario de HubSpot */}
+          <div id="hubspot-form" className="mt-8"></div>
         </div>
-        <ContactCard/>
+        <ContactCard />
       </section>
       <section className="max-w-6xl gap-4 m-auto px-6 pt-10 pb-20 w-full">
         <h2 className="text-gray-900 pb-4 text-center lg:text-start text-4xl font-bold">
