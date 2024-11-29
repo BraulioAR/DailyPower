@@ -1,28 +1,41 @@
-
-'use client'
-import { ImPower } from "react-icons/im";
-import { useState, useEffect } from "react";
+'use client';
+import { ImPower } from 'react-icons/im';
+import { useState, useEffect } from 'react';
 
 export default function AboutUs() {
-  const [imageUrl, setImageUrl] = useState(null);
+  const [content, setContent] = useState(null);
 
-   useEffect(() => {
-    // Hacer la solicitud para obtener la imagen de Contentful
-    const fetchImage = async () => {
+  useEffect(() => {
+    const fetchContent = async () => {
       try {
-        const response = await fetch("/api/contentful?content_type=imagenGeneral");
+        const response = await fetch('/api/contentful?content_type=imagenGeneral');
         const data = await response.json();
         if (data && data.length > 0) {
-          const url=`https:${data[0].image}`
-          setImageUrl(url); // Asumiendo que la imagen está en el primer objeto
+          setContent(data[0]); // Asumimos que el contenido está en el primer objeto
         }
       } catch (error) {
-        console.error("Error al obtener la imagen:", error);
+        console.error('Error al obtener los datos:', error);
       }
     };
 
-    fetchImage();
-  }, []); // Solo se ejecuta una vez al montar el componente
+    fetchContent();
+  }, []);
+
+  if (!content) {
+    return <p>Cargando datos...</p>; // Muestra un mensaje mientras se cargan los datos
+  }
+
+  const {
+    titulo,
+    subtitulo,
+    primerParrafo,
+    segundoParrafo,
+    tercerParrafo,
+    mision,
+    vision,
+    valores,
+    image,
+  } = content;
 
   return (
     <div className="relative isolate overflow-hidden bg-white px-6 pt-24 pb-12 lg:overflow-visible lg:px-0">
@@ -52,65 +65,62 @@ export default function AboutUs() {
             <div className="lg:max-w-lg">
               <p className="text-base/7 font-semibold text-[#E73516]">Sobre Nosotros</p>
               <h1 className="mt-2 text-pretty text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl">
-                DAILY POWER WYX SRL
+                {titulo}
               </h1>
-              <p className="mt-6  text-gray-700 text-justify">
-                En DAILY POWER WYX SRL ponemos a su disposición baterías libres de mantenimiento para vehículos y sistemas de energía renovable; así como una amplia variedad en materiales y equipos para sistemas fotovoltaicos. Nuestro compromiso es ofrecer productos de alta calidad con un servicio eficiente que agregue valor a los proyectos de nuestros clientes.
-              </p>
+              <p className="mt-6 text-gray-700 text-justify">{primerParrafo}</p>
             </div>
           </div>
         </div>
         <div className="-ml-12 -mt-12 p-12 lg:sticky lg:top-4 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:overflow-hidden">
           <div>
-      {imageUrl ? (
-        <img
-          alt="Team Daily Power"
-          src={imageUrl}
-          width={768}
-          height={768}
-          className="w-[48rem] h-auto max-w-none rounded-xl bg-gray-900 shadow-xl ring-1 ring-gray-400/10 hidden lg:block"
-        />
-      ) : (
-        <p>Cargando imagen...</p> // Muestra un mensaje mientras se carga la imagen
-      )}
-    </div>
+            {image ? (
+              <img
+                alt="Team Daily Power"
+                src={`https:${image}`}
+                width={768}
+                height={768}
+                className="w-[48rem] h-auto max-w-none rounded-xl bg-gray-900 shadow-xl ring-1 ring-gray-400/10 hidden lg:block"
+              />
+            ) : (
+              <p>Cargando imagen...</p>
+            )}
+          </div>
         </div>
         <div className="lg:col-span-2 lg:col-start-1 lg:row-start-2 lg:mx-auto lg:grid lg:w-full lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
           <div className="lg:pr-4">
             <div className="max-w-xl text-base/7 text-gray-700 lg:max-w-lg">
-              <p className='text-justify'>
-                En el campo de la energía solar, contamos con equipos para la implementación de cualquier proyecto: paneles solares, Inversores on-grid e Inversores off-grid, Controladores solares, Baterías de Gel, Baterías de Litio, materiales de instalación, etc. Como importador, cooperamos con líderes empresas de energía solar en China, que se centran en la calidad, la eficiencia y la estabilidad. Al mismo tiempo, brindamos soporte técnico para que nuestros clientes obtengan soluciones de proyectos de manera más profesional, rápida y conveniente.
-              </p>
+              <p className="text-justify">{segundoParrafo}</p>
               <ul role="list" className="mt-8 space-y-8 text-gray-600">
                 <li className="flex gap-x-3">
-                  <ImPower  aria-hidden="true" className="mt-1 text-2xl flex-none text-[#E73516]" />
+                  <ImPower aria-hidden="true" className="mt-1 text-2xl flex-none text-[#E73516]" />
                   <span>
-                    <strong className="font-semibold text-gray-900">Misión<br/> </strong> Brindar a nuestros clientes soluciones seguras, estables y eficientes con productos y servicios profesionales de alta calidad.
+                    <strong className="font-semibold text-gray-900">Misión<br /></strong>
+                    {mision}
                   </span>
                 </li>
                 <li className="flex gap-x-3">
                   <ImPower aria-hidden="true" className="mt-1 text-2xl flex-none text-[#E73516]" />
                   <span>
-                    <strong className="font-semibold text-gray-900">Visión<br/></strong> Convertirnos en un proveedor reconocido de productos de alta calidad en el campo solar dominicano y en el campo de las baterías, y brindar profesionalismo y valor al mercado.
+                    <strong className="font-semibold text-gray-900">Visión<br /></strong>
+                    {vision}
                   </span>
                 </li>
                 <li className="flex gap-x-3">
                   <ImPower aria-hidden="true" className="mt-1 text-2xl flex-none text-[#E73516]" />
                   <span>
                     <strong className="font-semibold text-gray-900">Valores</strong>
-                    <ul className='list-disc'>
-                    <li>Responsabilidad</li>
-                    <li>Cooperación</li>
-                    <li>Honestidad</li>
-                    <li>Innovación</li>
+                    <ul className="list-disc ml-6">
+                      {valores.map((valor, index) => (
+                        <li key={index}>{valor}</li>
+                      ))}
                     </ul>
                   </span>
                 </li>
               </ul>
-              <h2 className="mt-16 text-2xl font-bold tracking-tight text-gray-900 text-start lg:text-justify">Somos representantes exclusivos de AOKLY en República Dominicana.</h2>
-              <p className="mt-6 text-justify">
-                AOKLY es la fábrica de baterías más grande del sur de China con más de 30 años de experiencia en I+D y producción. Sus productos son baterías GEL, baterías AGM, baterías de automóviles, baterías de vehículos eléctricos, baterías de montacargas, baterías de litio, etc. La fábrica cuenta con equipos de producción e instrumentos de prueba avanzados importados de Italia, Canadá y Alemania, además de una amplia variedad de baterías selladas de alta tecnología y líneas de producción automatizadas. Aokly mantiene un estricto control de la calidad en sus productos, sus procesos productivos han adoptado estándares internacionales, en los cuales hemos sido evaluados y certificados, como son: ISO9001, TS16949, ISO14001 en el sistema de control de calidad y el sistema ambiental, ROHS y las pruebas completas de IEC60095, etc. Ha sido reconocido por clientes globales en el mercado.
-              </p>
+              <h2 className="mt-16 text-2xl font-bold tracking-tight text-gray-900 text-start lg:text-justify">
+                {subtitulo}
+              </h2>
+              <p className="mt-6 text-justify">{tercerParrafo}</p>
             </div>
           </div>
         </div>

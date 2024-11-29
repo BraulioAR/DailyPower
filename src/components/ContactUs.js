@@ -10,7 +10,7 @@ export default function ContactUs() {
   const [formLoaded, setFormLoaded] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [hubspotConfig, setHubspotConfig] = useState(null);
-
+ 
   useEffect(() => {
     const fetchHubspotConfig = async () => {
       try {
@@ -67,6 +67,8 @@ export default function ContactUs() {
       document.body.removeChild(script);
     };
   }, [hubspotConfig]);
+
+ 
 
   return (
     <div className="isolate bg-white px-6 py-24 sm:py-32 lg:px-8">

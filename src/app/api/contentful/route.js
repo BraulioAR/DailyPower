@@ -38,7 +38,26 @@ export async function GET(request) {
       // Si es imagenGeneral
       if (contentType === 'imagenGeneral') {
         return {
+          titulo: item.fields.titulo,
+          subtitulo: item.fields.subtitulo,
+          primerParrafo: item.fields.primerParrafo,
+          segundoParrafo: item.fields.segundoParrafo,
+          tercerParrafo: item.fields.parrafoTres,
+          mision: item.fields.mision,
+          vision: item.fields.vision,
+          valores: item.fields.valores,
           image:item.fields.nosotros?.fields.file.url
+        };
+      }
+
+      // Si es datosContacto
+      if (contentType === 'datosContacto') {
+        return {
+          telefono: item.fields.telefono,
+          direccion: item.fields.direccion,
+          instagram: item.fields.cuentasDeInstagram,
+          horarioWeek: item.fields.horarioWeek,
+          horarioWeekend: item.fields.horarioWeekend
         };
       }
 
