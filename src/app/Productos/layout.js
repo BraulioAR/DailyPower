@@ -37,29 +37,7 @@ export const metadata = {
   },
 }
 
-export async function getStaticProps() {
-  try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/contentful?content_type=preguntaFrecuente`);
 
-    const data = await response.json();
-
-    const url = (`${process.env.NEXT_PUBLIC_API_URL}/api/contentful?content_type=preguntaFrecuente`);
-    console.log(url);
-    return {
-      props: {
-        accordionItems: data,
-      },
-      revalidate: 60, // Opcional, si deseas que la página se regenere cada 60 segundos
-    };
-  } catch (error) {
-    console.error('Error al obtener preguntas frecuentes:', error);
-    return {
-      props: {
-        accordionItems: [],
-      },
-    };
-  }
-}
 
 const Layout = ({ children }) => {
     return (<>
