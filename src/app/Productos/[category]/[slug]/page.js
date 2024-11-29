@@ -1,4 +1,3 @@
-
 import { fetchProductBySlugAndCategory } from '@/utils/contenfulClient';
 import { notFound } from 'next/navigation';
 
@@ -19,12 +18,13 @@ export async function generateMetadata({ params }) {
   const { titulo, descripcion } = product;
 
   return {
+    metadataBase: new URL('https://dailypower.com.do'),
     title: titulo,
     description: descripcion,
     openGraph: {
       title: titulo,
       description: descripcion,
-      url: `https://dailypower.com.do/Productos/${category}/${slug}`,
+      url: `/Productos/${category}/${slug}`,
       images: [
         product.productImage?.[0]?.fields?.file?.url,
         product.productImage?.[1]?.fields?.file?.url,

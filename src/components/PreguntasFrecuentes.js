@@ -1,27 +1,31 @@
+'use client';
+
 import Accordion from "@/components/Accordion";
+import { useEffect, useState } from "react";
 
-export default async function PreguntasFrecuentes() {
+export default function PreguntasFrecuentes() {
+  const [accordionItems, setAccordionItems] = useState([]);
 
-  
+  useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch('http:localhost:3000/api/contentful?content_type=preguntaFrecuente');
+        const response = await fetch('/api/contentful?content_type=preguntaFrecuente');
         const data = await response.json();
-        return data;
+        setAccordionItems(data);
       } catch (error) {
         console.error('Error al obtener productos:', error);
       } 
-  };
-  
-  const questions = await fetchProducts();
-  console.log(questions);
+    };
+
+    fetchProducts();
+  }, []);
 
   return (
     <div className="w-2/3 mx-auto">
-      {questions.length > 0 ? (
-        <Accordion items={questions} />
+      {accordionItems.length > 0 ? (
+        <Accordion items={accordionItems} />
       ) : (
-        <p className="text-center text-gray-500">Cargando preguntas frecuentes...</p>
+        <p className="text-center text-gray-500">No hay preguntas frecuentes</p>
       )}
     </div>
   );

@@ -27,9 +27,7 @@ export const metadata = {
   },
 };
 
-
 export default function FAQs() {    
-
 
     return (
         <section className=" w-full h-full flex flex-col justify-center items-center lg:items-start lg:flex-row gap-12 py-40 max-w-7xl mx-auto ">    

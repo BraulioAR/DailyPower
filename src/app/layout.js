@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 const openSans = Open_Sans({ subsets: ['latin'], weight: ["400", "500", "600", "700"] })
 
 export const metadata = {
+  metadataBase: new URL("https://www.dailypower.com.do"),
   icons: [
     {
       sizes: '57x57',

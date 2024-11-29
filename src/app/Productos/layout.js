@@ -1,6 +1,7 @@
 import Header from "@/components/Header"
 
 export const metadata = {
+    metadataBase: new URL("https://www.dailypower.com.do"),
     title: 'Baterías de Gelatina, Paneles Solares, Inversores y Más para tu Sistema de Energía Solar | DailyPower',
     description: 'Encuentra baterías solares, de litio, para inversores y más en DailyPower. Ofrecemos productos de alta calidad y fiabilidad con la mejor garantía del mercado, ideal para sistemas solares, UPS, música para vehículos y más. Ubicados en Santo Domingo, garantizamos la mejor experiencia de uso y servicio.',
     keywords: [
@@ -15,7 +16,7 @@ export const metadata = {
     title: "Productos de Energía Solar | Baterías, Inversores y Más | DailyPower",
     description:
       "DailyPower ofrece productos confiables y de alta calidad para sistemas de energía solar, incluyendo baterías solares, inversores y paneles solares.",
-    url: "https://www.dailypower.com/Productos", // Cambia a la URL real
+    url: "/Productos", // Cambia a la URL real
     type: "website",
     images: [
       {
