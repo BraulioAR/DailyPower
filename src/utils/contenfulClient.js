@@ -2,8 +2,8 @@ import { createClient } from 'contentful';
 
 // Inicializa el cliente de Contentful
 const client = createClient({
-  space: process.env.CONTENTFUL_SPACE_ID, // Reemplaza con tu space ID
-  accessToken: process.env.CONTENTFUL_API_KEY, // Reemplaza con tu access token
+  space: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE, // Reemplaza con tu space ID
+  accessToken: process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN, // Reemplaza con tu access token
 });
 
 // Cache simple para evitar llamadas repetidas a la API
@@ -96,7 +96,7 @@ export async function fetchProducts() {
     return items;
   } catch (error) {
     console.error('Error al obtener productos:', error);
-    return []; // Devolver siempre algo consistente (vacío si no hay productos)
+    return []; // Devolver siempre algo consistente
   }
 }
 

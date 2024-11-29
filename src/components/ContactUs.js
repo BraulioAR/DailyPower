@@ -20,7 +20,7 @@ export default function ContactUs() {
     script.onload = () => {
       if (window.hbspt) {
         window.hbspt.forms.create({
-          portalId: process.env.HUBSPOT_PORTAL_ID,
+          portalId: process.env.NEXT_PUBLIC_HUBSPOT_PORTAL_ID,
           formId: process.env.NEXT_PUBLIC_HUBSPOT_FORM_ID,
           target: '#hubspot-form',
           onFormReady: () => {
@@ -77,7 +77,7 @@ export default function ContactUs() {
             Envíanos un mensaje
           </h2>
           {isLoading && (
-            <div className="bg-blue-100 mt-8 mb-0 lg:my-64 text-blue-800 p-4 rounded-md max-w-md">
+            <div className="bg-orange-100 mt-8 mb-0 lg:my-64 text-orange-800 p-4 rounded-md max-w-md">
               Cargando el formulario, por favor espera...
             </div>
           )}

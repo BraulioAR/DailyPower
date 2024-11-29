@@ -1,6 +1,5 @@
 'use client';
 import { useEffect, useState } from 'react';
-import { fetchProducts } from '@/utils/contenfulClient'; 
 import { IoArrowDownCircleOutline, IoArrowUpCircleOutline } from "react-icons/io5";
 import ProductView from '@/components/ProductView';
 
@@ -24,11 +23,14 @@ export default function NewProducts() {
   };
 
   useEffect(() => {
-    // Función para obtener productos desde Contentful (con el cache optimizado)
+    // Función para obtener productos desde tu API (en lugar de Contentful)
     const fetchProductsData = async () => {
       try {
-        // Usamos la función optimizada de contentfulClient
-        const fetchedProducts = await fetchProducts();
+        const response = await fetch('/api/contentful'); // Haciendo la solicitud a tu API
+        if (!response.ok) {
+          throw new Error('Error al obtener productos');
+        }
+        const fetchedProducts = await response.json(); // Obtiene los productos de la respuesta
 
         // Almacenar los productos en el estado
         setProducts(fetchedProducts);
@@ -46,17 +48,17 @@ export default function NewProducts() {
   if (loading) {
     return (
       <div className="relative z-50 mx-auto max-w-2xl px-4 py-10 lg:py-24 lg:max-w-7xl lg:px-8">
-      <h2 className="text-4xl font-bold tracking-tight text-gray-900 text-center">Productos Nuevos</h2>
-        <div className="text-center mt-12">Cargando productos...</div>
-        </div>
-        );
+        <h2 className="text-4xl font-bold tracking-tight text-gray-900 text-center">Productos Nuevos</h2>
+        <div className="bg-orange-100 text-center my-24 text-orange-800 p-4">Cargando productos...</div>
+      </div>
+    );
   }
 
   if (error) {
     return (
       <div className="relative z-50 mx-auto max-w-2xl px-4 py-10 lg:py-24 lg:max-w-7xl lg:px-8">
-      <h2 className="text-4xl font-bold tracking-tight text-gray-900 text-center">Productos Nuevos</h2>
-      <div className="text-center text-red-500 mt-12">{error}</div>
+        <h2 className="text-4xl font-bold tracking-tight text-gray-900 text-center">Productos Nuevos</h2>
+        <div className="bg-red-100 text-center my-24 text-red-800 p-4">{error}</div>
       </div>
     );
   }

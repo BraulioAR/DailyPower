@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import { useState, useEffect } from 'react';
 import { IoArrowDownCircleOutline, IoArrowUpCircleOutline } from "react-icons/io5";
 import ProductView from '@/components/ProductView';
@@ -13,11 +13,11 @@ const categoryMap = {
   O: 'Otros',
 };
 
-export default function Inversores() {
+export default function PanelesSolares() {
   const [products, setProducts] = useState([]);
   const [showAll, setShowAll] = useState(false);
   const [loading, setLoading] = useState(true);
-  
+
   // Función para alternar entre mostrar más o menos productos
   const toggleShowAll = () => {
     setShowAll(!showAll);
@@ -50,11 +50,11 @@ export default function Inversores() {
         <div className="lg:pb-80 pt-16 pb-24 lg:pt-40">
           <div className="lg:relative mx-auto max-w-7xl px-4 static lg:px-6">
             <div className="max-w-lg">
-               <h1 className="text-4xl font-bold tracking-tight text-gray-900">
-                 El inversor que necesitas lo encuentras aquí
+              <h1 className="text-4xl font-bold tracking-tight text-gray-900">
+                 Paneles Solares de Alta Calidad para tu Hogar y Empresa
               </h1>
               <h2 className="mt-4 text-xl text-gray-500">
-                Inversores, Paneles Solares, UPS, Sistema Solar.
+                Ofrecemos soluciones solares de alto rendimiento, ideales para hogares, empresas y proyectos industriales.
               </h2>
             </div>
             <div>
@@ -129,89 +129,46 @@ export default function Inversores() {
           <h1 className='text-3xl font-bold tracking-tight text-gray-900 text-center'>Categorías</h1>
           <div className='grid grid-cols-2 grid-flow-row lg:flex lg:flex-row gap-4 lg:gap-10 justify-center mx-auto px-4 lg:px-0'>
             <Link href="/Productos/Baterias#productos" className='rounded-md p-4 bg-transparent text-[#E73516] border shadow border-[#E73516] hover:text-white hover:bg-[#E73516] lg:w-52 flex justify-center items-center'>Baterías</Link>
-            <Link href="#growatt" className='rounded-md p-4  border shadow text-white bg-[#E73516] lg:w-52 flex justify-center items-center'>Inversores</Link>
-            <Link href="/Productos/Paneles-Solares#productos" className='rounded-md p-4 text-[#E73516] bg-transparent border shadow border-[#E73516] hover:text-white hover:bg-[#E73516] lg:w-52 flex justify-center items-center'>Paneles Solares</Link>
-            <Link href="#montaje" className='rounded-md p-4 text-[#E73516] bg-transparent border shadow border-[#E73516] hover:text-white hover:bg-[#E73516] lg:w-52 flex justify-center text-center '>Estructuras de Montaje</Link>
+            <Link href="/Productos/Inversores#productos" className='rounded-md p-4 bg-transparent text-[#E73516] border shadow border-[#E73516] hover:text-white hover:bg-[#E73516] lg:w-52 flex justify-center items-center'>Inversores</Link>
+            <Link href="#paneles" className='rounded-md p-4  border shadow text-white bg-[#E73516] lg:w-52 flex justify-center items-center'>Paneles Solares</Link>
+            <Link href="/Productos#montaje" className='rounded-md p-4 text-[#E73516] bg-transparent border shadow border-[#E73516] hover:text-white hover:bg-[#E73516] lg:w-52 flex justify-center text-center '>Estructuras de Montaje</Link>
           </div>
         </div>
 
         {/* Lista de productos */}
-          <div id="growatt" className="relative isolate z-50 px-6 lg:px-8 transition-transform duration-500">
-          <div className="mx-auto max-w-2xl px-4 pt-16  lg:max-w-7xl lg:px-6">
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900 text-start">Inversores Solares Growatt</h2>
-            {loading ?
-              <div className="bg-orange-100 text-center my-24 text-orange-800 p-4">Cargando productos...</div>
-              :
-              <div className="mt-5 grid gap-x-6 gap-y-10 grid-cols-2 lg:grid-cols-4 ">
-                {filterProductsBySubcategory('IG').slice(0, showAll ? products.length : 4).map((producto) => (
-                  <ProductView key={producto.id} src={producto.image} title={producto.title} route={categoryMap[producto.category]} slug={producto.slug} />
-                ))}
-              </div>
-            }
-            {products.length < 4 &&
-              <div className="text-center mt-6">
-                <button onClick={toggleShowAll} className="text-[#E73516] hover:text-[#C33F1A] font-semibold">
-                  {showAll ? (
-                    <IoArrowUpCircleOutline className="text-[#E73516] h-12 w-12 animate-bounce animate-infinite animate-ease-in " />
-                  ) : (
-                    <IoArrowDownCircleOutline className="text-[#E73516] h-12 w-12 animate-bounce animate-infinite animate-ease-in " />  // Aquí puedes usar cualquier ícono de flecha
-                  )}
-                </button>
-              </div>
-            }
-          </div>
-        </div>
-          <div id="offgrid" className="relative isolate z-50 px-6 lg:px-8 transition-transform duration-500">
-          <div className="mx-auto max-w-2xl px-4 pt-16 lg:max-w-7xl lg:px-6">
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900 text-start">Inversores Solares Off-Grid</h2>
-            {loading ?
-              <div className="bg-orange-100 text-center my-24 text-orange-800 p-4">Cargando productos...</div>
-              :
-              <div className="mt-5 grid gap-x-6 gap-y-10 grid-cols-2 lg:grid-cols-4 ">
-                {filterProductsBySubcategory('IO').slice(0, showAll ? products.length : 4).map((producto) => (
-                  <ProductView key={producto.id} src={producto.image} title={producto.title} route={categoryMap[producto.category]} slug={producto.slug} />
-                ))}
-              </div>
-            }
-            {products.length < 4 &&
-              <div className="text-center mt-6">
-                <button onClick={toggleShowAll} className="text-[#E73516] hover:text-[#C33F1A] font-semibold">
-                  {showAll ? (
-                    <IoArrowUpCircleOutline className="text-[#E73516] h-12 w-12 animate-bounce animate-infinite animate-ease-in " />
-                  ) : (
-                    <IoArrowDownCircleOutline className="text-[#E73516] h-12 w-12 animate-bounce animate-infinite animate-ease-in " />  // Aquí puedes usar cualquier ícono de flecha
-                  )}
-                </button>
-              </div>
-            }
-          </div>
-        </div>
-          <div id="montaje" className="relative isolate z-50 px-6 lg:px-8 transition-transform duration-500">
+        <div id="paneles" className="relative isolate z-50 px-6 lg:px-8 transition-transform duration-500">
           <div className="mx-auto max-w-2xl px-4 py-16 lg:max-w-7xl lg:px-6">
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900 text-start">Estructuras de Montaje</h2>
-            {loading ?
+            <h2 className="text-3xl font-bold tracking-tight text-gray-900 text-start">Paneles Solares</h2>
+            {loading ? (
               <div className="bg-orange-100 text-center my-24 text-orange-800 p-4">Cargando productos...</div>
-              :
-              <div className="mt-5 grid gap-x-6 gap-y-10 grid-cols-2 lg:grid-cols-4 ">
-                {filterProductsBySubcategory('E').slice(0, showAll ? products.length : 4).map((producto) => (
+            ) : filterProductsBySubcategory('P').length === 0 ? (
+              <div className="text-center my-24">
+                <p className="text-xl text-gray-600">Aún no hay productos disponibles en esta categoría. Por favor, contacte a un representante.</p>
+                <Link href="/Contacto" className="text-[#E73516] hover:text-[#C33F1A] font-semibold">
+                  Ir a Contacto
+                </Link>
+              </div>
+            ) : (
+              <div className="mt-5 grid gap-x-6 gap-y-10 grid-cols-2 lg:grid-cols-4">
+                {filterProductsBySubcategory('P').slice(0, showAll ? products.length : 4).map((producto) => (
                   <ProductView key={producto.id} src={producto.image} title={producto.title} route={categoryMap[producto.category]} slug={producto.slug} />
                 ))}
               </div>
-            }
-            {products.length < 4 &&
+            )}
+            {products.length < 4 && (
               <div className="text-center mt-6">
                 <button onClick={toggleShowAll} className="text-[#E73516] hover:text-[#C33F1A] font-semibold">
                   {showAll ? (
                     <IoArrowUpCircleOutline className="text-[#E73516] h-12 w-12 animate-bounce animate-infinite animate-ease-in " />
                   ) : (
-                    <IoArrowDownCircleOutline className="text-[#E73516] h-12 w-12 animate-bounce animate-infinite animate-ease-in " />  // Aquí puedes usar cualquier ícono de flecha
+                    <IoArrowDownCircleOutline className="text-[#E73516] h-12 w-12 animate-bounce animate-infinite animate-ease-in " />
                   )}
                 </button>
               </div>
-            }
+            )}
           </div>
         </div>
       </section>
-      </div>
+    </div>
   );
 }

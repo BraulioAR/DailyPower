@@ -1,7 +1,6 @@
 
 import { fetchProductBySlugAndCategory } from '@/utils/contenfulClient';
 import { notFound } from 'next/navigation';
-import { headers } from "next/headers";
 
 
 export async function generateMetadata({ params }) {
@@ -25,7 +24,7 @@ export async function generateMetadata({ params }) {
     openGraph: {
       title: titulo,
       description: descripcion,
-      url: `/Productos/${category}/${slug}`,
+      url: `https://dailypower.com.do/Productos/${category}/${slug}`,
       images: [
         product.productImage?.[0]?.fields?.file?.url,
         product.productImage?.[1]?.fields?.file?.url,
@@ -52,12 +51,8 @@ export default async function ProductoPage({ params }) {
     notFound(); // Si no se encuentra el producto, devuelve un 404
   }
 
-  // Obtener el host desde los headers
-  const headersList = await headers();
-  const host = headersList.get("host");
 
-  // Construir la URL completa usando 'params'
-  const currentUrl = `https://${host}/Productos/${category}/${slug}`;
+
 
   const {
     titulo,
@@ -90,7 +85,7 @@ export default async function ProductoPage({ params }) {
     },
     "offers": {
       "@type": "Offer",
-      "url": currentUrl,
+      "url": `https://dailypower.com.do/Productos/${category}/${slug}`,
       "itemCondition": "https://schema.org/NewCondition",
       "availability": "https://schema.org/InStock"
     }

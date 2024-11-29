@@ -32,12 +32,7 @@ export default function Footer() {
               <nav className="flex flex-col gap-3">
                 <Link href="/Productos/Inversores#growatt"className=" text-[#F5F5F5] hover:[#EDB059] hover:scale-105 text-base font-normal">Inversores Solares Growatt</Link>
                 <Link href="/Productos#montaje"className=" text-[#F5F5F5] hover:[#EDB059] hover:scale-105 text-base font-normal">Estructuras de Montaje</Link>
-                <Link href="/Contacto" className=" text-[#F5F5F5] hover:[#EDB059] hover:scale-105 text-base font-normal">Paneles Solares</Link>
-              </nav>
-            </div>
-            <div>
-              <nav className="flex flex-col gap-3">
-                <Link href="/Contacto" className=" text-[#F5F5F5] hover:[#EDB059] hover:scale-105 text-base font-normal">Inversores Convencionales</Link>                   
+                <Link href="/Productos/Paneles-Solares#productos" className=" text-[#F5F5F5] hover:[#EDB059] hover:scale-105 text-base font-normal">Paneles Solares</Link>
               </nav>
             </div>
           </div>
@@ -46,7 +41,7 @@ export default function Footer() {
             <h1 className="text-base font-medium text-[#F5F5F5] lg:no-underline underline lg:my-0 my-2">Contacto</h1>
             <div className="flex justify-between gap-x-14">
               <nav className="flex flex-col gap-3">
-                <Link href="mailto:dailypower@gmail.com" className=" text-[#F5F5F5] hover:[#EDB059] hover:scale-105 text-base font-normal">dailypower@gmail.com</Link>
+                <Link href="mailto:juandailypower@gmail.com" className=" text-[#F5F5F5] hover:[#EDB059] hover:scale-105 text-base font-normal">juandailypower@gmail.com</Link>
                 <Link href="tel:18492598088"  className=" text-[#F5F5F5] hover:[#EDB059] hover:scale-105 text-base font-normal">+1 849-259-8088</Link> <br/>
               </nav>     
             </div>
