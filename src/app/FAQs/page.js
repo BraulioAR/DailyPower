@@ -28,7 +28,7 @@ export const metadata = {
 };
 
 
-export default async function FAQs() {    
+export default function FAQs() {    
 
 
     return (
