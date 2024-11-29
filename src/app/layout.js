@@ -82,6 +82,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="es">
+      <link rel="canonical" href="https://dailypower.com.do/"></link>
       <body
         className={`${openSans.variable} `}>
         <Header/>
