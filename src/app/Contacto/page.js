@@ -38,7 +38,9 @@ export const metadata = {
   },
 };
 
-export default function Home() {
+
+
+export default function Contacto() {
   return (
     <main className="scroll-smooth">
     <ContactUs/>
