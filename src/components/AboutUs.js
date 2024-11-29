@@ -1,7 +1,29 @@
+
+'use client'
 import { ImPower } from "react-icons/im";
-import Image from "next/image";
+import { useState, useEffect } from "react";
 
 export default function AboutUs() {
+  const [imageUrl, setImageUrl] = useState(null);
+
+   useEffect(() => {
+    // Hacer la solicitud para obtener la imagen de Contentful
+    const fetchImage = async () => {
+      try {
+        const response = await fetch("/api/contentful?content_type=imagenGeneral");
+        const data = await response.json();
+        if (data && data.length > 0) {
+          const url=`https:${data[0].image}`
+          setImageUrl(url); // Asumiendo que la imagen está en el primer objeto
+        }
+      } catch (error) {
+        console.error("Error al obtener la imagen:", error);
+      }
+    };
+
+    fetchImage();
+  }, []); // Solo se ejecuta una vez al montar el componente
+
   return (
     <div className="relative isolate overflow-hidden bg-white px-6 pt-24 pb-12 lg:overflow-visible lg:px-0">
       <div className="absolute inset-0 -z-10 overflow-hidden hidden lg:block">
@@ -39,13 +61,19 @@ export default function AboutUs() {
           </div>
         </div>
         <div className="-ml-12 -mt-12 p-12 lg:sticky lg:top-4 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:overflow-hidden">
-          <Image
-            alt="Team Daily Power"
-            src="/nosotros.webp"
-            width={768}
-            height={768}
-            className="w-[48rem] h-auto max-w-none rounded-xl bg-gray-900 shadow-xl ring-1 ring-gray-400/10 hidden lg:block"
-          />
+          <div>
+      {imageUrl ? (
+        <img
+          alt="Team Daily Power"
+          src={imageUrl}
+          width={768}
+          height={768}
+          className="w-[48rem] h-auto max-w-none rounded-xl bg-gray-900 shadow-xl ring-1 ring-gray-400/10 hidden lg:block"
+        />
+      ) : (
+        <p>Cargando imagen...</p> // Muestra un mensaje mientras se carga la imagen
+      )}
+    </div>
         </div>
         <div className="lg:col-span-2 lg:col-start-1 lg:row-start-2 lg:mx-auto lg:grid lg:w-full lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
           <div className="lg:pr-4">

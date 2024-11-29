@@ -35,6 +35,13 @@ export async function GET(request) {
         };
       }
 
+      // Si es imagenGeneral
+      if (contentType === 'imagenGeneral') {
+        return {
+          image:item.fields.nosotros?.fields.file.url
+        };
+      }
+
       // Si se agrega otro content_type en el futuro
       return item.fields;
     });
