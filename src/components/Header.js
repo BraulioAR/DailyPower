@@ -19,7 +19,7 @@ const products = [
   { name: 'Inversores Solares Off-Grid', href: '/Productos/Inversores/#offgrid'},
   { name: 'Inversores Solares Growatt',  href: '/Productos/Inversores/#growatt' },
   { name: 'Estructuras de Montaje', href: '/Productos#montaje' },
-  { name: 'Paneles Solares', href: '/Contacto' },
+  { name: 'Paneles Solares', href: '/Productos/Paneles-Solares#productos' },
   { name: 'Inversores Convencionales',  href: '/Contacto'},
 ];
 
