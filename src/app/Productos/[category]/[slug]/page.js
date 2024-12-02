@@ -86,6 +86,8 @@ export default async function ProductoPage({ params }) {
     "offers": {
       "@type": "Offer",
       "url": `https://dailypower.com.do/Productos/${category}/${slug}`,
+      "priceCurrency": "DOP",
+      "price": precio,
       "itemCondition": "https://schema.org/NewCondition",
       "availability": "https://schema.org/InStock"
     }
@@ -145,7 +147,7 @@ export default async function ProductoPage({ params }) {
             {/* Options */}
             <div className="mt-4 lg:row-span-3 lg:mt-0">
               <h2 className="sr-only">información del {titulo}</h2>
-              <p className="text-3xl tracking-tight text-gray-900">{precio}</p>
+              <p className="text-3xl tracking-tight text-gray-900">RD${precio}</p>
               {specsPdf && (
               <div className="mt-10">
                 <a

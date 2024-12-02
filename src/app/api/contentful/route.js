@@ -46,7 +46,7 @@ export async function GET(request) {
           mision: item.fields.mision,
           vision: item.fields.vision,
           valores: item.fields.valores,
-          image: item.fields.nosotros?.fields?.file.url,
+          image: item.fields.nosotros?.fields?.file.url || null, 
         };
       }
 
