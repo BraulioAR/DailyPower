@@ -185,7 +185,7 @@ export default function Productos() {
             <Link href="/Productos/Baterias#productos" className='rounded-md p-4 text-[#E73516] bg-transparent border shadow border-[#E73516] hover:text-white hover:bg-[#E73516] lg:w-52 flex justify-center items-center'>Baterías</Link>
             <Link href="/Productos/Inversores#productos" className='rounded-md p-4  border shadow text-white bg-[#E73516] lg:w-52 flex justify-center items-center'>Inversores</Link>
             <Link href="/Productos/Paneles-Solares#productos" className='rounded-md p-4 text-[#E73516] bg-transparent border shadow border-[#E73516] hover:text-white hover:bg-[#E73516] lg:w-52 flex justify-center items-center'>Paneles Solares</Link>
-            <Link href="#montaje" className='rounded-md p-4 text-[#E73516] bg-transparent border shadow border-[#E73516] hover:text-white hover:bg-[#E73516] lg:w-52 flex justify-center text-center '>Estructuras de Montaje</Link>
+            <Link href="/Productos#montaje" className='rounded-md p-4 text-[#E73516] bg-transparent border shadow border-[#E73516] hover:text-white hover:bg-[#E73516] lg:w-52 flex justify-center text-center '>Estructuras de Montaje</Link>
           </div>
         </div>
         {renderCategory('IG', 'Inversores Solares Growatt')}
