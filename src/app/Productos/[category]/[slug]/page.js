@@ -109,7 +109,7 @@ export default async function ProductoPage({ params }) {
               <img
                 alt={titulo}
                 src={productImage?.[0]?.fields.file.url}
-                className="size-full object-cover object-center"
+                className="size-full object-fit object-center"
               />
             </div>
             <div className="hidden lg:grid lg:grid-cols-1 lg:gap-y-8">
@@ -117,14 +117,14 @@ export default async function ProductoPage({ params }) {
                 <img
                   alt={titulo}
                   src={productImage?.[1]?.fields.file.url}
-                  className="size-full object-cover object-center"
+                  className="size-full object-fit object-center"
                 />
               </div>
               <div className="aspect-h-2 aspect-w-3 overflow-hidden rounded-lg">
                 <img
                   alt={titulo}
                   src={productImage?.[2]?.fields.file.url}
-                  className="size-full object-cover object-center"
+                  className="size-full object-fit object-center"
                 />
               </div>
             </div>
@@ -133,7 +133,7 @@ export default async function ProductoPage({ params }) {
               <img
                 alt={titulo}
                 src={productImage?.[3]?.fields.file.url}
-                className="size-full object-cover object-center"
+                className="size-full object-fit object-center"
               />
               </div>
               )}
