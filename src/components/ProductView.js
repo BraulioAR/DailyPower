@@ -13,9 +13,9 @@ export default function ProductView({ src, title, route, slug }) {
         />
       </div>
       <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-        <button className="bg-transparent border border-[#E73516] text-[#E73516] hover:bg-[#E73516] hover:text-white px-4 py-2 rounded-lg z-40">
+        <Link href={`/Productos/${route || 'otros'}/${slug}`}  className="bg-transparent border border-[#E73516] text-[#E73516] hover:bg-[#E73516] hover:text-white px-4 py-2 rounded-lg z-40">
           Ver Más
-        </button>
+        </Link>
       </div>
 
       {/* Título del producto */}
