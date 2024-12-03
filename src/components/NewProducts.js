@@ -68,7 +68,7 @@ export default function NewProducts() {
       <h2 className="text-4xl font-bold tracking-tight text-gray-900 text-center">Productos Nuevos</h2>
       <div className="mt-12 grid gap-x-6 gap-y-10 grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
         {/* Mostrar solo los primeros 4 productos si showAll es falso */}
-        {products.slice(0, showAll ? products.length : 4).map((producto) => (
+        {products.slice(0, showAll ? Math.min(products.length, 8) : 4).map((producto) => (
           <ProductView
             key={producto.id}
             src={producto.image}
