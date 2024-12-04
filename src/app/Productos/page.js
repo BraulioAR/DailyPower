@@ -191,10 +191,13 @@ export default function Productos() {
         {renderCategory('BG', 'Baterías de Gelatina')}
         {renderCategory('BL', 'Baterías de Litio')}
         {renderCategory('BV', 'Baterías para Vehículos')}
-        {renderCategory('IG', 'Inversores Solares Growatt')}
-        {renderCategory('IO', 'Inversores Solares Off-Grid')}
+        {renderCategory('IC', 'Inversores Convencionales')}
+        {renderCategory('IOF', 'Inversores Solares Off-Grid')}
+        {renderCategory('ION', 'Inversores Solares On-Grid')}
+        {renderCategory('IH', 'Inversores Híbridos')}
         {renderCategory('E', 'Estructuras de Montaje')}
         {renderCategory('P', 'Paneles Solares')}
+        {renderCategory('O', 'Otros')}
       </section>
     </div>
   );

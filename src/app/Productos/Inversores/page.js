@@ -188,8 +188,10 @@ export default function Productos() {
             <Link href="/Productos#E" className='rounded-md p-4 text-[#E73516] bg-transparent border shadow border-[#E73516] hover:text-white hover:bg-[#E73516] lg:w-52 flex justify-center text-center '>Estructuras de Montaje</Link>
           </div>
         </div>
-        {renderCategory('IG', 'Inversores Solares Growatt')}
-        {renderCategory('IO', 'Inversores Solares Off-Grid')}
+        {renderCategory('IC', 'Inversores Convencionales')}
+         {renderCategory('IOF', 'Inversores Solares Off-Grid')}
+        {renderCategory('ION', 'Inversores Solares On-Grid')}
+        {renderCategory('IH', 'Inversores Híbridos')}
       </section>
     </div>
   );
