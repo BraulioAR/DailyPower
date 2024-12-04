@@ -197,7 +197,7 @@ export default function Productos() {
         {renderCategory('IH', 'Inversores Híbridos')}
         {renderCategory('E', 'Estructuras de Montaje')}
         {renderCategory('P', 'Paneles Solares')}
-        {renderCategory('O', 'Otros')}
+        {renderCategory('C', 'Controladores Solares')}
       </section>
     </div>
   );
