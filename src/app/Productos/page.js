@@ -198,7 +198,7 @@ export default function Productos() {
         {renderCategory('E', 'Estructuras de Montaje')}
         {renderCategory('P', 'Paneles Solares')}
         {renderCategory('C', 'Controladores Solares')}
-        {renderCategory('O', 'Controladores Solares')}
+        {renderCategory('O', 'Otros')}
       </section>
     </div>
   );
