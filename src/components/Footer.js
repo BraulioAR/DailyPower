@@ -24,14 +24,14 @@ export default function Footer() {
           <h1 className="text-base font-medium text-[#F5F5F5] lg:no-underline underline lg:my-0 my-2">Productos</h1>
           <div className="lg:flex lg:justify-between gap-x-14 grid grid-flow-row grid-cols-2 gap-y-2">
           <nav className="flex flex-col gap-3">
-              <Link href="/Productos/Baterias#gelatina"className=" text-[#F5F5F5] hover:[#EDB059] hover:scale-105 text-base font-normal">Baterias de Gelatina</Link>
-              <Link href="/Productos/Baterias#litio" className=" text-[#F5F5F5] hover:[#EDB059] hover:scale-105 text-base font-normal">Baterias de Litio</Link>
-              <Link href="/Productos/Inversores#offgrid" className=" text-[#F5F5F5] hover:[#EDB059] hover:scale-105 text-base font-normal">Inversores Solares Off-Grid</Link>
+              <Link href="/Productos/Baterias#BG"className=" text-[#F5F5F5] hover:[#EDB059] hover:scale-105 text-base font-normal">Baterias de Gelatina</Link>
+              <Link href="/Productos/Baterias#BL" className=" text-[#F5F5F5] hover:[#EDB059] hover:scale-105 text-base font-normal">Baterias de Litio</Link>
+              <Link href="/Productos/Inversores#IO" className=" text-[#F5F5F5] hover:[#EDB059] hover:scale-105 text-base font-normal">Inversores Solares Off-Grid</Link>
           </nav>
           <div>
               <nav className="flex flex-col gap-3">
-                <Link href="/Productos/Inversores#growatt"className=" text-[#F5F5F5] hover:[#EDB059] hover:scale-105 text-base font-normal">Inversores Solares Growatt</Link>
-                <Link href="/Productos#montaje"className=" text-[#F5F5F5] hover:[#EDB059] hover:scale-105 text-base font-normal">Estructuras de Montaje</Link>
+                <Link href="/Productos/Inversores#ION"className=" text-[#F5F5F5] hover:[#EDB059] hover:scale-105 text-base font-normal">Inversores Solares On-Grid</Link>
+                <Link href="/Productos#E"className=" text-[#F5F5F5] hover:[#EDB059] hover:scale-105 text-base font-normal">Estructuras de Montaje</Link>
                 <Link href="/Productos/Paneles-Solares#productos" className=" text-[#F5F5F5] hover:[#EDB059] hover:scale-105 text-base font-normal">Paneles Solares</Link>
               </nav>
             </div>
