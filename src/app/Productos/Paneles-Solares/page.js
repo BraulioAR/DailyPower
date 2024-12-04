@@ -189,6 +189,7 @@ export default function Productos() {
           </div>
         </div>
         {renderCategory('P', 'Paneles Solares')}
+        {renderCategory('C', 'Controladores Solares')}
       </section>
     </div>
   );
