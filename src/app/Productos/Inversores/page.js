@@ -189,7 +189,7 @@ export default function Productos() {
           </div>
         </div>
         {renderCategory('IC', 'Inversores Convencionales')}
-         {renderCategory('IOF', 'Inversores Solares Off-Grid')}
+         {renderCategory('IO', 'Inversores Solares Off-Grid')}
         {renderCategory('ION', 'Inversores Solares On-Grid')}
         {renderCategory('IH', 'Inversores Híbridos')}
       </section>

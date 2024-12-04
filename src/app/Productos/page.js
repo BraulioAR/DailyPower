@@ -192,7 +192,7 @@ export default function Productos() {
         {renderCategory('BL', 'Baterías de Litio')}
         {renderCategory('BV', 'Baterías para Vehículos')}
         {renderCategory('IC', 'Inversores Convencionales')}
-        {renderCategory('IOF', 'Inversores Solares Off-Grid')}
+        {renderCategory('IO', 'Inversores Solares Off-Grid')}
         {renderCategory('ION', 'Inversores Solares On-Grid')}
         {renderCategory('IH', 'Inversores Híbridos')}
         {renderCategory('E', 'Estructuras de Montaje')}
