@@ -99,7 +99,7 @@ export default function Productos() {
 };
 
   return (
-    <div className="bg-white w-full h-full mx-auto max-w-7xl">
+    <div className="bg-white w-full h-full mx-auto max-w-7xl mt-20">
       <section className="relative pt-20 lg:mt-24">
         <div className="lg:pb-80 pt-16 pb-24 lg:pt-40">
           <div className="lg:relative mx-auto max-w-7xl px-4 static lg:px-6">
