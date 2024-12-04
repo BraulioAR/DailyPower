@@ -20,7 +20,7 @@ const products = [
   { name: 'Inversores Solares On-Grid',  href: '/Productos/Inversores/#ION' },
   { name: 'Estructuras de Montaje', href: '/Productos#E' },
   { name: 'Paneles Solares', href: '/Productos/Paneles-Solares#productos' },
-  { name: 'Inversores Convencionales',  href: '/Contacto'},
+  { name: 'Inversores Convencionales',  href: '/Productos/Inversores/#IC'},
 ];
 
 export default function Header() {

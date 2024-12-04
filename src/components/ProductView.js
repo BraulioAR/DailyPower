@@ -9,7 +9,7 @@ export default function ProductView({ src, title, route, slug }) {
           src={src}
           alt={title}
           loading="lazy" 
-          className="h-full w-full object-cover object-center lg:h-full lg:w-full"
+          className="h-full w-full object-scale down object-center lg:h-full lg:w-full"
         />
       </div>
       <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">

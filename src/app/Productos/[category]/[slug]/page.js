@@ -112,21 +112,26 @@ export default async function ProductoPage({ params }) {
                 className="size-full object-scale-down  object-center"
               />
             </div>
+            
             <div className="hidden lg:grid lg:grid-cols-1 lg:gap-y-8">
-              <div className="aspect-h-2 aspect-w-3 overflow-hidden rounded-lg">
-                <img
-                  alt={titulo}
-                  src={productImage?.[1]?.fields.file.url}
-                  className="size-full object-scale-down  object-center"
-                />
-              </div>
+              {productImage?.[2]?.fields.url && (
+                <div className="aspect-h-2 aspect-w-3 overflow-hidden rounded-lg">
+                  <img
+                    alt={titulo}
+                    src={productImage?.[1]?.fields.file.url}
+                    className="size-full object-scale-down  object-center"
+                  />
+                </div>
+              )}
+              {productImage?.[2]?.fields.url && (
               <div className="aspect-h-2 aspect-w-3 overflow-hidden rounded-lg">
                 <img
                   alt={titulo}
                   src={productImage?.[2]?.fields.file.url}
                   className="size-full object-scale-down  object-center"
                 />
-              </div>
+                </div>
+                  )}
             </div>
             {productImage?.[3]?.fields.url && (
             <div className="aspect-h-5 aspect-w-4 lg:aspect-h-4 lg:aspect-w-3 sm:overflow-hidden sm:rounded-lg">
