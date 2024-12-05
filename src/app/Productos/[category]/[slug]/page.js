@@ -105,16 +105,17 @@ export default async function ProductoPage({ params }) {
         <article className="pt-6">
           {/* Image gallery */}
           <div className="mx-auto mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:gap-x-8 lg:px-8">
-            <div className="aspect-h-4 aspect-w-3 overflow-hidden rounded-lg lg:block">
-              <img
-                alt={titulo}
-                src={productImage?.[0]?.fields.file.url}
-                className="size-full object-scale-down  object-center"
-              />
-            </div>
-            
+            {productImage?.[0]?.fields.url?.fields?.file?.url && /\.(jpg|jpeg|png|gif|webp|svg)$/i.test(specsImage.fields.file.url) && (
+              <div className="aspect-h-4 aspect-w-3 overflow-hidden rounded-lg lg:block">
+                <img
+                  alt={titulo}
+                  src={productImage?.[0]?.fields.file.url}
+                  className="size-full object-scale-down  object-center"
+                />
+              </div>
+            )}
             <div className="hidden lg:grid lg:grid-cols-1 lg:gap-y-8">
-              {productImage?.[2]?.fields.url && (
+              {productImage?.[1]?.fields.url?.fields?.file?.url && /\.(jpg|jpeg|png|gif|webp|svg)$/i.test(specsImage.fields.file.url) && (
                 <div className="aspect-h-2 aspect-w-3 overflow-hidden rounded-lg">
                   <img
                     alt={titulo}
@@ -123,7 +124,7 @@ export default async function ProductoPage({ params }) {
                   />
                 </div>
               )}
-              {productImage?.[2]?.fields.url && (
+              {productImage?.[2]?.fields.url?.fields?.file?.url && /\.(jpg|jpeg|png|gif|webp|svg)$/i.test(specsImage.fields.file.url) && (
               <div className="aspect-h-2 aspect-w-3 overflow-hidden rounded-lg">
                 <img
                   alt={titulo}
@@ -133,7 +134,7 @@ export default async function ProductoPage({ params }) {
                 </div>
                   )}
             </div>
-            {productImage?.[3]?.fields.url && (
+            {productImage?.[3]?.fields.url?.fields?.file?.url && /\.(jpg|jpeg|png|gif|webp|svg)$/i.test(specsImage.fields.file.url) && (
             <div className="aspect-h-5 aspect-w-4 lg:aspect-h-4 lg:aspect-w-3 sm:overflow-hidden sm:rounded-lg">
               <img
                 alt={titulo}
@@ -210,7 +211,7 @@ export default async function ProductoPage({ params }) {
           </div>
 
           {/* Especificaciones */}
-          {specsImage && (
+          {specsImage?.fields?.file?.url && /\.(jpg|jpeg|png|gif|webp|svg)$/i.test(specsImage.fields.file.url) && (
             <div className='mx-auto max-w-2xl lg:max-w-7xl w-full h-full flex flex-col gap-10 mb-10'>
               <div className='w-full flex flex-col gap-4'>
                 <h2 className="text-xl font-bold text-gray-900">Especificaciones: </h2>
@@ -229,7 +230,7 @@ export default async function ProductoPage({ params }) {
               )}
 
           {/* Diagrama de conexión */}
-          {connectionDiagram && (
+          {connectionDiagram?.fields?.file?.url && /\.(jpg|jpeg|png|gif|webp|svg)$/i.test(specsImage.fields.file.url) && (
             <div className='mx-auto max-w-2xl lg:max-w-7xl w-full h-full flex flex-col gap-10 mb-10'>
               <div className='w-full flex flex-col gap-4'>
                 <h2 className="text-xl font-bold text-gray-900">Diagrama de conexión: </h2>
