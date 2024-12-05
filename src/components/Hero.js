@@ -1,10 +1,33 @@
+'use client';
 import Header from "@/components/Header";
 import Link from "next/link";
-
+import { useEffect, useState } from "react";
 
 
 export default function Hero() {
+  
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true)
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await fetch('/api/contentful?content_type=productspage');
+       const data = await response.json();
+       
+        if (Array.isArray(data) && data.length > 0) {
+          setData(data[0])
+       }
+      } catch (error) {
+        console.error('Error al obtener productos:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
 
+    fetchProducts();
+  }, []);
+
+  
   return (
     <div className="bg-white">
       <Header/>
@@ -21,7 +44,7 @@ export default function Hero() {
             className=" relative w-[72.1875rem] aspect-[1155/678] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#EC7610] to-[#E73516] opacity-30 lg:left-[calc(50%-30rem)]"
           />
         </div>
-        <div className="mx-auto max-w-7xl py-32 lg:py-56 animate-blurred-fade-in animate-duration-[300ms] animate-ease-in">
+        <div className="mx-auto max-w-7xl py-32 lg:py-56 animate-blurred-fade-in animate-duration-300 animate-ease-in">
           <div className="hidden md:flex mb-8 lg:flex justify-center">
             <div className="relative rounded-full px-3 py-1 text-sm text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
               Productos para todas tus necesidades eléctricas.{' '}
@@ -32,12 +55,28 @@ export default function Hero() {
             </div>
           </div>
           <div className="flex flex-col justify-center items-center ">
-            <h1 className="mb-8 lg:text-balance text-5xl font-semibold tracking-tight text-gray-900 lg:text-7xl text-center"  >
+            {loading ? (
+            <h1 className="mb-8 lg:text-balance text-5xl font-semibold tracking-tight text-gray-900 lg:text-7xl text-center animate-fade-out-down animate-delay-500 animate-steps-modern">
               Daily Power
-            </h1>
-            <h2 className="font-medium text-gray-500 lg:text-xl text-center max-w-2xl ">
-              Representante exclusivo para República Dominicana de Baterías Aokly. Aplicaciones: Inversores, Paneles Solares y UPS.
-              </h2>
+              </h1>
+              )
+              :  (
+            <h1 className="mb-8 lg:text-balance text-5xl font-semibold tracking-tight text-gray-900 lg:text-7xl animate-fade-in-up animate-duration-300 animate-steps-modern">
+              {data.titulo}
+                </h1>
+                )
+            }
+            {loading ? (
+              <h1 className="font-medium text-gray-500 lg:text-xl text-center max-w-2xl animate-fade-out-down animate-delay-700 animate-steps-modern">
+                Representante exclusivo para República Dominicana de Baterías Aokly. Aplicaciones: Inversores, Paneles Solares y UPS.
+              </h1>
+            )
+              : (
+                <h2 className="font-medium text-gray-500 lg:text-xl text-center max-w-2xl animate-fade-in-up animate-duration-400 animate-steps-modern">
+                  {data.subtitulo}
+                </h2>
+              )
+            }
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <Link
                 href="/Productos"

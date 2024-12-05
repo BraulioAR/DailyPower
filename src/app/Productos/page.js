@@ -15,7 +15,9 @@ const categoryMap = {
 
 export default function Productos() {
   const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [heroData, setHeroData] = useState([]);
+  const [loadingProducts, setLoadingProducts] = useState(true);
+ const [loadingHero, setLoadingHero] = useState(true);
   const [showAllStates, setShowAllStates] = useState({}); // Estado separado para cada categoría
 
   // Actualiza el estado de una categoría específica
@@ -36,11 +38,28 @@ export default function Productos() {
       } catch (error) {
         console.error('Error al obtener productos:', error);
       } finally {
-        setLoading(false);
+        setLoadingProducts(false);
+      }
+
+      
+    };
+
+    const fetchHeroData = async () => {
+      try {
+        const response = await fetch('/api/contentful?content_type=productspage');
+        const data = await response.json();
+        if (Array.isArray(data) && data.length > 0) {
+          setHeroData(data[0]);
+        }
+      } catch (error) {
+        console.error('Error al obtener productos:', error);
+      } finally {
+        setLoadingHero(false);
       }
     };
 
     fetchProducts();
+    fetchHeroData();
   }, []);
 
   const filterProductsBySubcategory = (subcategoryCode) =>
@@ -54,7 +73,7 @@ export default function Productos() {
     <div id={subcategoryCode} className="relative isolate z-50 px-6 lg:px-8 transition-transform duration-500">
       <div className="mx-auto max-w-2xl px-4 pt-16 lg:max-w-7xl lg:px-6">
         <h2 className="text-3xl font-bold tracking-tight text-gray-900 text-start">{title}</h2>
-        {loading ? (
+        {loadingProducts ? (
           <div className="bg-orange-100 text-center my-24 text-orange-800 p-4">Cargando productos...</div>
         ) : productsInCategory.length === 0 ? (
           <div className="text-center my-24">
@@ -104,12 +123,27 @@ export default function Productos() {
         <div className="lg:pb-80 pt-16 pb-24 lg:pt-40">
           <div className="lg:relative mx-auto max-w-7xl px-4 static lg:px-6">
             <div className="max-w-lg">
-              <h1 className="text-4xl font-bold tracking-tight text-gray-900">
+              {loadingHero ? (
+                <>
+              <h1 className="text-4xl font-bold tracking-tight text-gray-900 animate-fade-out-down animate-delay-500 animate-steps-modern ">
                 La solución que necesitas la encuentras aquí
-              </h1>
-              <h2 className="mt-4 text-xl text-gray-500">
+                </h1>
+              <h2 className="mt-4 text-xl text-gray-500 animate-fade-out-down animate-delay-700 animate-steps-modern ">
                 Baterías para Vehículos, Inversores, Paneles Solares, UPS, Sistema Solar.
               </h2>
+                </>
+              )
+                : (
+              <>
+              <h1 className="text-4xl font-bold tracking-tight text-gray-900 animate-fade-in-up animate-duration-300 animate-steps-modern ">
+                {heroData.tituloPrincipal}
+              </h1>
+               <h2 className="mt-4 text-xl text-gray-500 animate-fade-in-up animate-duration-400 animate-steps-modern">
+                {heroData.subtituloPrincipal}
+              </h2>
+              </>
+                )
+              }
             </div>
             <div>
               <div className="mt-10">

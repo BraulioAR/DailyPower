@@ -61,6 +61,27 @@ export async function GET(request) {
         };
       }
 
+      // Si es datosContacto
+      if (contentType === 'seccionInicio') {
+        return {
+          titulo: item.fields.titulo,
+          subtitulo: item.fields.subtitulo,
+        };
+      }
+
+      if (contentType === 'productspage') {
+        return {
+          tituloPrincipal: item.fields.tituloPrincipal,
+          subtituloPrincipal: item.fields.subtituloPrincipal,
+          tituloBaterias: item.fields.tituloBaterias,
+          subtituloBaterias: item.fields.subtituloBaterias,
+          tituloInversores: item.fields.tituloInversores,
+          subtituloInversores: item.fields.subtituloCategoriaInversores,
+          tituloPaneles: item.fields.tituloPaneles,
+          subtituloPaneles: item.fields.subtituloPaneles,
+        };
+      }
+
       // Si se agrega otro content_type en el futuro
       return item.fields;
     });
