@@ -105,7 +105,6 @@ export default async function ProductoPage({ params }) {
         <article className="pt-6">
           {/* Image gallery */}
           <div className="mx-auto mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:gap-x-8 lg:px-8">
-            {productImage?.[0]?.fields.url?.fields?.file?.url && /\.(jpg|jpeg|png|gif|webp|svg)$/i.test(specsImage.fields.file.url) && (
               <div className="aspect-h-4 aspect-w-3 overflow-hidden rounded-lg lg:block">
                 <img
                   alt={titulo}
@@ -113,7 +112,6 @@ export default async function ProductoPage({ params }) {
                   className="size-full object-scale-down  object-center"
                 />
               </div>
-            )}
             <div className="hidden lg:grid lg:grid-cols-1 lg:gap-y-8">
               {productImage?.[1]?.fields.url?.fields?.file?.url && /\.(jpg|jpeg|png|gif|webp|svg)$/i.test(specsImage.fields.file.url) && (
                 <div className="aspect-h-2 aspect-w-3 overflow-hidden rounded-lg">
