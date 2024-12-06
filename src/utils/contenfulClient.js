@@ -48,6 +48,7 @@ export async function fetchProductBySlugAndCategory(slug, category) {
     'P': 'Paneles-Solares',
     'E': 'Estructuras-de-Montaje',
     'O': 'Otros',
+    'C': 'Otros',
   };
 
   try {

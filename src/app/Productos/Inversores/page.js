@@ -5,13 +5,14 @@ import ProductView from '@/components/ProductView';
 import Link from 'next/link';
 
 // Mapeo de las letras a las categorías
-const categoryMap = {
-  B: 'Baterias',
-  I: 'Inversores',
-  P: 'Paneles-Solares',
-  E: 'Estructuras-de-Montaje',
-  O: 'Otros',
-};
+ const categoryMap = {
+    'B': 'Baterias',
+    'I': 'Inversores',
+    'P': 'Paneles-Solares',
+    'E': 'Otros',
+    'O': 'Otros',
+    'C': 'Otros',
+  };
 
 export default function Productos() {
   const [products, setProducts] = useState([]);

@@ -12,12 +12,13 @@ module.exports = {
   },
 };
 
-const categoryMap = {
+ const categoryMap = {
     'B': 'Baterias',
     'I': 'Inversores',
     'P': 'Paneles-Solares',
-    'E': 'Estructuras-de-Montaje',
+    'E': 'Otros',
     'O': 'Otros',
+    'C': 'Otros',
   };
 
 async function getAllProducts() {

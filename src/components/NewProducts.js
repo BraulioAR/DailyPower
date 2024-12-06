@@ -3,13 +3,14 @@ import { useEffect, useState } from 'react';
 import { IoArrowDownCircleOutline, IoArrowUpCircleOutline } from "react-icons/io5";
 import ProductView from '@/components/ProductView';
 
-const categoryMap = {
-  B: 'Baterias',
-  I: 'Inversores',
-  P: 'Paneles-Solares',
-  E: 'Estructuras-de-Montaje',
-  O: 'Otros',
-};
+ const categoryMap = {
+    'B': 'Baterias',
+    'I': 'Inversores',
+    'P': 'Paneles-Solares',
+    'E': 'Otros',
+    'O': 'Otros',
+    'C': 'Otros',
+  };
 
 export default function NewProducts() {
   const [products, setProducts] = useState([]);
