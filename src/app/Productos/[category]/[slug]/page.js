@@ -18,10 +18,16 @@ export async function generateMetadata({ params }) {
   const { titulo, descripcion } = product;
 
   // Convertir URLs relativas a absolutas si es necesario
-  const baseImageURL = "https://dailypower.com.do";
-  const images = product.productImage?.map(
-    (img) => `${baseImageURL}${img.fields?.file?.url}` // Asegúrate de que las URLs sean absolutas
-  );
+  const images = product.productImage?.map((img) => {
+    let imgUrl = img.fields?.file?.url;
+
+    
+    if (imgUrl && imgUrl.startsWith('//')) {
+      imgUrl = `https:${imgUrl}`; 
+    }
+
+    return imgUrl;
+  });
 
   return {
     metadataBase: new URL('https://dailypower.com.do'),
@@ -31,12 +37,12 @@ export async function generateMetadata({ params }) {
       title: titulo,
       description: descripcion,
       url: `/Productos/${category}/${slug}`,
-      images: images?.[0] ? images : [`${baseImageURL}/icons/logo-daily-power-1.webp`], // Usa imagen por defecto si no hay
+      images: images?.[0] ? images : [`/icons/logo-daily-power-1.webp`], // Usa imagen por defecto si no hay
     },
     twitter: {
       title: titulo,
       description: descripcion,
-      images: images?.[0] ? [images[0]] : [`${baseImageURL}/icons/logo-daily-power-1.webp`], // Usa imagen por defecto si no hay
+      images: images?.[0] ? [images[0]] : [`/icons/logo-daily-power-1.webp`], // Usa imagen por defecto si no hay
     },
   };
 }
