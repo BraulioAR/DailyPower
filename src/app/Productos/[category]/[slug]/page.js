@@ -17,6 +17,9 @@ export async function generateMetadata({ params }) {
 
   const { titulo, descripcion } = product;
 
+  const tituloFull = `${titulo} | Baterías, Inversores y Más en República Dominicana | ${category} Daily Power`
+  const descripcionFull = `${descripcion} | Baterías, Inversores y Más en República Dominicana | ${category} Daily Power`
+
   // Convertir URLs relativas a absolutas si es necesario
   const images = product.productImage?.map((img) => {
     let imgUrl = img.fields?.file?.url;
@@ -31,16 +34,16 @@ export async function generateMetadata({ params }) {
 
   return {
     metadataBase: new URL('https://dailypower.com.do'),
-    title: titulo,
+    title: tituloFull,
     description: descripcion,
     openGraph: {
-      title: titulo,
+      title: tituloFull,
       description: descripcion,
       url: `/Productos/${category}/${slug}`,
       images: images?.[0] ? images : [`/icons/logo-daily-power-1.webp`], // Usa imagen por defecto si no hay
     },
     twitter: {
-      title: titulo,
+      title: tituloFull,
       description: descripcion,
       images: images?.[0] ? [images[0]] : [`/icons/logo-daily-power-1.webp`], // Usa imagen por defecto si no hay
     },
