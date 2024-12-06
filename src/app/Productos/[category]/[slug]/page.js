@@ -18,7 +18,7 @@ export async function generateMetadata({ params }) {
   const { titulo, descripcion } = product;
 
   const tituloFull = `${titulo} | Baterías, Inversores y Más en República Dominicana | ${category} Daily Power`
-  const descripcionFull = `${descripcion} | Baterías, Inversores y Más en República Dominicana | ${category} Daily Power`
+  
 
   // Convertir URLs relativas a absolutas si es necesario
   const images = product.productImage?.map((img) => {
