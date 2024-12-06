@@ -31,12 +31,12 @@ export async function generateMetadata({ params }) {
       title: titulo,
       description: descripcion,
       url: `/Productos/${category}/${slug}`,
-      images: images?.[0] ? images : [`${baseImageURL}/default-image.jpg`], // Usa imagen por defecto si no hay
+      images: images?.[0] ? images : [`${baseImageURL}/icons/logo-daily-power-1.webp`], // Usa imagen por defecto si no hay
     },
     twitter: {
       title: titulo,
       description: descripcion,
-      images: images?.[0] ? [images[0]] : [`${baseImageURL}/default-image.jpg`], // Usa imagen por defecto si no hay
+      images: images?.[0] ? [images[0]] : [`${baseImageURL}/icons/logo-daily-power-1.webp`], // Usa imagen por defecto si no hay
     },
   };
 }
