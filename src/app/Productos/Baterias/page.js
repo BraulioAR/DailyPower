@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { IoArrowDownCircleOutline, IoArrowUpCircleOutline } from 'react-icons/io5';
 import ProductView from '@/components/ProductView';
 import Link from 'next/link';
+import ShareButtons from '@/components/ShareButtons';
 
 // Mapeo de las letras a las categorías
  const categoryMap = {
