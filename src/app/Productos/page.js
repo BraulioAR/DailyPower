@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { IoArrowDownCircleOutline, IoArrowUpCircleOutline } from 'react-icons/io5';
 import ProductView from '@/components/ProductView';
 import Link from 'next/link';
+import ShareButtons from '@/components/ShareButtons';
 
 // Mapeo de las letras a las categorías
  const categoryMap = {
@@ -69,6 +70,7 @@ export default function Productos() {
   const renderCategory = (subcategoryCode, title) => {
   const productsInCategory = filterProductsBySubcategory(subcategoryCode);
   const showAll = showAllStates[subcategoryCode] || false;
+  
 
   return (
     <div id={subcategoryCode} className="relative isolate z-50 px-6 lg:px-8 transition-transform duration-500">
@@ -203,6 +205,7 @@ export default function Productos() {
                   </div>
                 </div>
               </div>
+              
             </div>
             <a
               href="#productos"
@@ -210,6 +213,10 @@ export default function Productos() {
             >
               Ver Productos
             </a>
+            <div className='flex flex-col mt-10'>
+              <h2 className="text-lg font-semibold text-gray-900">Compartir</h2>
+            <ShareButtons titulo="Catálogo de Productos Daily Power" url="https://dailypower.com.do/Productos"/>
+            </div>
           </div>
         </div>
       </section>

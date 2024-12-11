@@ -46,7 +46,7 @@ export async function fetchProductBySlugAndCategory(slug, category) {
     'B': 'Baterias',
     'I': 'Inversores',
     'P': 'Paneles-Solares',
-    'E': 'Estructuras-de-Montaje',
+    'E': 'Otros',
     'O': 'Otros',
     'C': 'Otros',
   };
