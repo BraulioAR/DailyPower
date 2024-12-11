@@ -209,11 +209,11 @@ export default function Productos() {
             >
               Ver todos los productos
             </a>
-          </div>
-          <div className='flex flex-col mt-10'>
+            <div className='flex flex-col mt-10'>
               <h2 className="text-lg font-semibold text-gray-900">Compartir</h2>
             <ShareButtons titulo="Catálogo de Inversores Daily Power" url="https://dailypower.com.do/Productos/Inversores"/>
             </div>
+          </div>
         </div>
       </section>
       <section id="productos" className='pb-20'>

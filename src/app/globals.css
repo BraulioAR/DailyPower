@@ -19,3 +19,22 @@ body {
   background: var(--background);
   font-family: "Open Sans", sans-serif;
 }
+
+@layer utilities {
+  /* Personaliza el scrollbar */
+  ::-webkit-scrollbar {
+    @apply w-3; /* Ancho del scrollbar */
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent rounded-full; /* Fondo y bordes redondeados */
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-[#e7351686] rounded-full; /* Color y bordes redondeados */
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-[#E73516]; /* Hover color */
+  }
+}
