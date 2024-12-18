@@ -50,7 +50,6 @@ export async function fetchProductBySlugAndCategory(slug, category) {
     'O': 'Otros',
     'C': 'Otros',
   };
-
   try {
     // Realiza la consulta a Contentful
     const response = await client.getEntries({
