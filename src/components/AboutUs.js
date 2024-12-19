@@ -11,7 +11,7 @@ export default function AboutUs() {
       const response = await fetch('/api/contentful?content_type=imagenGeneral');
       const data = await response.json();
 
-      console.log('JSON de la respuesta:', data); // Imprime el JSON en consola
+      console.log('JSON de la respuesta Sobre nosotros:', data); // Imprime el JSON en consola
 
       if (data && data.length > 0) {
         setContent(data[0]); // Asumimos que el contenido está en el primer objeto

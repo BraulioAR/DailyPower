@@ -14,7 +14,7 @@ export default function Hero() {
       const response = await fetch('/api/contentful?content_type=seccionInicio');
       const data = await response.json();
 
-      console.log('JSON de la respuesta:', data); // Imprime el JSON en consola
+      console.log('JSON de la respuesta Hero:', data); // Imprime el JSON en consola
 
       if (Array.isArray(data) && data.length > 0) {
         setData(data[0]);

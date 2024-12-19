@@ -27,13 +27,13 @@ export default function NewProducts() {
   // Función para obtener productos 
   const fetchProductsData = async () => {
     try {
-      const response = await fetch('/api/contentful'); // Haciendo la solicitud a tu API
+      const response = await fetch('/api/contentful?content_type=producto'); // Haciendo la solicitud a tu API
       if (!response.ok) {
         throw new Error('Error al obtener productos');
       }
       const fetchedProducts = await response.json(); // Obtiene los productos de la respuesta
       
-      console.log('JSON de la respuesta:', fetchedProducts); // Imprime el JSON en consola
+      console.log('JSON de la respuesta productos:', fetchedProducts); // Imprime el JSON en consola
 
       // Almacenar los productos en el estado
       setProducts(fetchedProducts);

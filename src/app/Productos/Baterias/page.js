@@ -34,7 +34,7 @@ export default function Productos() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch('/api/contentful');
+        const response = await fetch('/api/contentful?content_type=producto');
         const data = await response.json();
         setProducts(data);
       } catch (error) {
