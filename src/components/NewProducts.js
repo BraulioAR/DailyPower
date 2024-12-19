@@ -24,28 +24,30 @@ export default function NewProducts() {
   };
 
   useEffect(() => {
-    // Función para obtener productos desde tu API (en lugar de Contentful)
-    const fetchProductsData = async () => {
-      try {
-        const response = await fetch('/api/contentful'); // Haciendo la solicitud a tu API
-        if (!response.ok) {
-          throw new Error('Error al obtener productos');
-        }
-        const fetchedProducts = await response.json(); // Obtiene los productos de la respuesta
-
-        // Almacenar los productos en el estado
-        setProducts(fetchedProducts);
-      } catch (error) {
-        console.error('Error al obtener productos:', error);
-        setError('Hubo un problema al cargar los productos.');
-      } finally {
-        setLoading(false);
+  // Función para obtener productos 
+  const fetchProductsData = async () => {
+    try {
+      const response = await fetch('/api/contentful'); // Haciendo la solicitud a tu API
+      if (!response.ok) {
+        throw new Error('Error al obtener productos');
       }
-    };
+      const fetchedProducts = await response.json(); // Obtiene los productos de la respuesta
+      
+      console.log('JSON de la respuesta:', fetchedProducts); // Imprime el JSON en consola
 
-    fetchProductsData();
+      // Almacenar los productos en el estado
+      setProducts(fetchedProducts);
+    } catch (error) {
+      console.error('Error al obtener productos:', error);
+      setError('Hubo un problema al cargar los productos.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  fetchProductsData();
   }, []);
-
+  
   if (loading) {
     return (
       <div className="relative z-50 mx-auto max-w-2xl px-4 py-10 lg:py-24 lg:max-w-7xl lg:px-8">

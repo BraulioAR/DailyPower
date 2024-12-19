@@ -9,23 +9,25 @@ export default function Hero() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true)
   useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const response = await fetch('/api/contentful?content_type=seccionInicio');
-       const data = await response.json();
-       
-        if (Array.isArray(data) && data.length > 0) {
-          setData(data[0])
-       }
-      } catch (error) {
-        console.error('Error al obtener productos:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
+  const fetchProducts = async () => {
+    try {
+      const response = await fetch('/api/contentful?content_type=seccionInicio');
+      const data = await response.json();
 
-    fetchProducts();
-  }, []);
+      console.log('JSON de la respuesta:', data); // Imprime el JSON en consola
+
+      if (Array.isArray(data) && data.length > 0) {
+        setData(data[0]);
+      }
+    } catch (error) {
+      console.error('Error al obtener productos:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  fetchProducts();
+}, []);
 
   
   return (

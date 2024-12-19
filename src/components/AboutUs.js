@@ -6,20 +6,23 @@ export default function AboutUs() {
   const [content, setContent] = useState(null);
 
   useEffect(() => {
-    const fetchContent = async () => {
-      try {
-        const response = await fetch('/api/contentful?content_type=imagenGeneral');
-        const data = await response.json();
-        if (data && data.length > 0) {
-          setContent(data[0]); // Asumimos que el contenido está en el primer objeto
-        }
-      } catch (error) {
-        console.error('Error al obtener los datos:', error);
-      }
-    };
+  const fetchContent = async () => {
+    try {
+      const response = await fetch('/api/contentful?content_type=imagenGeneral');
+      const data = await response.json();
 
-    fetchContent();
-  }, []);
+      console.log('JSON de la respuesta:', data); // Imprime el JSON en consola
+
+      if (data && data.length > 0) {
+        setContent(data[0]); // Asumimos que el contenido está en el primer objeto
+      }
+    } catch (error) {
+      console.error('Error al obtener los datos:', error);
+    }
+  };
+
+  fetchContent();
+}, []);
 
   if (!content) {
     return <p>Cargando datos...</p>; // Muestra un mensaje mientras se cargan los datos
