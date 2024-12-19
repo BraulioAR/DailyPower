@@ -7,7 +7,7 @@ const client = createClient({
 
 export async function GET(request) {
   const { searchParams } = new URL(request.url);
-  const contentType = searchParams.get('content_type') || 'producto'; // Por defecto, trae 'producto'
+  const contentType = searchParams.get('content_type') // Por defecto, trae 'producto'
 
   try {
     const response = await client.getEntries({
@@ -15,6 +15,10 @@ export async function GET(request) {
     });
 
     const items = response.items.map((item) => {
+  if (!item.fields || !item.sys) {
+    console.warn('Elemento inválido:', item);
+    return null;
+  }
       // Si es producto
       if (contentType === 'producto') {
         return {
@@ -61,7 +65,7 @@ export async function GET(request) {
         };
       }
 
-      // Si es datosContacto
+      // Si es seccionInicio
       if (contentType === 'seccionInicio') {
         return {
           titulo: item.fields.titulo,
@@ -81,10 +85,7 @@ export async function GET(request) {
           subtituloPaneles: item.fields.subtituloPaneles,
         };
       }
-
-      // Si se agrega otro content_type en el futuro
-      return item.fields;
-    });
+    }).filter(Boolean);
 
     return new Response(JSON.stringify(items), {
       headers: { 'Content-Type': 'application/json' },
