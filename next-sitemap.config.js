@@ -22,11 +22,11 @@ module.exports = {
   };
 
 async function getAllProducts() {
-  const response = await fetch('https://dailypower.com.do/api/contentful');
+  const response = await fetch('https://dailypower.com.do/api/contentful?content_type=producto');
   const data = await response.json();
 
   // Verifica si hay productos en el array
-  if (!Array.isArray(data)) {
+  if (!Array.isArray(data) || data.length === 0) {
     console.error('La respuesta no contiene un array de productos');
     return [];
   }
