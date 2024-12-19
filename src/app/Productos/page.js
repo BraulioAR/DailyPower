@@ -103,9 +103,7 @@ export default function Productos() {
         {productsInCategory.length > 4 && (
           <div className="text-center mt-6">
             <button
-              onClick={() => {
-    throw new Error("Sentry Frontend Error");
-  }}
+                onClick={() => toggleShowAll(subcategoryCode)}
               className="text-[#E73516] hover:text-[#C33F1A] font-semibold"
               aria-label={showAll ? 'Ver menos' : 'Ver más'}
             >
