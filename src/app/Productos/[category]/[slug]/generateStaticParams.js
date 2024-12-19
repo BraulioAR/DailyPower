@@ -1,7 +1,7 @@
 export async function generateStaticParams() {
   try {
     // Llamar a tu API personalizada
-    const response = await fetch(`F/api/contentful`, {
+    const response = await fetch(`https://dailypower.com.do/api/contentful`, {
       headers: { 'Content-Type': 'application/json' },
     });
 
