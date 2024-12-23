@@ -105,7 +105,7 @@ export default function Productos() {
               {productsInCategory.slice(0, showAll ? productsInCategory.length : 4).map((producto) => (
                 <ProductView
                   key={producto.slug}
-                  src={producto.productImage[0].url}
+                  src={producto.productImage?.[0]?.url}
                   title={producto.titulo}
                   route={categoryMap[producto.categoria]}
                   slug={producto.slug}

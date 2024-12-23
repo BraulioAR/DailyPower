@@ -21,7 +21,7 @@ export default function NewProducts() {
 
   const PAGE_CONTENT_QUERY = `
   query {
-    allProductos {
+    allProductos(first: 100) {
       id
       titulo
   		categoria
@@ -89,7 +89,7 @@ export default function NewProducts() {
         {products.slice(0, showAll ? Math.min(products.length, 8) : 4).map((producto) => (
           <ProductView
             key={producto.id}
-            src={producto.productImage[0]?.url}
+            src={producto.productImage?.[0]?.url}
             title={producto.titulo}
             route={categoryMap[producto.categoria]}
             slug={producto.slug}
