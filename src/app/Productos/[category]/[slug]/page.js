@@ -7,7 +7,7 @@ export async function generateMetadata({ params }) {
 
   // Obtener el producto para generar metadata
   const product = await fetchProductBySlug(slug);
-
+const productData = product?.allProductos[0]; 
   if (!product) {
     return {
       title: 'Producto no encontrado',
@@ -15,7 +15,7 @@ export async function generateMetadata({ params }) {
     };
   }
 
-  const { titulo, descripcion, productImage } = product;
+  const { titulo, descripcion, productImage } = productData;
 
   const tituloFull = `${titulo} | Tienda en República Dominicana | ${category} Daily Power`
   
