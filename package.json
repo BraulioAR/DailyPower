@@ -10,6 +10,7 @@
     "postbuild": "next-sitemap"
   },
   "dependencies": {
+    "@datocms/cda-client": "^0.2.5",
     "@headlessui/react": "^2.2.0",
     "@midudev/tailwind-animations": "^0.1.0",
     "@tailwindcss/forms": "^0.5.9",

@@ -19,7 +19,7 @@ const Accordion = ({ items }) => {
             onClick={() => toggleAccordion(index)}
             className="w-full flex justify-between items-center p-4 text-left font-medium text-gray-900 bg-gray-100 hover:bg-gray-200 transition"
           >
-            {item.title}
+            {item.pregunta}
             <span
               className={`transform transition-transform ${
                 activeIndex === index ? 'rotate-180' : ''
@@ -36,7 +36,7 @@ const Accordion = ({ items }) => {
               transitionDuration: '300ms',
             }}
           >
-            <div className="p-4 text-gray-600 bg-white">{item.content}</div>
+            <div className="p-4 text-gray-600 bg-white">{item.respuesta}</div>
           </div>
         </div>
       ))}

@@ -1,4 +1,4 @@
-import { fetchProductBySlugAndCategory } from '@/utils/contenfulClient';
+import { fetchProductBySlug } from '@/lib/datocms';
 import { notFound } from 'next/navigation';
 import ShareButtons from '@/components/ShareButtons'; 
 
@@ -6,7 +6,7 @@ export async function generateMetadata({ params }) {
   const { category, slug } = await params;
 
   // Obtener el producto para generar metadata
-  const product = await fetchProductBySlugAndCategory(slug, category);
+  const product = await fetchProductBySlug(slug);
 
   if (!product) {
     return {
@@ -15,22 +15,13 @@ export async function generateMetadata({ params }) {
     };
   }
 
-  const { titulo, descripcion } = product;
+  const { titulo, descripcion, productImage } = product;
 
   const tituloFull = `${titulo} | Tienda en República Dominicana | ${category} Daily Power`
   
 
   // Convertir URLs relativas a absolutas si es necesario
-  const images = product.productImage?.map((img) => {
-    let imgUrl = img.fields?.file?.url;
-
-    
-    if (imgUrl && imgUrl.startsWith('//')) {
-      imgUrl = `https:${imgUrl}`; 
-    }
-
-    return imgUrl;
-  });
+  const images = productImage?.map((img) => img.url);
 
   return {
     metadataBase: new URL('https://dailypower.com.do'),
@@ -54,16 +45,14 @@ export async function generateMetadata({ params }) {
 export default async function ProductoPage({ params }) {
     const { category, slug } = await params; // Accede a los parámetros de la URL directamente desde 'params'
 
-  // Llamamos a la función fetchProductBySlugAndCategory pasando el slug y la categoría
-  const product = await fetchProductBySlugAndCategory(slug, category);
-
+  // Llamamos a la función fetchProductBySlug pasando el slug del producto
+  const product = await fetchProductBySlug(slug);
+  const productData = product?.allProductos[0]; 
   if (!product) {
     notFound(); // Si no se encuentra el producto, devuelve un 404
   }
 
-
-
-
+  // Extraemos los datos del producto
   const {
     titulo,
     descripcion,
@@ -71,13 +60,12 @@ export default async function ProductoPage({ params }) {
     specsPdf,
     ventajas,
     specsImage,
-    connectionDiagram,
+    diagramImage,
     disponibilidad,
-    pdfAdicionales,
-    titulosPdfAdicionales,
+    pdfExtra,
     garantia,
     precio,
-  } = product;
+  } = productData;
 
 
   const jsonLd = {
@@ -85,8 +73,8 @@ export default async function ProductoPage({ params }) {
     "@type": "Product",
     "name": titulo,
     "image": [
-      productImage?.[0]?.fields.file.url,
-      productImage?.[1]?.fields.file.url
+      productImage?.[0]?.url,
+      productImage?.[1]?.url
     ],
     "description": descripcion,
     "brand": {
@@ -119,35 +107,35 @@ export default async function ProductoPage({ params }) {
               <div className="aspect-h-4 aspect-w-3 overflow-hidden rounded-lg lg:block">
                 <img
                   alt={titulo}
-                  src={productImage?.[0]?.fields.file.url}
+                  src={productImage?.[0]?.url}
                   className="size-full object-scale-down  object-center"
                 />
               </div>
             <div className="hidden lg:grid lg:grid-cols-1 lg:gap-y-8">
-              {productImage?.[1]?.fields.url?.fields?.file?.url && /\.(jpg|jpeg|png|gif|webp|svg)$/i.test(specsImage.fields.file.url) && (
+              {productImage?.[1]?.url && (
                 <div className="aspect-h-2 aspect-w-3 overflow-hidden rounded-lg">
                   <img
                     alt={titulo}
-                    src={productImage?.[1]?.fields.file.url}
+                    src={productImage?.[1]?.url}
                     className="size-full object-scale-down  object-center"
                   />
                 </div>
               )}
-              {productImage?.[2]?.fields.url?.fields?.file?.url && /\.(jpg|jpeg|png|gif|webp|svg)$/i.test(specsImage.fields.file.url) && (
+              {productImage?.[2]?.url && (
               <div className="aspect-h-2 aspect-w-3 overflow-hidden rounded-lg">
                 <img
                   alt={titulo}
-                  src={productImage?.[2]?.fields.file.url}
+                  src={productImage?.[2]?.url}
                   className="size-full object-scale-down  object-center"
                 />
                 </div>
                   )}
             </div>
-            {productImage?.[3]?.fields.url?.fields?.file?.url && /\.(jpg|jpeg|png|gif|webp|svg)$/i.test(specsImage.fields.file.url) && (
+            {productImage?.[3]?.url && (
             <div className="aspect-h-5 aspect-w-4 lg:aspect-h-4 lg:aspect-w-3 sm:overflow-hidden sm:rounded-lg">
               <img
                 alt={titulo}
-                src={productImage?.[3]?.fields.file.url}
+                src={productImage?.[3]?.url}
                 className="size-full object-scale-down object-center"
               />
               </div>
@@ -169,7 +157,7 @@ export default async function ProductoPage({ params }) {
               {specsPdf && (
               <div className="mt-10">
                 <a
-                  href={specsPdf?.fields?.file?.url}
+                  href={specsPdf?.url}
                   target='_blank'
                   className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-[#E73516] px-8 py-3 text-base font-medium text-white hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#E73516] focus:ring-offset-2"
                 >
@@ -178,10 +166,10 @@ export default async function ProductoPage({ params }) {
                 </div>
               )}
 
-              {pdfAdicionales && (
+              {pdfExtra && (
                  <div className="mt-10 flex flex-col gap-3">
-                  {pdfAdicionales?.map((pdfAdicional, index) => (
-                    <a key={index} href={pdfAdicionales?.[index]?.fields?.file?.url} target='_blank' className="text-sm text-gray-600 text-justify hover:scale-105 hover:text-[#E73516]">Descargar {titulosPdfAdicionales?.[index]}</a>
+                  {pdfExtra?.map((pdfAdicional, index) => (
+                    <a key={index} href={pdfExtra[index]?.archivoPdf.url} target='_blank' className="text-sm text-gray-600 text-justify hover:scale-105 hover:text-[#E73516]">Descargar {pdfExtra[index]?.titulo}</a>
                   ))}
                 </div>
               )}
@@ -221,8 +209,8 @@ export default async function ProductoPage({ params }) {
               <div className="mt-10">
                 <h2 className="text-sm font-medium text-gray-900">Ventajas</h2>
                 <div className="mt-4 grid grid-cols-2 grid-flow-row gap-4">
-                  {ventajas?.map((ventaja, index) => (
-                    <li key={index} className="text-sm text-gray-600 text-justify">{ventaja}</li>
+                  {ventajas?.map((texto, index) => (
+                    <li key={index} className="text-sm text-gray-600 text-justify">{texto.ventaja}</li>
                   ))}
                 </div>
                 </div>
@@ -231,11 +219,11 @@ export default async function ProductoPage({ params }) {
           </div>
 
           {/* Especificaciones */}
-          {specsImage?.fields?.file?.url && /\.(jpg|jpeg|png|gif|webp|svg)$/i.test(specsImage.fields.file.url) && (
+          {specsImage && (
             <div className='mx-auto max-w-2xl lg:max-w-7xl w-full h-full flex flex-col gap-10 mb-10'>
               <div className='w-full flex flex-col gap-4'>
                 <h2 className="text-xl font-bold text-gray-900">Especificaciones: </h2>
-                <img src={specsImage?.fields?.file?.url} alt={`Especificaciones de ${titulo}`} />
+                <img src={specsImage?.url} alt={`Especificaciones de ${titulo}`} />
               </div>
             </div>
           )}
@@ -250,11 +238,11 @@ export default async function ProductoPage({ params }) {
               )}
 
           {/* Diagrama de conexión */}
-          {connectionDiagram?.fields?.file?.url && /\.(jpg|jpeg|png|gif|webp|svg)$/i.test(specsImage.fields.file.url) && (
+          {diagramImage && (
             <div className='mx-auto max-w-2xl lg:max-w-7xl w-full h-full flex flex-col gap-10 mb-10'>
               <div className='w-full flex flex-col gap-4'>
                 <h2 className="text-xl font-bold text-gray-900">Diagrama de conexión: </h2>
-                <img src={connectionDiagram?.fields?.file?.url} alt={`Diagrama de conexión de ${titulo}`} />
+                <img src={diagramImage?.url} alt={`Diagrama de conexión de ${titulo}`} />
               </div>
             </div>
           )}

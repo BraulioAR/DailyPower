@@ -2,34 +2,43 @@
 import Header from "@/components/Header";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-
+import { performRequest } from '@/lib/datocms';
 
 export default function Hero() {
-  
-  const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true)
+  const [data, setData] = useState({ titulo: '', subtitulo: '' }); // Cambiado a un objeto vacío
+  const [loading, setLoading] = useState(true);
+
+  const PAGE_CONTENT_QUERY = `
+  query {
+    paginaInicio {
+      titulo
+      subtitulo
+    }
+  }
+`;
+
   useEffect(() => {
-  const fetchProducts = async () => {
+  const fetchPageContent = async () => {
     try {
-      const response = await fetch('/api/contentful?content_type=seccionInicio');
-      const data = await response.json();
+      const response = await performRequest(PAGE_CONTENT_QUERY);
+      console.log('Respuesta completa:', response); // Verifica el resultado de performRequest
 
-      console.log('JSON de la respuesta Hero:', data); // Imprime el JSON en consola
-
-      if (Array.isArray(data) && data.length > 0) {
-        setData(data[0]);
+      // Directamente verifica si la propiedad paginaInicio existe
+      if (response && response.paginaInicio) {
+        setData(response.paginaInicio); // Establece los datos correctamente
+      } else {
+        console.error('No se encontraron datos en la respuesta:', response);
       }
     } catch (error) {
-      console.error('Error al obtener productos:', error);
+      console.error('Error al obtener contenido de la página:', error);
     } finally {
       setLoading(false);
     }
   };
 
-  fetchProducts();
+  fetchPageContent();
 }, []);
 
-  
   return (
     <div className="bg-white">
       <Header/>
@@ -59,30 +68,28 @@ export default function Hero() {
           <div className="flex flex-col justify-center items-center ">
             {loading ? (
               <>
-            <h1 className="mb-8 lg:text-balance text-5xl font-semibold tracking-tight text-gray-900 lg:text-7xl text-center animate-fade-out-down animate-delay-500 animate-steps-modern">
-              Daily Power
-              </h1>
-              <h2 className="font-medium text-gray-500 lg:text-xl text-center max-w-2xl animate-fade-out-down animate-delay-700 animate-steps-modern">
-                Representante exclusivo para República Dominicana de Baterías Aokly. Aplicaciones: Inversores, Paneles Solares y UPS.
-                </h2>
-                </>
-              )
-              : (
-                <>
-                 <h1 className="mb-8 lg:text-balance text-5xl font-semibold tracking-tight text-gray-900 lg:text-7xl animate-fade-in-up animate-duration-300 animate-steps-modern">
-                    {data.titulo}
+                <h1 className="mb-8 lg:text-balance text-5xl font-semibold tracking-tight text-gray-900 lg:text-7xl text-center animate-fade-out-down animate-delay-500 animate-steps-modern">
+                  Daily Power
                 </h1>
-                 <h2 className="font-medium text-gray-500 lg:text-xl text-center max-w-2xl animate-fade-in-up animate-duration-400 animate-steps-modern">
+                <h2 className="font-medium text-gray-500 lg:text-xl text-center max-w-2xl animate-fade-out-down animate-delay-700 animate-steps-modern">
+                  Representante exclusivo para República Dominicana de Baterías Aokly. Aplicaciones: Inversores, Paneles Solares y UPS.
+                </h2>
+              </>
+            ) : (
+              <>
+                <h1 className="mb-8 lg:text-balance text-5xl font-semibold tracking-tight text-gray-900 lg:text-7xl animate-fade-in-up animate-duration-300 animate-steps-modern">
+                  {data.titulo}
+                </h1>
+                <h2 className="font-medium text-gray-500 lg:text-xl text-center max-w-2xl animate-fade-in-up animate-duration-400 animate-steps-modern">
                   {data.subtitulo}
                 </h2>
-                  </>
-                )
-            }
-            
+              </>
+            )}
+
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <Link
                 href="/Productos"
-                className="rounded-md bg-[#E73516] px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm  hover:scale-105 transition-transform duration-300 "
+                className="rounded-md bg-[#E73516] px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:scale-105 transition-transform duration-300 "
               >
                 Ver Catálogo
               </Link>
@@ -106,5 +113,5 @@ export default function Hero() {
         </div>
       </div>
     </div>
-  )
+  );
 }

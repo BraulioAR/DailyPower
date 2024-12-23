@@ -2,23 +2,39 @@
 
 import Accordion from "@/components/Accordion";
 import { useEffect, useState } from "react";
+import { performRequest } from "@/lib/datocms";
 
 export default function PreguntasFrecuentes() {
   const [accordionItems, setAccordionItems] = useState([]);
-
-  useEffect(() => {
-    const fetchProducts = async () => {
+  
+    const query = `
+    query {
+      allPreguntaFrecuentes {
+        pregunta
+        respuesta
+      }
+    }
+  `;
+  
+    useEffect(() => {
+    const fetchPageContent = async () => {
       try {
-        const response = await fetch('/api/contentful?content_type=preguntaFrecuente');
-        const data = await response.json();
-        setAccordionItems(data);
+        const response = await performRequest(query);
+        console.log('Respuesta completa:', response); // Verifica el resultado de performRequest
+        // Directamente verifica si la propiedad preguntaFrecuente existe
+        if (response && response.allPreguntaFrecuentes) {
+          setAccordionItems(response.allPreguntaFrecuentes); // Establece los datos correctamente
+        } else {
+          console.error('No se encontraron datos en la respuesta:', response);
+        }
       } catch (error) {
-        console.error('Error al obtener productos:', error);
-      } 
+        console.error('Error al obtener contenido de la página:', error);
+      }
     };
-
-    fetchProducts();
+  
+    fetchPageContent();
   }, []);
+
 
   return (
     <div className="w-2/3 mx-auto">

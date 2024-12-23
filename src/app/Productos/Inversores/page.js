@@ -1,122 +1,137 @@
-'use client';
-import { useState, useEffect } from 'react';
-import { IoArrowDownCircleOutline, IoArrowUpCircleOutline } from 'react-icons/io5';
-import ProductView from '@/components/ProductView';
-import Link from 'next/link';
-import ShareButtons from '@/components/ShareButtons';
+'use client'
+import { useState, useEffect } from 'react'
+import { IoArrowDownCircleOutline, IoArrowUpCircleOutline } from 'react-icons/io5'
+import ProductView from '@/components/ProductView'
+import Link from 'next/link'
+import ShareButtons from '@/components/ShareButtons'
+import { performRequest } from '@/lib/datocms' 
 
 // Mapeo de las letras a las categorías
- const categoryMap = {
-    'B': 'Baterias',
-    'I': 'Inversores',
-    'P': 'Paneles-Solares',
-    'E': 'Otros',
-    'O': 'Otros',
-    'C': 'Otros',
-  };
+const categoryMap = {
+  'B': 'Baterias',
+  'I': 'Inversores',
+  'P': 'Paneles-Solares',
+  'E': 'Otros',
+  'O': 'Otros',
+  'C': 'Otros',
+}
 
 export default function Productos() {
-  const [products, setProducts] = useState([]);
-  const [heroData, setHeroData] = useState([]);
-  const [loadingProducts, setLoadingProducts] = useState(true);
-  const [loadingHero, setLoadingHero] = useState(true);
-  const [showAllStates, setShowAllStates] = useState({}); // Estado separado para cada categoría
+  const [products, setProducts] = useState([])
+  const [heroData, setHeroData] = useState([])
+  const [loadingProducts, setLoadingProducts] = useState(true)
+  const [loadingHero, setLoadingHero] = useState(true)
+  const [showAllStates, setShowAllStates] = useState({}) // Estado separado para cada categoría
 
   // Actualiza el estado de una categoría específica
   const toggleShowAll = (subcategoryCode) => {
     setShowAllStates((prevState) => ({
       ...prevState,
       [subcategoryCode]: !prevState[subcategoryCode],
-    }));
-  };
+    }))
+  }
 
-  // Obtención de los productos desde la API de Contentful
+  // Obtención de los productos usando performRequest de datocms
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch('/api/contentful?content_type=producto');
-        const data = await response.json();
-        setProducts(data);
+        const query = `{
+          allProductos {
+            titulo
+            categoria
+            subcategoria
+            slug
+            productImage {
+              url
+            }
+          }
+        }`
+        const response = await performRequest(query)
+        setProducts(response.allProductos)
       } catch (error) {
-        console.error('Error al obtener productos:', error);
+        console.error('Error al obtener productos:', error)
       } finally {
-        setLoadingProducts(false);
+        setLoadingProducts(false)
       }
-    };
+    }
 
-       const fetchHeroData = async () => {
+    const fetchHeroData = async () => {
       try {
-        const response = await fetch('/api/contentful?content_type=productspage');
-        const data = await response.json();
-        if (Array.isArray(data) && data.length > 0) {
-          setHeroData(data[0]);
+        const query = `{
+          paginaProducto {
+            tituloInversores
+            subtituloInversores
+          }
+        }`
+        const response = await performRequest(query)
+        if (response.paginaProducto) {
+          setHeroData(response.paginaProducto)
         }
       } catch (error) {
-        console.error('Error al obtener productos:', error);
+        console.error('Error al obtener hero data:', error)
       } finally {
-        setLoadingHero(false);
+        setLoadingHero(false)
       }
-    };
+    }
 
-    fetchProducts();
-    fetchHeroData();
-  }, []);
+    fetchProducts()
+    fetchHeroData()
+  }, [])
 
   const filterProductsBySubcategory = (subcategoryCode) =>
-    products.filter((producto) => producto.subcategory === subcategoryCode);
+    products.filter((producto) => producto.subcategoria === subcategoryCode)
 
   const renderCategory = (subcategoryCode, title) => {
-  const productsInCategory = filterProductsBySubcategory(subcategoryCode);
-  const showAll = showAllStates[subcategoryCode] || false;
+    const productsInCategory = filterProductsBySubcategory(subcategoryCode)
+    const showAll = showAllStates[subcategoryCode] || false
 
-  return (
-    <div id={subcategoryCode} className="relative isolate z-50 px-6 lg:px-8 transition-transform duration-500">
-      <div className="mx-auto max-w-2xl px-4 pt-16 lg:max-w-7xl lg:px-6">
-        <h2 className="text-3xl font-bold tracking-tight text-gray-900 text-start">{title}</h2>
-        {loadingProducts ? (
-          <div className="bg-orange-100 text-center my-24 text-orange-800 p-4">Cargando productos...</div>
-        ) : productsInCategory.length === 0 ? (
-          <div className="text-center my-24">
-            <p className="text-xl text-gray-600">
-              Aún no hay productos disponibles en esta categoría. Por favor, contacte a un representante.
-            </p>
-            <Link href="/Contacto" className="text-[#E73516] hover:text-[#C33F1A] font-semibold">
-              Ir a Contacto
-            </Link>
-          </div>
-        ) : (
-          <div className="mt-5 grid grid-cols-2 gap-x-6 gap-y-10 lg:grid-cols-4">
-            {productsInCategory.slice(0, showAll ? productsInCategory.length : 4).map((producto) => (
-              <ProductView
-                key={producto.id}
-                src={producto.image}
-                title={producto.title}
-                route={categoryMap[producto.category]}
-                slug={producto.slug}
-              />
-            ))}
-          </div>
-        )}
-        {productsInCategory.length > 4 && (
-          <div className="text-center mt-6">
-            <button
-              onClick={() => toggleShowAll(subcategoryCode)}
-              className="text-[#E73516] hover:text-[#C33F1A] font-semibold"
-              aria-label={showAll ? 'Ver menos' : 'Ver más'}
-            >
-              {showAll ? (
-                <IoArrowUpCircleOutline className="text-[#E73516] h-12 w-12 animate-bounce animate-infinite animate-ease-in" />
-              ) : (
-                <IoArrowDownCircleOutline className="text-[#E73516] h-12 w-12 animate-bounce animate-infinite animate-ease-in" />
-              )}
-            </button>
-          </div>
-        )}
+    return (
+      <div id={subcategoryCode} className="relative isolate z-50 px-6 lg:px-8 transition-transform duration-500">
+        <div className="mx-auto max-w-2xl px-4 pt-16 lg:max-w-7xl lg:px-6">
+          <h2 className="text-3xl font-bold tracking-tight text-gray-900 text-start">{title}</h2>
+          {loadingProducts ? (
+            <div className="bg-orange-100 text-center my-24 text-orange-800 p-4">Cargando productos...</div>
+          ) : productsInCategory.length === 0 ? (
+            <div className="text-center my-24">
+              <p className="text-xl text-gray-600">
+                Aún no hay productos disponibles en esta categoría. Por favor, contacte a un representante.
+              </p>
+              <Link href="/Contacto" className="text-[#E73516] hover:text-[#C33F1A] font-semibold">
+                Ir a Contacto
+              </Link>
+            </div>
+          ) : (
+            <div className="mt-5 grid grid-cols-2 gap-x-6 gap-y-10 lg:grid-cols-4">
+              {productsInCategory.slice(0, showAll ? productsInCategory.length : 4).map((producto) => (
+                <ProductView
+                  key={producto.slug}
+                  src={producto.productImage[0].url}
+                  title={producto.titulo}
+                  route={categoryMap[producto.categoria]}
+                  slug={producto.slug}
+                />
+              ))}
+            </div>
+          )}
+          {productsInCategory.length > 4 && (
+            <div className="text-center mt-6">
+              <button
+                onClick={() => toggleShowAll(subcategoryCode)}
+                className="text-[#E73516] hover:text-[#C33F1A] font-semibold"
+                aria-label={showAll ? 'Ver menos' : 'Ver más'}
+              >
+                {showAll ? (
+                  <IoArrowUpCircleOutline className="text-[#E73516] h-12 w-12 animate-bounce animate-infinite animate-ease-in" />
+                ) : (
+                  <IoArrowDownCircleOutline className="text-[#E73516] h-12 w-12 animate-bounce animate-infinite animate-ease-in" />
+                )}
+              </button>
+            </div>
+          )}
+        </div>
       </div>
-    </div>
-  );
-};
-
+    )
+  }
   return (
     <div className="bg-white w-full h-full mx-auto max-w-7xl mt-20">
       <section className="relative pt-20 lg:mt-24">

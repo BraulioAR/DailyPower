@@ -3,26 +3,48 @@
 import { useEffect, useState } from "react";
 import { Instagram, Clock, Phone, MapPin } from "lucide-react";
 import Link from "next/link";
+import { performRequest } from "@/lib/datocms";
 
 export default function ContactPage() {
-  const [contactData, setContactData] = useState(null);
+  const [contactData, setContactData] = useState([]);
 
-  useEffect(() => {
-    const fetchContactData = async () => {
-      try {
-        const response = await fetch('/api/contentful?content_type=datosContacto');
-        const data = await response.json();
-        // Como la respuesta es un arreglo, obtenemos el primer elemento
-        if (Array.isArray(data) && data.length > 0) {
-          setContactData(data[0]);
-        }
-      } catch (error) {
-        console.error('Error al obtener datos de contacto:', error);
-      }
-    };
-
-    fetchContactData();
-  }, []);
+   const PAGE_CONTENT_QUERY = `
+     query {
+       datosContacto {
+         numerosDeTelefono
+            {
+            telefono
+            }
+         direccion
+         cuentasDeInstagram
+            {
+            cuentaInstagram
+            }
+         horarioWeekdays
+         horarioWeekends
+       }
+     }
+   `;
+   
+     useEffect(() => {
+     const fetchPageContent = async () => {
+       try {
+         const response = await performRequest(PAGE_CONTENT_QUERY);
+         console.log('Respuesta completa:', response); // Verifica el resultado de performRequest
+   
+         // Directamente verifica si la propiedad datosContacto existe
+         if (response && response.datosContacto) {
+           setContactData(response.datosContacto); // Establece los datos correctamente
+         } else {
+           console.error('No se encontraron datos en la respuesta:', response);
+         }
+       } catch (error) {
+         console.error('Error al obtener contenido de la página:', error);
+       } 
+     };
+   
+     fetchPageContent();
+     }, []);
 
   const formatPhoneNumber = (phoneNumber) => {
     const cleaned = phoneNumber.toString().replace(/\D/g, '');
@@ -54,13 +76,13 @@ export default function ContactPage() {
                 <div>
                   <h3 className="text-lg font-semibold text-gray-900">Teléfono</h3>
                   <div className="mt-2 space-y-2 flex-col flex">
-                    {contactData.telefono.map((phone, index) => (
+                    {contactData.numerosDeTelefono?.map((number, index) => (
                       <Link
                         key={index}
-                        href={`https://api.whatsapp.com/send/?phone=${phone}&text&type=phone_number&app_absent=0`}
+                        href={`https://api.whatsapp.com/send/?phone=${number.telefono}&text&type=phone_number&app_absent=0`}
                         className="text-gray-600 hover:text-[#E73516] transition-colors"
                       >
-                        {formatPhoneNumber(phone)}
+                        {formatPhoneNumber(number.telefono)}
                       </Link>
                     ))}
                   </div>
@@ -89,13 +111,13 @@ export default function ContactPage() {
                 <div>
                   <h3 className="text-lg font-semibold text-gray-900">Instagram</h3>
                   <div className="mt-2 space-y-2 flex-col flex">
-                    {contactData.instagram.map((ig, index) => (
+                    {contactData.cuentasDeInstagram?.map((cuenta, index) => (
                       <Link
                         key={index}
-                        href={`https://instagram.com/${ig}`}
+                        href={`https://instagram.com/${cuenta.cuentaInstagram}`}
                         className="text-gray-600 hover:text-[#E73516] transition-colors"
                       >
-                        @{ig}
+                        @{cuenta.cuentaInstagram}
                       </Link>
                     ))}
                   </div>

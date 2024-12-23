@@ -1,23 +1,23 @@
+import { performRequest } from 'lib/performRequest';
+
 export async function generateStaticParams() {
   try {
-    // Llamar a tu API personalizada
-    const response = await fetch(`https://dailypower.com.do/api/contentful?content_type=producto`, {
-      headers: { 'Content-Type': 'application/json' },
-    });
+    // Ejecutar la consulta para obtener todos los productos
+    const response = await performRequest(PRODUCTS_QUERY);
 
-    if (!response.ok) {
-      throw new Error(`Error al obtener los productos: ${response.statusText}`);
+    if (!response || !response.data || !response.data.allProductos) {
+      throw new Error('No se pudieron obtener los productos desde DatoCMS');
     }
 
-    const products = await response.json();
+    const products = response.data.allProductos;
 
-    // Mapeamos los slugs y categorías para generar los parámetros estáticos
-    return products.map(({ slug, category }) => ({
+    // Mapear los slugs y categorías para generar los parámetros estáticos
+    return products.map(({ slug, categoria }) => ({
       slug,
-      category,
+      category: categoria,
     }));
   } catch (error) {
-    console.error('Error al generar los parámetros estáticos:', error);
+    console.error('Error al generar los parámetros estáticos desde DatoCMS:', error);
     return []; // Devolver un array vacío si hay error
   }
 }

@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 import { IoArrowDownCircleOutline, IoArrowUpCircleOutline } from "react-icons/io5";
 import ProductView from '@/components/ProductView';
+import { performRequest } from '@/lib/datocms';
 
  const categoryMap = {
     'B': 'Baterias',
@@ -18,34 +19,48 @@ export default function NewProducts() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  const PAGE_CONTENT_QUERY = `
+  query {
+    allProductos {
+      id
+      titulo
+  		categoria
+  		slug	
+  		productImage{
+        url
+      }	
+    }
+}
+`;
+
   // Función para alternar entre mostrar más o menos productos
   const toggleShowAll = () => {
     setShowAll(!showAll);
   };
 
+ 
+
   useEffect(() => {
-  // Función para obtener productos 
-  const fetchProductsData = async () => {
-    try {
-      const response = await fetch('/api/contentful?content_type=producto'); // Haciendo la solicitud a tu API
-      if (!response.ok) {
-        throw new Error('Error al obtener productos');
+    const fetchProducts = async () => {
+      try {
+        const response = await performRequest(PAGE_CONTENT_QUERY);
+        console.log('Respuesta completa:', response); // Verifica el resultado de performRequest
+  
+        // Directamente verifica si la propiedad paginaInicio existe
+        if (response && response.allProductos) {
+          setProducts(response.allProductos); // Establece los datos correctamente
+        
+        } else {
+          console.error('No se encontraron datos en la respuesta:', response);
+        }
+      } catch (error) {
+        console.error('Error al obtener contenido de la página:', error);
+      } finally {
+        setLoading(false);
       }
-      const fetchedProducts = await response.json(); // Obtiene los productos de la respuesta
-      
-      console.log('JSON de la respuesta productos:', fetchedProducts); // Imprime el JSON en consola
-
-      // Almacenar los productos en el estado
-      setProducts(fetchedProducts);
-    } catch (error) {
-      console.error('Error al obtener productos:', error);
-      setError('Hubo un problema al cargar los productos.');
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  fetchProductsData();
+    };
+  
+    fetchProducts();
   }, []);
   
   if (loading) {
@@ -74,9 +89,9 @@ export default function NewProducts() {
         {products.slice(0, showAll ? Math.min(products.length, 8) : 4).map((producto) => (
           <ProductView
             key={producto.id}
-            src={producto.image}
-            title={producto.title}
-            route={categoryMap[producto.category]}
+            src={producto.productImage[0]?.url}
+            title={producto.titulo}
+            route={categoryMap[producto.categoria]}
             slug={producto.slug}
           />
         ))}
