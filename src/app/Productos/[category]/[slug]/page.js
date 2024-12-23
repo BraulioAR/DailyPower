@@ -205,7 +205,7 @@ export default async function ProductoPage({ params }) {
                 </div>
               </div>
               )}
-              {ventajas && (
+              {ventajas[0] && (
               <div className="mt-10">
                 <h2 className="text-sm font-medium text-gray-900">Ventajas</h2>
                 <div className="mt-4 grid grid-cols-2 grid-flow-row gap-4">

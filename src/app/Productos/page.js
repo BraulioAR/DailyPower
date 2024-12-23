@@ -36,7 +36,7 @@ export default function Productos() {
     const fetchProducts = async () => {
       try {
         const query = `{
-          allProductos {
+          allProductos(first: 100) {
             titulo
             categoria
             subcategoria

@@ -31,7 +31,7 @@ export async function fetchProductBySlug(slug) {
 
   const query = `
     query ProductBySlug($slug: String!) {
-      allProductos(filter: { slug: { eq: $slug } }) {
+      allProductos(first: 100 filter: { slug: { eq: $slug } }) {
         titulo
         descripcion
         categoria
