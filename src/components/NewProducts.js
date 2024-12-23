@@ -44,8 +44,7 @@ export default function NewProducts() {
     const fetchProducts = async () => {
       try {
         const response = await performRequest(PAGE_CONTENT_QUERY);
-        console.log('Respuesta completa:', response); // Verifica el resultado de performRequest
-  
+       
         // Directamente verifica si la propiedad paginaInicio existe
         if (response && response.allProductos) {
           setProducts(response.allProductos); // Establece los datos correctamente

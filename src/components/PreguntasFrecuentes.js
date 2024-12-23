@@ -20,7 +20,7 @@ export default function PreguntasFrecuentes() {
     const fetchPageContent = async () => {
       try {
         const response = await performRequest(query);
-        console.log('Respuesta completa:', response); // Verifica el resultado de performRequest
+       
         // Directamente verifica si la propiedad preguntaFrecuente existe
         if (response && response.allPreguntaFrecuentes) {
           setAccordionItems(response.allPreguntaFrecuentes); // Establece los datos correctamente

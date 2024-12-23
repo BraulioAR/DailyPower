@@ -21,8 +21,7 @@ export default function Hero() {
   const fetchPageContent = async () => {
     try {
       const response = await performRequest(PAGE_CONTENT_QUERY);
-      console.log('Respuesta completa:', response); // Verifica el resultado de performRequest
-
+     
       // Directamente verifica si la propiedad paginaInicio existe
       if (response && response.paginaInicio) {
         setData(response.paginaInicio); // Establece los datos correctamente
