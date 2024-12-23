@@ -97,8 +97,8 @@ export default function ContactPage() {
                 <div>
                   <h3 className="text-lg font-semibold text-gray-900">Horario</h3>
                   <div className="mt-2 space-y-1 text-gray-600">
-                    <p>{contactData.horarioWeek}</p>
-                    <p>{contactData.horarioWeekend}</p>
+                    <p>{contactData.horarioWeekdays}</p>
+                    <p>{contactData.horarioWeekends}</p>
                   </div>
                 </div>
               </div>
