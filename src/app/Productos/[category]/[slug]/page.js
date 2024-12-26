@@ -8,7 +8,7 @@ export async function generateMetadata({ params }) {
   // Obtener el producto para generar metadata
   const product = await fetchProductBySlug(slug);
 const productData = product?.allProductos[0]; 
-  if (!product) {
+  if (!productData) {
     return {
       title: 'Producto no encontrado',
       description: 'El producto que buscas no existe.',
@@ -48,7 +48,7 @@ export default async function ProductoPage({ params }) {
   // Llamamos a la función fetchProductBySlug pasando el slug del producto
   const product = await fetchProductBySlug(slug);
   const productData = product?.allProductos[0]; 
-  if (!product) {
+  if (!productData) {
     notFound(); // Si no se encuentra el producto, devuelve un 404
   }
 
